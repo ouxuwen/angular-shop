@@ -4,5 +4,11 @@
     "ContactUs":"Contact Us",
     "FAQ":"FAQ",
     "Blog":"Blog",
-    "Language":"Language"
+    "Language":"Language",
+    "MyDj":"Person",
+    "Login":"Log In",
+    "EmailAddress" : "Email Address",
+    "PassWord":"PassWord",
+    "PleaseEnter":"Please Enter...",
+    "MyCart":"My Shopping Cart"
 }

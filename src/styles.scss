@@ -1,4 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('app/shared/common/iconfont.css');
+@import url('app/shared/common/common.css');
+$mainColor : #FF9300;
+$blueColor : #FFCA00;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 html{color:#000;background:#FFF}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,
 input,textarea,p,blockquote,th,td{margin:0;padding:0}
@@ -20,7 +51,7 @@ legend{color:#000}
 img{display:block;}
 body{ padding:0px; margin:0px; font-family:"open sans",Arial,Geneva, sans-serif; font-size:13px; color:#555555;}
 a{color:#555555;text-decoration:none;}
-a:hover{color:#0c9eef;text-decoration:underline;}
+a:hover{color:$mainColor;text-decoration:underline;}
 /* reset css end */
 /* font set start */
 
@@ -62,11 +93,11 @@ a:hover{color:#0c9eef;text-decoration:underline;}
 .cfff{color:#fff;}
 .c666{color:#666;}
 .c-d{color:#757575;}
-.c-p{color:#336699;}
+.c-p{color:$blueColor;}
 .c-t{color:#0e2f48;}
 .c-nav{color:#5b6675;}
 .c-n{color:#6699cc;}
-.c-h{color:#0c9eef;}
+.c-h{color:$mainColor;}
 .c-w{color:#ff6349;}
 .c-b{color:#689acd;}
 .cbg{background-color:#fff;}
@@ -77,7 +108,7 @@ a:hover{color:#0c9eef;text-decoration:underline;}
 .cbgfa{background-color:#fafafa !important;}
 .cbgfff{background-color:#fff !important;}
 .cbg069{background-color:#006699 !important;}
-.cbg369{background-color:#336699 !important;}
+.cbg369{background-color:$blueColor !important;}
 .cbg69c{background-color:#6699cc !important;}
 /*layout*/
 .l{float:left;}
@@ -302,9 +333,9 @@ input[type='password'].input-large{width:600px;}
 
 input[type='checkbox'],input[type='radio']{margin-right:5px;display:inline-block;*display:inline;zoom:1;vertical-align:middle;}
 /**按钮*/
-button,input[type='submit']{*overflow:visible;height:28px;padding:0 15px;color:#ddd;border:0px;border-radius:2px;background-color:#336699;cursor:pointer;color:#fff;margin:5px 0;font-family:"open sans",Arial,Geneva, sans-serif;}
+button,input[type='submit']{*overflow:visible;height:28px;padding:0 15px;color:#ddd;border:0px;border-radius:2px;background-color:$blueColor;cursor:pointer;color:#fff;margin:5px 0;font-family:"open sans",Arial,Geneva, sans-serif;}
 .fgt-sub-btn {margin-top: 10px; margin-bottom: 15px;}
-button:hover,input[type='submit']:hover{background-color:#0c9eef;}
+button:hover,input[type='submit']:hover{background-color:$mainColor;}
 button.primary{width:80px;	height:30px;padding:5px;color:#ddd;border:0px;border-radius:3px;background:#3399cc;color:#fff;}
 button.primary:hover{background:#006699;}
 button.primary-middle{width:100px;height:30px;padding:5px;color:#ddd;border:0px;border-radius:3px;background:#3399cc;color:#fff;}
@@ -326,8 +357,8 @@ button.success-long:hover{background:#449d44;}
 button.orange{background:#fb843c; border:0px; color:#fff; height:32px; text-align:center; line-height:32px;margin-top:8px; cursor:pointer;}
 button.orange:hover{background:#e26400;}
 
-a.button{line-height:28px;height:28px;padding:0 15px;color:#ddd;border:0px;border-radius:2px;background-color:#336699;cursor:pointer;color:#fff;margin:5px 0;font-family:"open sans",Arial,Geneva, sans-serif;}
-a.button:hover{background-color:#0c9eef;}
+a.button{line-height:28px;height:28px;padding:0 15px;color:#ddd;border:0px;border-radius:2px;background-color:$blueColor;cursor:pointer;color:#fff;margin:5px 0;font-family:"open sans",Arial,Geneva, sans-serif;}
+a.button:hover{background-color:$mainColor;}
 a.orange-btn{background: #fb843c;}
 /**按钮*/
 select{height:28px;border: solid 1px #ddd; line-height:25px;background-color:white;cursor:default;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
@@ -354,8 +385,8 @@ a.success:hover{color:#449d44;}
 .cbr1be5{border-bottom:1px solid #e5e5e5;}
 .cbr1tefebe0{border-top:1px solid #efebe0;}
 .cbr1befebe0{border-bottom:1px solid #efebe0;}
-.cbr2t369{border-top:2px solid #336699;}
-.cbr2b369{border-bottom:2px solid #336699;}
+.cbr2t369{border-top:2px solid $blueColor;}
+.cbr2b369{border-bottom:2px solid $blueColor;}
 .cbr2tefebe0{border-top:2px solid #efebe0;}
 .cbr2befebe0{border-bottom:2px solid #efebe0;}
 .cbr1d4{border:1px solid #d4d4d4;}
@@ -403,7 +434,7 @@ input.error,select.error{border:1px dashed #e45033 !important;background: #fff2e
 .ch{color:#5b6675;}
 .ch:hover{color:#0e2f48;font-weight:bold;}
 .f-active{font-weight:bold;color:#0e2f48;}
-.link-btn{background-color: #f7f7f7;height: 23px;border: 1px solid #d4d4d4;color: #336699;padding: 2px 8px;border-radius: 3px;margin: 0 5px;}
+.link-btn{background-color: #f7f7f7;height: 23px;border: 1px solid #d4d4d4;color: $blueColor;padding: 2px 8px;border-radius: 3px;margin: 0 5px;}
 .link-btn:hover{color:#6699cc;}
 .show{display:block !important;}
 .hide{display:none !important;}
@@ -459,3 +490,11 @@ em.checkout-car-tips{font-size: 14px; color: #6599c9; display: inline-block; hei
 .admin .login-blank{height: 6px;width: 100%;position: absolute;top: 30px;background: #fff;margin-left: -10px;*margin-left: -52px;z-index: 99999;display:none;}
 .admin .admin-login-box{top:34px;right:0px;*border:1px solid #ccc;background:#fff;}
 .admin .login {background:url(assets/image/licon.png) no-repeat -105px -210px; height:13px; margin:7px 7px 0 0; width:15px; float:left;}
+
+
+
+
+
+.width1024{width:1200px;}
+.width1024-content-wrap {min-height: 528px;}
+.head{height:115px;}

@@ -9,11 +9,19 @@ export class HeaderComponent implements OnInit {
 
   constructor(public translateService:TranslateService) { }
 
+  myDj:boolean = false;
+  loginTouch:boolean = false;
+  
   ngOnInit() {
   }
 
   changeLang(en){
     localStorage.setItem('lang',en);
     this.translateService.use(en);
+  }
+
+  test(){
+    this.myDj = !this.myDj;
+    console.log(this.myDj)
   }
 }

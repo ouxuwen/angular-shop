@@ -4,6 +4,11 @@
     "ContactUs":"联系我们",
     "FAQ":"问题",
     "Blog":"博客",
-    "Language":"语言"
-    
+    "Language":"语言",
+    "MyDj":"个人中心",
+    "Login":"登录",
+    "EmailAddress" : "Email Address",
+    "PassWord":"PassWord",
+    "PleaseEnter":"Please Enter...",
+    "MyCart":"My Shopping Cart"
 }

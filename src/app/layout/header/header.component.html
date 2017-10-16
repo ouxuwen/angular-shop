@@ -27,10 +27,11 @@
     </li>
     <li class="r header-top-en_US" style="*width:630px;">
       
-      <span class="font l myacount" >
+      <span class="font l myacount" (mouseenter)="myDj=!myDj" (mouseleave)="myDj=!myDj">
+            <span class="iconfont icon-accountfilling" [style.color] = "myDj ? '#FFCA00' : '#555' "></span>
             <a class="us-inventory-link" >{{'MyDj' | translate}}</a>
-            <div class="myacount-blank" style="display: none;"></div>
-            <div class="myacount-list pabs dn pd10 cbgfff zi4" style="display: none;">
+            <div class="myacount-blank"  [style.display] = "myDj ? 'block' : 'none' "></div>
+            <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display] = "myDj ? 'block' : 'none' ">
                 <ul>
                     <li><a>My Orders</a></li>        
                     <li><a>Track My Orders</a></li>
@@ -38,23 +39,23 @@
             </div>
         </span>
       <span class="pixel2"></span>
-      <div class="admin login-box l" style="position:relative;">
+      <div class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=!loginTouch" (mouseleave)="loginTouch=!loginTouch">
         <a rel="nofollow" >
                   <span class="font">{{"Login" | translate}}</span>
-              </a>
-        <div class="login-blank" style="display: none;"></div>
-        <ul class="admin-login-box dn" style="display: none;">
+         </a>
+        <div class="login-blank" [style.display] = "loginTouch ? 'block' : 'none' " ></div>
+        <ul class="admin-login-box dn" [style.display] = "loginTouch ? 'block' : 'none' ">
           <form method="post">
             <li class="tanchukuang tal cbgfff pdt15 pdb5 pdr30 pdl30">
               <dl class="l">
                 <dt>
-                  Email Address:
+                {{"EmailAddress" | translate}}:
                 </dt>
                 <dt>
                   <input autocomplete="off" name="login[username]" type="text" value="" class="input-small">
                 </dt>
                 <dt>
-                  Password:
+                  {{"Password" |  translate}}:
                 </dt>
                 <dt>
                   <input name="login[password]" type="password" value="" class="input-small">
@@ -66,14 +67,12 @@
                   <img class="mgao" alt="login split line" src="assets/image/login-split-line.jpg">
                 </dt>
                 <dt class="join-free tac">
-                  <a >Join Free</a>
+                  <a>{{"CreateAccount" | translate}}</a>
                   <a target="_blank" title="View our membership system" >
                     <div class="product-m-i"></div>
                   </a>
                 </dt>
-                <dt class="tac">
-                  <span class="login-coupon-link-top"><a class="c-p tdl" >How to Earn Discount? &gt;&gt;</a></span>
-                </dt>
+                
               </dl>
             </li>
           </form>
@@ -85,7 +84,7 @@
         </span>
       <span class="pixel2"></span>
       <span class="font l contact-panel prae">
-            <a rel="nofollow" >{{"ContactUs "| translate}}</a>
+            <a rel="nofollow" >{{"ContactUs"| translate}}</a>
         </span>
 
       <span class="pixel2"></span>

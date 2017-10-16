@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  cartCount:number = 0;
+  showCart:boolean = false;
+  
 
   constructor() { }
 

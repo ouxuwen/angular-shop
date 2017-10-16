@@ -1,3 +1,46 @@
-<p>
-  search works!
-</p>
+<div class="cbgfff mgtb8">
+  <div class="head width1024 mgao">
+    <div class="logo l pdt12 pdb10" style='width:300px'>
+
+    </div>
+    <div class="searchbox l">
+      <div>
+        <input id="search" type="text" value="" class="search-input" name="q" [placeholder]="'PleaseEnter' | translate"><button
+          title="Search" class="search-button"><span class="iconfont icon-search"></span></button>
+
+      </div>
+    </div>
+
+    <div class="add-cart l cor cart-show-btn" >
+      <div  (mouseenter)="showCart=!showCart" (mouseleave)="showCart=!showCart" >
+        <span class="iconfont icon-cart" ></span> {{"MyCart" | translate}}
+      </div>
+      
+      <div class="cart-number">
+        <span>{{cartCount}}</span>
+
+        <div class="cart-number-bar">
+
+        </div>
+        <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;"  [style.display] = "showCart ? 'block' : 'none' ">
+          <li class="cart-header"></li>
+
+          <li class="cart-list fix">
+            <dl class="pdl30 pdr30 pdt10">
+              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
+                <p class="fwb">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">购物车是空的</font>
+                  </font>
+                </p>
+              </dt>
+            </dl>
+          </li>
+          <li class="cart-footer"></li>
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
