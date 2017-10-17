@@ -10,7 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventsModule } from 'angular4-events';
-
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
 
@@ -21,11 +21,12 @@ export function createTranslateLoader(http: Http) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
+    LazyLoadImageModule,
     HomeModule,
     LayoutModule,
     EventsModule.forRoot(),

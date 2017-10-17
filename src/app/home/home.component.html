@@ -1,3 +1,104 @@
-<p>
-  home works!
-</p>
+<div>
+  <div class="mgao width1024">
+    <div class="right-box">
+      <div class="banner-box">
+        <div class='banners' (mouseenter)='bannerIn()' (mouseleave)='bannerOut()'>
+          <ul class="ul" style="width: 10000px;" #banner>
+            <li class='l' *ngFor='let item of bannerImg '>
+              <a>
+                <img [defaultImage]="defaultImage" [lazyLoad]="item.url">
+              </a>
+            </li>
+          </ul>
+
+          <div class="pre btn" (click)='btn(-1)'><span class="iconfont icon-back"></span></div>
+          <div class="next btn" (click)='btn(1)'><span class="iconfont icon-more"></span></div>
+
+          <ul class="points">
+            <li class="l" [class.active]='i == currentIndex' *ngFor='let item of bannerImg;index as i ' (mouseenter)='point(i)'></li>
+          </ul>
+        </div>
+
+
+      </div>
+      <div class="product-title">
+        <ul>
+          <li [class.active]="productIndex == 0" (mouseenter)='productIndex =0 '>
+            <a>{{"ExceptionalDeals" | translate}}</a>
+          </li>
+          <li [class.active]="productIndex == 1" (mouseenter)='productIndex =1 '>
+            <a>{{"ExceptionalDeals" | translate}}</a>
+          </li>
+          <li [class.active]="productIndex == 2" (mouseenter)='productIndex =2 '>
+            <a>{{"ExceptionalDeals" | translate}}</a>
+          </li>
+          <li [class.active]="productIndex == 3" (mouseenter)='productIndex =3 '>
+            <a>{{"ExceptionalDeals" | translate}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="product-box" *ngIf='productIndex ==0'>
+        <ul>
+          <li>
+            <div class="l p-img">
+              <img [defaultImage]="defaultImage" [lazyLoad]="'https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/e/oem_apple_iphone_6_plus_rear_facing_camera_1_.jpg'">
+            </div>
+            <div class="l p-font">
+              <div class="p-title">
+                <a>
+                    For Apple iPhone 6 Plus Rear Facing Camera Replacement - Grade S+
+                  </a>
+
+              </div>
+              <div class="ratings">
+                
+                <span class="amount rating-links rateing-links-new"><a>Write a review</a></span>
+              </div>
+              <div class="pd">
+                <span class="price">$16.17 </span> ~ $14.40
+              </div>
+              <div class="min-cart">
+                <input type="text" value="1" disabled>
+                <button>Add to Cart</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="l p-img">
+              <img [defaultImage]="defaultImage" [lazyLoad]="'https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/e/oem_apple_iphone_6_plus_rear_facing_camera_1_.jpg'">
+            </div>
+            <div class="l p-font">
+              <div class="p-title">
+                <a>
+                    For Apple iPhone 6 Plus Rear Facing Camera Replacement - Grade S+
+                  </a>
+
+              </div>
+              <div class="ratings">
+                
+                <span class="amount rating-links rateing-links-new"><a href="#" >Write a review</a></span>
+              </div>
+              <div class="pd">
+                <span class="price">$16.17 </span> ~ $14.40
+              </div>
+              <div class="min-cart">
+                <input type="text" value="1" disabled>
+                <button>Add to Cart</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="product-box" *ngIf='productIndex ==1'>
+        2
+      </div>
+      <div class="product-box" *ngIf='productIndex ==2'>
+        3
+      </div>
+      <div class="product-box" *ngIf='productIndex ==3'>
+        4
+      </div>
+    </div>
+
+  </div>
+</div>

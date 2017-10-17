@@ -10,5 +10,12 @@
     "EmailAddress" : "Email Address",
     "PassWord":"PassWord",
     "PleaseEnter":"Please Enter...",
-    "MyCart":"My Shopping Cart"
+    "MyCart":"My Shopping Cart",
+    "Quality":"QUALITY & WARRANTY",
+    "Shipping":"SHIPPING",
+    "Wholesale":"WHOLESALE",
+    "Enterprise":"ENTERPRISE SOLUTIONS",
+    "Our":"OUR GRADES",
+    "AboutUs":"ABOUT US",
+    "AllBrand":"ALL BRANDS"
 }

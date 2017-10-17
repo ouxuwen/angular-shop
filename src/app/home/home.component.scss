@@ -1,0 +1,165 @@
+@import '../shared/common/color';
+.right-box{
+    margin-left: 250px;
+    margin-top:20px;
+    .banners{
+        width:950px;
+        height: 260px;
+        overflow: hidden;
+        position: relative;
+        .ul{
+            height: 260px;
+            position: relative;
+            transition: all .5s ease-in;
+        }
+        &:hover{
+            .btn{
+                opacity: 0.5;
+            }
+            
+        }
+        .btn{
+            position:absolute;
+            top:50%;
+            margin-top:-25px;
+            width:50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            
+            font-weight: bold;
+            background: #000;
+            color:#fff;
+            opacity: 0;
+            cursor: pointer;
+            border-radius: 50%;
+            transition:all 0.2s linear;
+            span{
+                font-size: 40px;
+            }
+            &:hover{
+                opacity: 0.7
+            }
+
+        }
+        .next{
+            right: 20px;
+        }
+        .pre{
+            left: 20px;
+        }
+        .points{
+             position:absolute;
+             left: 50%;
+             transform: translateX(-50%);
+             bottom: 20px;
+             li{
+                 cursor:pointer;
+                 width:15px;;
+                 height: 15px;
+                 background: $blueColor;
+                 opacity: 0.5;
+                 margin-right:20px;
+                 border-radius: 50%;
+                 &:hover{
+                     opacity: 1;
+                     background: $mainColor;
+                 }
+                 &.active{
+                     opacity: 1;
+                 }
+             }
+
+        }
+    }
+    .product-title{
+        margin-top:30px;
+        ul{
+            height: 35px;
+
+            li{
+                width:25%;
+                height: 35px;
+                float:left;
+                text-align: center;
+                line-height: 35px;
+                border-bottom: 2px solid #eee;
+                cursor: pointer;
+            }
+            li.active{
+                font-weight: bold;
+                border-color:$mainColor;
+                color:$mainColor;
+                a{
+                     color:$mainColor;
+                }
+            }
+        }
+    }
+    .product-box{
+        min-height: 414px;
+        ul{
+            li{
+                width: 50%;
+                float: left;
+                padding-top: 42px;
+                height: 207px;
+                .p-img{
+                    background: #FFF;
+                    text-align: center;
+                    padding: 0 18px 30px 0;
+                    img{
+                        width:135px;
+                        height: 135px;
+                        cursor: pointer;
+                    }
+                }
+                .p-font{
+                    width:265px;
+                    .ratings{
+                        margin-top: 20px;
+                    }
+                    .pd{
+                         margin-top: 20px;
+                         margin-bottom:20px;
+                    }
+                    .price{
+                        
+                        color:red;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                    input{
+                        text-align: center;
+                    }
+                    .ratings {
+                        font-size: 11px;
+                        line-height: 1.25;
+                        padding: 5px 0px;
+                        overflow: hidden;
+                        display: inline-block;
+                        vertical-align: middle;
+                        zoom: 1;
+                    }
+                    .ratings .rating-box {
+                        display: inline-block;
+                        vertical-align: middle;
+                        zoom: 1;
+                            width: 70px;
+                            height: 13px;
+                            font-size: 0;
+                            line-height: 0;
+                            background: url(/assets/image/bkg_rating.gif) 0 0 repeat-x;
+                            text-indent: -999em;
+                            overflow: hidden;
+                        }
+                }
+            }
+            &:after{
+                content:"";
+                display: block;
+                clear:both;
+            }
+        }
+    }
+}

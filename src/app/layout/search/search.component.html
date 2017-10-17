@@ -5,24 +5,31 @@
     </div>
     <div class="searchbox l">
       <div>
-        <input id="search" type="text" value="" class="search-input" name="q" [placeholder]="'PleaseEnter' | translate"><button
-          title="Search" class="search-button"><span class="iconfont icon-search"></span></button>
+        <input id="search" type="text" value="" class="search-input" name="q" [placeholder]="'PleaseEnter' | translate">
+        <button title="Search" class="search-button"><span class="iconfont icon-search"></span></button>
 
+      </div>
+      <div class="hotword">
+        <a>LCD</a> ,
+        <a>lcd and digitizer assembly</a> ,
+        <a>Front Housing Replacement</a> ,
+        <a>4 lcd</a> ,
+        <a>LCD Screen</a>
       </div>
     </div>
 
-    <div class="add-cart l cor cart-show-btn" >
-      <div  (mouseenter)="showCart=!showCart" (mouseleave)="showCart=!showCart" >
-        <span class="iconfont icon-cart" ></span> {{"MyCart" | translate}}
+    <div class="add-cart l cor cart-show-btn">
+      <div (mouseenter)="showCart=!showCart" (mouseleave)="showCart=!showCart">
+        <span class="iconfont icon-cart"></span> {{"MyCart" | translate}}
       </div>
-      
+
       <div class="cart-number">
         <span>{{cartCount}}</span>
 
         <div class="cart-number-bar">
 
         </div>
-        <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;"  [style.display] = "showCart ? 'block' : 'none' ">
+        <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;" [style.display]="showCart ? 'block' : 'none' ">
           <li class="cart-header"></li>
 
           <li class="cart-list fix">
@@ -30,7 +37,8 @@
               <dt class="mgb10 lh18 z" style="list-style-position:outside;">
                 <p class="fwb">
                   <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">购物车是空的</font>
+                    <font style="vertical-align: inherit;">{{ "EmptyCart"|translate }}
+                    </font>
                   </font>
                 </p>
               </dt>
@@ -42,5 +50,132 @@
       </div>
     </div>
 
+  </div>
+</div>
+<div class="nav-bar">
+  <div class="nav-body mgao width1024">
+    <div class="l allcat">
+      <div class="label-box">
+        <span class="iconfont icon-suoyoukuanxiaodian1"></span>
+        <span class="label">{{"AllBrand" | translate}}</span>
+        <span class="iconfont icon-moreunfold"></span>
+      </div>
+      
+      <ul class="brand-list">
+        <li>
+          <a>Apple</a>
+          <div class="list-content">
+            <div class="more">
+              {{"More"|translate}}
+            </div>
+            <ul class="l ">
+              <div class="title">iphone <span> (0) </span></div>
+              <li>
+                <a>iphone1</a>
+              </li>
+              <li>
+                <a>iphone1</a>
+              </li>
+            </ul>
+            <ul class="l ">
+              <div class="title">iphone <span>0</span></div>
+
+              <li>
+                <a>iphone1</a>
+              </li>
+              <li>
+                <a>iphone1</a>
+              </li>
+            </ul>
+            <ul class="l ">
+              <div class="title">iphone <span>0</span></div>
+
+              <li>
+                <a>iphone1</a>
+              </li>
+              <li>
+                <a>iphone1</a>
+              </li>
+            </ul>
+            <ul class="l ">
+              <div class="title">iphone <span>0</span></div>
+
+              <li>
+                <a>iphone1</a>
+              </li>
+              <li>
+                <a>iphone1</a>
+              </li>
+            </ul>
+
+          </div>
+        </li>
+        <li>
+          <a>sanxing</a>
+          <div class="list-content">
+              <ul class="l ">
+                <div class="title">三星 <span> (0) </span></div>
+  
+                <li>
+                  <a>iphone1</a>
+                </li>
+                <li>
+                  <a>iphone1</a>
+                </li>
+              </ul>
+              <ul class="l ">
+                <div class="title">iphone <span>0</span></div>
+  
+                <li>
+                  <a>iphone1</a>
+                </li>
+                <li>
+                  <a>iphone1</a>
+                </li>
+              </ul>
+              <ul class="l ">
+                <div class="title">iphone <span>0</span></div>
+  
+                <li>
+                  <a>iphone1</a>
+                </li>
+                <li>
+                  <a>iphone1</a>
+                </li>
+              </ul>
+              <ul class="l ">
+                <div class="title">iphone <span>0</span></div>
+  
+                <li>
+                  <a>iphone1</a>
+                </li>
+                <li>
+                  <a>iphone1</a>
+                </li>
+              </ul>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <ul class="l nav-item">
+      <li style="width:22%;">
+        <a>{{"Quality" | translate}}</a>
+      </li>
+      <li style="width:12%;">
+        <a>{{"Shipping" | translate}}</a>
+      </li>
+      <li style="width:13%;">
+        <a>{{"Wholesale" | translate}}</a>
+      </li>
+      <li style="width:23%;">
+        <a>{{"Enterprise" | translate}}</a>
+      </li>
+      <li style="width:14%;">
+        <a>{{"Our" | translate}}</a>
+      </li>
+      <li style="width:10%;">
+        <a>{{"AboutUs" | translate}}</a>
+      </li>
+    </ul>
   </div>
 </div>
