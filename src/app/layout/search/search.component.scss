@@ -1,5 +1,8 @@
 
 @import '../../shared/common/color';
+.width1024{
+    font-size: 13px;
+}
 .searchbox{
     margin-top:40px;
     input{
@@ -14,10 +17,10 @@
     }
     .search-input{
         width: 383px;
-        line-height: 28px;
+        line-height: 36px;
         border: 1px #dfdfdf solid;
         border-right: 0px #dfdfdf solid;
-        height: 28px;
+        height: 36px;
         float: left;
         font-size: 12px;
         outline: none;
@@ -38,12 +41,12 @@
         background-color: #fff;
         text-align: center;
         line-height: 36px;
-        border:1px solid $blueColor;
+        border:1px solid $mainColor;
         border-radius: 0;
         box-sizing: border-box;
         &:hover{
-            border-color:#FF9300;
-            background: #FF9300;
+            border-color:$mainColor;
+            background: $mainColor;
             color:#fff;
         }
         position: relative;
@@ -126,10 +129,13 @@
                 color:#555;
                 border:1px solid #eee;
                 border-top:0;
-
+                transition: all 0.3s linear;
+                z-index:9999;
                 >li{
                     height: 40px;
-                    cursor: pointer;
+                    a{
+                        cursor: pointer;
+                    }
                     padding-left:20px;
                     box-sizing: border-box;
                     text-align: left;
@@ -145,14 +151,14 @@
                         left:230px;
                         padding:20px;
                         background:#fff;
-                        z-index:100;
+                        z-index:9999;
                         .more{
                             width:60px;
                             height: 60px;
-                            line-height: 60px;
+                            line-height: 52px;
                             text-align: center;
-                            color:$mainColor;
-                            font-size: 20px;
+                            color:$blueColor;
+                            font-size: 18px;
                             font-weight: bold;
                             border-radius: 50%;
                             border:4px solid #eee;
@@ -180,7 +186,7 @@
                             >li a{
                                 color:#888;
                                 &:hover{
-                                    color:$mainColor;
+                                    color:$blueColor;
                                 }
                             }
                         }
@@ -196,6 +202,12 @@
                         }
                     }
                 }
+            }
+            .list-hid{
+                opacity: 0;
+                height: 0 !important;
+                overflow: hidden;
+                min-height: 0;
             }
         }
     }

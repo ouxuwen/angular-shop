@@ -1,0 +1,148 @@
+<div class="width1024 mgao">
+  <div class="center">
+    <div class="main-container col1-layout">
+      <div class="main">
+
+        <div class="col-main">
+          <div class="account-login fix">
+            <div>
+              <h2 class="f20 tac pd15 fwb c-w">Login or Create an Account</h2>
+            </div>
+            <div class="col2-set">
+              <div class="col-1 l new-users pdr20">
+                <h3 class="c-n f20 pdt15 pdb15">New Customers</h3>
+                <p>By creating an account with our store, you will be able to move through the checkout process faster, store
+                  multiple shipping addresses, view and track your orders in your account and more. 
+                  <a class="tdl c-w">View our membership system.</a>
+                </p>
+                <form nz-form [formGroup]="registerForm" (ngSubmit)="register()">
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="email" nz-form-item-required>E-mail</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('email')">
+                      <nz-input [nzSize]="'large'" formControlName="email" [nzId]="'email'"></nz-input>
+                      <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="password" nz-form-item-required>Password</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('password')">
+                      <nz-input [nzSize]="'large'" formControlName="password" [nzType]="'password'" [nzId]="'password'" (ngModelChange)="updateConfirmValidator()"></nz-input>
+                      <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">Please input your password!</div>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="checkPassword" nz-form-item-required>Confirm Password</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('checkPassword')">
+                      <nz-input [nzSize]="'large'" formControlName="checkPassword" [nzType]="'password'" [nzId]="'checkPassword'"></nz-input>
+                      <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('required')">Please confirm your password!</div>
+                      <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('confirm')">Two passwords that you enter is inconsistent!</div>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="firstname" nz-form-item-required>
+                        <span>
+                          FirstName
+                          <nz-tooltip [nzTitle]="'What is your FirstName?'">
+                            <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+                          </nz-tooltip>
+                        </span>
+                      </label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('firstname')">
+                      <nz-input [nzSize]="'large'" formControlName="firstname" [nzId]="'firstname'"></nz-input>
+                      <div nz-form-explain *ngIf="getFormControl('firstname').dirty&&getFormControl('firstname').hasError('required')">Please input your firstname!</div>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="lastname" nz-form-item-required>
+                          <span>
+                            LastName
+                            <nz-tooltip [nzTitle]="'What is your LastName?'">
+                              <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+                            </nz-tooltip>
+                          </span>
+                        </label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('lastname')">
+                      <nz-input [nzSize]="'large'" formControlName="lastname" [nzId]="'lastname'"></nz-input>
+                      <div nz-form-explain *ngIf="getFormControl('lastname').dirty&&getFormControl('lastname').hasError('required')">Please input your lastname!</div>
+                    </div>
+                  </div>
+
+
+                  <div nz-form-item nz-row style="margin-bottom:8px;">
+                    <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
+                      <label nz-checkbox formControlName="agree">
+                        <span>I have read the <a>agreement</a></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row style="margin-bottom:8px;">
+                    <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
+                      <button nz-button [nzSize]="'large'" [nzType]="'primary'">Register</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-2 l registered-users" style="width:42%;">
+                <h3 class="c-n f20 pdt15 pdb15">Registered Customers</h3>
+                <p>If you have an account with us, please log in.</p>
+                <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="email" nz-form-item-required>E-mail</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getLoginControl('userName')">
+                      <nz-input formControlName="userName" [nzPlaceHolder]="'Email' | translate" [nzSize]="'large'">
+                        <ng-template #prefix>
+                          <i class="anticon anticon-user"></i>
+                        </ng-template>
+                      </nz-input>
+                      <div nz-form-explain *ngIf="loginForm.controls.userName.dirty&&loginForm.controls.userName.hasError('required')">Please input your username!</div>
+                    </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                      <label for="password" nz-form-item-required>Password</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getLoginControl('password')">
+                      <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                          <i class="anticon anticon-lock"></i>
+                        </ng-template>
+                      </nz-input>
+                      <div nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.password.hasError('required')">Please input your Password!</div>
+                    </div>
+                  </div>
+
+
+                  <div nz-form-item nz-row>
+                    <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6" >
+                      <label nz-checkbox formControlName="remember">
+                        <span>Remember me</span>
+                      </label>
+                      <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+                      <br>
+
+                      <button style="margin-top:20px;" nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">Log in</button>
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

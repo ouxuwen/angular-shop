@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { CanActivateViaAuthGuard } from './core/guards/auth.guard';
-
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: './home/index#HomeModule' },
+    loadChildren: './home/home.module#HomeModule' },
 //   {
 //     path: 'checkout',
 //     loadChildren: './checkout/checkout.module#CheckoutModule' },
@@ -18,8 +18,13 @@ export const routes: Routes = [
 //     path: 'product',
 //     loadChildren: './product/index#ProductModule'
 //   },
-//   {
-//     path: 'auth',
-//     loadChildren: './auth/auth.module#AuthModule'
-//   }
+    {
+      path: 'goods',
+      loadChildren: './goods/goods.module#GoodsModule'
+    },
+    {
+      path: 'login',
+      loadChildren: './login/index#LoginModule'
+    },
+
 ];

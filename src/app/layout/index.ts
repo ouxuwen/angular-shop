@@ -1,21 +1,26 @@
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { SearchComponent } from './search/search.component';
 import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
     declarations: [
       // components
         HeaderComponent,
-        SearchComponent
+        SearchComponent,
+        FooterComponent
     ],
     exports: [
         HeaderComponent,
-        SearchComponent
+        SearchComponent,
+        FooterComponent
     ],
     imports: [
         RouterModule,
-        TranslateModule.forChild()
+        TranslateModule.forChild(),
+        
     ],
     providers: [
         

@@ -1,0 +1,20 @@
+@import '../common/color';
+.share-yt {
+    width: 30px;
+    background-position: 0px -210px;
+}
+
+.icons {
+    background: url(/assets/image/icons.png) 0 0 no-repeat;
+}
+.share-fb{width: 30px;background-position: 0px -90px;}
+.share-yt{width: 30px;background-position: 0px -210px;}
+.share-tw{width: 30px;background-position: 0px -119px;}
+.share-link{width: 30px;background-position: 0px -179px;}
+.share-google{width: 30px;background-position: 0px -150px;}
+.module {
+    border: 1px #e4e4e4 solid;
+    width: 228px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

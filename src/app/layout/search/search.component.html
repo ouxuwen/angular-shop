@@ -1,7 +1,7 @@
 <div class="cbgfff mgtb8">
   <div class="head width1024 mgao">
-    <div class="logo l pdt12 pdb10" style='width:300px'>
-
+    <div class="logo l pdt12 pdb10" style='width:450px' (click)='goHome()'>
+        <div style='line-height: 100px;font-size: 50px; font-weight: bold;text-align: center'>LOGO</div>
     </div>
     <div class="searchbox l">
       <div>
@@ -54,14 +54,14 @@
 </div>
 <div class="nav-bar">
   <div class="nav-body mgao width1024">
-    <div class="l allcat">
-      <div class="label-box">
+    <div class="l allcat" (mouseenter)='hidden = false' (mouseleave)='hidden = true'>
+      <div class="label-box" >
         <span class="iconfont icon-suoyoukuanxiaodian1"></span>
         <span class="label">{{"AllBrand" | translate}}</span>
         <span class="iconfont icon-moreunfold"></span>
       </div>
       
-      <ul class="brand-list">
+      <ul class="brand-list " [class.list-hid]='hidden && notHome' >
         <li>
           <a>Apple</a>
           <div class="list-content">

@@ -1,0 +1,51 @@
+
+@import '../../shared/common/color';
+
+
+
+.all-brand .title li div {
+    width: 200px;
+    float: left;
+    margin-left: 510px;
+    display: block;
+    margin-top: -15px;
+    background: #fff;
+    position: absolute;
+    font-size: 20px;
+    color: #0089bf;
+    font-weight: bold;
+}
+
+.all-brand .title li {
+    border-top: 1px #CCC solid;
+    text-align: center;
+    height: 30px;
+}
+.all-brand .brand-list li {
+    padding: 15px 10px;
+    float: left;
+    width: 154px;
+    margin: 0px 8px;
+}
+.all-brand div, li, dt {
+    font-size: 13px;
+}
+
+.all-brand .brand-list dt div.category-name {
+    float: left;
+    line-height: 23px;
+    width: 154px;
+    background-color: #dfecf3;
+}
+.all-brand .brand-list dt div.category-img {
+    float: left;
+    line-height: 30px;
+    width: 154px;
+    border: 1px solid #ddd;
+    padding: 20px 0px;
+}
+.all-brand .brand-list .line .logo-images img {
+    display: block;
+    margin: auto;
+    height: 50px;
+}

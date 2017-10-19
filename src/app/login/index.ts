@@ -1,14 +1,16 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home.component';
+import { LoginComponent } from './login.component';
 import { HomeRoutes as routes } from './index.router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import {　FormsModule,ReactiveFormsModule } from '@angular/forms'
 @NgModule({
     declarations: [
       // components
-      HomeComponent,
+      LoginComponent,
       
     ],
     exports: [
@@ -16,13 +18,16 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [
       RouterModule.forChild(routes),
       LazyLoadImageModule,
-      BrowserModule,
-      TranslateModule
+      TranslateModule,
+      CommonModule,
+      NgZorroAntdModule,
+      FormsModule,
+      ReactiveFormsModule
     ],
     providers: [
         
     
     ]
   })
-  export class HomeModule {}
+  export class LoginModule {}
   

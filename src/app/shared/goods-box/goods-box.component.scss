@@ -1,0 +1,91 @@
+@import '../common/color';
+.goods-box{
+     width: 50%;
+                float: left;
+                padding-top: 42px;
+                height: 207px;
+                position: relative;
+                .discount{
+                        position:absolute;
+                        background: url(/assets/image/icons.png) no-repeat -31px -56px;
+                        width: 84px;
+                        height: 33px;
+                        padding: 6px 0px 0 10px;
+                        font-size: 14px;
+                        font-weight: bold;
+                        display: block;
+                        color: #fff;
+                        text-align: left;
+                        line-height: 20px;
+                        position: absolute;
+                        margin-left: 77px;
+                        margin-top: -8px;
+                        z-index: 20;
+                        .product-discount-number {
+                                width: 15px;
+                                display: block;
+                                text-align: right;
+                            }
+
+
+
+                    }
+                .p-img{
+                    background: #FFF;
+                    text-align: center;
+                    padding: 0 18px 30px 0;
+                    position: relative;
+                    img{
+                        width:135px;
+                        height: 135px;
+                        cursor: pointer;
+                    }
+                    
+                }
+                .p-font{
+                    width:265px;
+                    .ratings{
+                        margin-top: 20px;
+                    }
+                    .pd{
+                         margin-top: 20px;
+                         margin-bottom:20px;
+                    }
+                    .price{
+                        
+                        color:red;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                    input{
+                        text-align: center;
+                    }
+                    .ratings {
+                        font-size: 11px;
+                        line-height: 1.25;
+                        padding: 5px 0px;
+                        overflow: hidden;
+                        display: inline-block;
+                        vertical-align: middle;
+                        zoom: 1;
+                    }
+                    .ratings .rating-box {
+                        display: inline-block;
+                        vertical-align: middle;
+                        zoom: 1;
+                            width: 70px;
+                            height: 13px;
+                            font-size: 0;
+                            line-height: 0;
+                            background: url(/assets/image/bkg_rating.gif) 0 0 repeat-x;
+                            text-indent: -999em;
+                            overflow: hidden;
+                        }
+                    }
+
+                    input[type='number']{
+                        width: 80px;
+                        height: 28px;
+                        vertical-align: middle;
+                    }
+}

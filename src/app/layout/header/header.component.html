@@ -28,7 +28,7 @@
     <li class="r header-top-en_US" style="*width:630px;">
       
       <span class="font l myacount" (mouseenter)="myDj=!myDj" (mouseleave)="myDj=!myDj">
-            <span class="iconfont icon-accountfilling" [style.color] = "myDj ? '#FFCA00' : '#555' "></span>
+            <span class="iconfont icon-accountfilling" [style.color] = "myDj ? '#50b5ff' : '#555' "></span>
             <a class="us-inventory-link" >{{'MyDj' | translate}}</a>
             <div class="myacount-blank"  [style.display] = "myDj ? 'block' : 'none' "></div>
             <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display] = "myDj ? 'block' : 'none' ">
@@ -40,8 +40,8 @@
         </span>
       <span class="pixel2"></span>
       <div class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=!loginTouch" (mouseleave)="loginTouch=!loginTouch">
-        <a rel="nofollow" >
-                  <span class="font">{{"Login" | translate}}</span>
+        <a rel="nofollow" (click)='login()' >
+                  <span class="font" >{{"Login" | translate}}</span>
          </a>
         <div class="login-blank" [style.display] = "loginTouch ? 'block' : 'none' " ></div>
         <ul class="admin-login-box dn" [style.display] = "loginTouch ? 'block' : 'none' ">

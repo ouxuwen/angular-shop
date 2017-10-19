@@ -1,7 +1,8 @@
 @import '../shared/common/color';
 .right-box{
-    margin-left: 250px;
+    margin-left: 247px;
     margin-top:20px;
+    font-size: 13px;
     .banners{
         width:950px;
         height: 260px;
@@ -98,6 +99,12 @@
     }
     .product-box{
         min-height: 414px;
+        padding-bottom: 20px;
+        &:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
         ul{
             li{
                 width: 50%;
@@ -153,7 +160,7 @@
                             text-indent: -999em;
                             overflow: hidden;
                         }
-                }
+                    }
             }
             &:after{
                 content:"";
@@ -162,4 +169,19 @@
             }
         }
     }
+}
+.why-ets li {
+    border: 0px;
+    width: 275px;
+    margin: 10px 63px 50px 0;
+    float: left;
+    line-height: 17px;
+}
+.why-ets p{
+    height: 70px;
+}
+.facebook{
+    position: absolute;
+    top:500px;
+    background: #fff;
 }

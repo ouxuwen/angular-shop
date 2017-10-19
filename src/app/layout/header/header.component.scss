@@ -1,4 +1,6 @@
 
+
+@import '../../shared/common/color';
 .nav{height:40px;}
 .center { width:1200px; margin:0 auto; position:relative; z-index:1;margin-bottom: 30px;}
 .footer-container{position:relative;width:1200px;margin:0px auto;}
@@ -39,4 +41,7 @@
 
 .logon-btn-new{
     width:100%;
+}
+.width1024{
+    font-size: 13px;
 }

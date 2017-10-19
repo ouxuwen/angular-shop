@@ -1,0 +1,40 @@
+@import '../../shared/common/color';
+div {
+    font-size: 13px;
+}
+
+.brand_con {
+    width: 951px;
+    border: 1px #e4e4e4 solid;
+    background: #f7f7f7;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.brand_con ul {
+    padding: 30px 5px 30px 25px;
+}
+.brand_con dt {
+    width: 135px;
+    height: 215px;
+}
+.prolist-desc {
+    border: 1px solid #e4e4e4;
+    margin-top: 20px;
+    padding: 10px 30px;
+    clear: both;
+}
+
+.ets-left {
+    width: 230px;
+    float: left;
+}
+
+.ets-right {
+    width: 953px;
+    float: left;
+    margin: 0px 0 0 17px;
+}
+
+.clearfix {
+    zoom: 1;
+}
