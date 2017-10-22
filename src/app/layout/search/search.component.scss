@@ -167,6 +167,11 @@
                             right:-30px;
                             top:50%;
                             margin-top:-30px;
+                            cursor:pointer;
+                            &:hover{
+                                color:$mainColor;
+                                
+                            }
                         }
                         ul{
                             width:225px;
