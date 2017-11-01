@@ -1,0 +1,93 @@
+@import '../../shared/common/color';
+
+.check-out{
+    font-size: 14px;
+    .step{
+        padding:50px 100px;
+    }
+    .default{
+        background: #ffffff;
+        color:#333;
+        top:-30px;
+        font-size: 14px;
+        &:hover{
+            color:$mainColor;
+        }
+    }
+    .checkout-address-box{border:1px #eaeaea solid; margin:10px 0;}
+    .checkout-box-title{
+        background: #f3f3f3; height: 35px;   line-height: 35px; padding: 0 15px;
+        span{font-size: 18px; font-weight: bold;color: #000000;}
+    }
+    .shipping-methods-box, .checkout-payments-box, .checkout-order-box {
+        border: 1px solid #eaeaea;
+        margin-bottom: 12px;
+    }
+    .payment-nav-box {
+        border-bottom: 1px solid #ccc;
+    }
+    .payment-nav li {
+        width: 230px;
+        float: left;
+        height: 45px;
+        line-height: 45px;
+        font-size: 14px;
+        border-right: 1px solid #ccc;
+        padding-left: 10px;
+        cursor: pointer;
+        color: #6b6b6b;
+    }
+
+    .onestepcheckout-comments{
+        padding:5px;
+        margin: 0px;
+        width: 515px;
+        height: 201px;
+   
+    }
+    .onestepcheckout-totals{width:400px;}
+    .grand-total {
+        font-size: 18px;
+    }
+    .title {
+        text-align: right;
+        padding: 5px 0;
+    }
+    .value {
+        color: #000;
+        text-align: right;
+    }
+    .grand-total .value {
+        color: #fb843c;
+        text-align: right;
+    }
+    .onestepcheckout-place-order {
+        padding: 10px;
+        height: 25px;
+        width: 100%;
+        text-align: right;
+    }
+    .onestepcheckout-place-order .orange {
+        margin-right: 10px;
+        float: right;
+        background: #fb843c;
+        width: 145px;
+        height: 32px;
+        text-align: center;
+        line-height: 32px;
+        color: #FFF;
+        cursor: pointer;
+        display: inline-block;
+        zoom: 1;
+    }
+   
+    .center{
+        box-shadow: 1px 1px 8px #ccc;
+        padding:20px;
+        padding-bottom: 30px;
+       
+    }
+    .shipping-methods-list{
+        margin-top:20px;
+    }
+}

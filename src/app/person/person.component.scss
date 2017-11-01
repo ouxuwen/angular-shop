@@ -1,0 +1,116 @@
+@import '../shared/common/color';
+
+.center {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+    .ets-left {
+        width: 230px;
+        float: left;
+    }
+    .block-account {
+        border: 1px solid #cccccc;
+    }
+  
+    .block {
+        border: 1px #e4e4e4 solid;
+        margin-top: 10px;
+    }
+    .block-account .block-title {
+        background: #f7f7f7;
+        border: 0;
+        padding: 3px 10px;
+    }
+    .block-account .block-content {
+        padding: 7px 10px 7px;
+    }
+    .block-account .block-title span {
+        font-weight: normal;
+        color: #808080;
+        padding: 0px 10px;
+    }
+    .block-account .block-title {
+        background: #f7f7f7;
+        border: 0;
+        padding: 3px 10px;
+    }
+    .block .block-title span {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        font-size: 15px;
+        color: #555555;
+        font-weight: normal;
+    }
+    .block-account .block-content li a:hover {
+        color: #ea7900;
+    }
+    
+    
+    .block-account .block-content li a {
+        font-size: 15px;
+    }
+
+    .block-account .block-content li a {
+        display: block;
+        padding: 3px 0;
+        text-decoration: none !important;
+    }
+    .block-account .block-content {
+        padding: 7px 10px 7px;
+    }
+    .block-border-dash {
+        border-top: 1px dashed #dddddd;
+        border-bottom: 1px dashed #dddddd;
+        padding-bottom: 10px;
+        margin-top: 10px;
+    }
+    .block-account .block-content li, .block-account .block-content li.current {
+        padding: 6px 10px;
+    }
+   
+    .block-account .block-content li {
+        height: 34px;
+        line-height: 34px;
+    }
+   
+    .block-account li {
+        padding-bottom: 5px;
+        font-size: 0.91em;
+    }
+    .block .block-title {
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #ddd;
+        padding: 3px 10px;
+    }
+    .block {
+        border: 1px #e4e4e4 solid;
+        margin-top: 10px;
+    }
+    .block .block-title strong {
+        display: block;
+        font: bold 12px/16px Arial, Helvetica, sans-serif;
+        min-height: 16px;
+        padding: 1px 0 1px;
+        text-transform: uppercase;
+        color: #e26703;
+    }
+    .blockticket li {
+        height: 22px;
+        line-height: 22px;
+        margin-left: 8px;
+    }
+    .block .block-content {
+        padding: 5px 10px 5px 10px;
+    }
+    .ets-right {
+        width: 953px;
+        float: left;
+        margin: 0px 0 0 17px;
+        margin-top:10px;
+    }
+    
+    
+}

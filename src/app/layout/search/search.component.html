@@ -1,12 +1,14 @@
 <div class="cbgfff mgtb8">
   <div class="head width1024 mgao">
     <div class="logo l pdt12 pdb10" style='width:450px' (click)='goHome()'>
-        <div style='line-height: 100px;font-size: 50px; font-weight: bold;text-align: center'>LOGO</div>
+      <div style='line-height: 100px;font-size: 50px; font-weight: bold;text-align: center'>LOGO</div>
     </div>
     <div class="searchbox l">
       <div>
         <input id="search" type="text" value="" class="search-input" name="q" [placeholder]="'PleaseEnter' | translate">
-        <button title="Search" class="search-button"><span class="iconfont icon-search"></span></button>
+        <button title="Search" class="search-button">
+          <span class="iconfont icon-search"></span>
+        </button>
 
       </div>
       <div class="hotword">
@@ -18,9 +20,9 @@
       </div>
     </div>
 
-    <div class="add-cart l cor cart-show-btn">
-      <div (mouseenter)="showCart=!showCart" (mouseleave)="showCart=!showCart">
-        <span class="iconfont icon-cart"></span> {{"MyCart" | translate}}
+    <div class="add-cart l cor cart-show-btn" (mouseenter)="showCart=true" (mouseleave)="showCart=flase">
+      <div (click)='goMyCart()'>
+        <span   class="iconfont icon-cart"></span> {{"MyCart" | translate}}
       </div>
 
       <div class="cart-number">
@@ -31,8 +33,7 @@
         </div>
         <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;" [style.display]="showCart ? 'block' : 'none' ">
           <li class="cart-header"></li>
-
-          <li class="cart-list fix">
+          <li class="cart-list fix" *ngIf='cartCount ==0'>
             <dl class="pdl30 pdr30 pdt10">
               <dt class="mgb10 lh18 z" style="list-style-position:outside;">
                 <p class="fwb">
@@ -44,9 +45,76 @@
               </dt>
             </dl>
           </li>
-          <li class="cart-footer"></li>
+          <li class="cart-list fix" *ngIf='cartCount >0'>
+            <dl class="pdl30 pdr30">
+              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
+                <li class="item fix">
+                  <a 
+                    title="" class="product-image">
+                    <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/thumbnail/50x50/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Tempered_Glass_Screen_Protector_without_Package_5D_-_Black_-_Grade_R_0_.jpg"
+                      width="50" height="50" alt="For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R">
+                  </a>
+                  <div class="headrcart-details l tal pdr10">
+                    <p class="product-name">
+                      <a>For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R</a>
+                    </p>
+                  </div>
+                  <div class="headcart-qty l tar">
+                    <strong>1</strong> x
+                    <span class="price">AUD $4.58</span>
+                    <br>
+                    <a title="Remove This Item" 
+                      class="btn-remove"></a>
+                  </div>
+                </li>
+              </dt>
+            </dl>
+          </li>
+          <li class="cart-list fix" *ngIf='cartCount >0'>
+            <dl class="pdl30 pdr30">
+              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
+                <li class="item fix">
+                  <a 
+                    title="" class="product-image">
+                    <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/thumbnail/50x50/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Tempered_Glass_Screen_Protector_without_Package_5D_-_Black_-_Grade_R_0_.jpg"
+                      width="50" height="50" alt="For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R">
+                  </a>
+                  <div class="headrcart-details l tal pdr10">
+                    <p class="product-name">
+                      <a>For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R</a>
+                    </p>
+                  </div>
+                  <div class="headcart-qty l tar">
+                    <strong>1</strong> x
+                    <span class="price">AUD $4.58</span>
+                    <br>
+                    <a 
+                      title="Remove This Item" 
+                      class="btn-remove"></a>
+                  </div>
+                </li>
+              </dt>
+            </dl>
+          </li>
 
+          <li class="cart-footer" *ngIf='cartCount ==0'></li>
+          <li class="cart_bottom" *ngIf='cartCount >0'>
+            <dl>
+              <dt>
+                <div class="summary">
+                  <div class="tar pdt10">
+                    <span class="label">
+                      Cart Subtotal:</span>
+                    <span class="price">AUD $4.58</span>
+                  </div>
+                  <button type="button" title="View My Cart" class="headcart-button bra3 r tac br1 cor mgt5 mgb20  f13 " onclick="setLocation('https://www.etradesupply.com/checkout/cart/')">
+                    View My Cart </button>
+                </div>
+              </dt>
+            </dl>
+          </li>
         </ul>
+
       </div>
     </div>
 
@@ -55,34 +123,36 @@
 <div class="nav-bar">
   <div class="nav-body mgao width1024">
     <div class="l allcat" (mouseenter)='hidden = false' (mouseleave)='hidden = true'>
-      <div class="label-box" >
+      <div class="label-box">
         <span class="iconfont icon-suoyoukuanxiaodian1"></span>
-        <span class="label" routerLink='/all-categories'>{{"AllBrand" | translate}}</span>
+        <span class="label" routerLink='/goods/all-categories'>{{"AllBrand" | translate}}</span>
         <span class="iconfont icon-moreunfold"></span>
       </div>
       
-      <ul class="brand-list " [class.list-hid]='hidden && notHome' >
-        <li>
-          <a>Apple</a>
+      <ul class="brand-list " [class.list-hid]='hidden && notHome'>
+        <nz-spin [nzSpinning]='isGettingCate'></nz-spin>
+        <li *ngFor = 'let item of allCateList '>
+          <a (click)='goOneLevel(1)'>{{item.cate_name}}</a>
           <div class="list-content">
-            <div class="more">
+            <div class="more" (click)='goOneLevel(item.id)'>
               {{"More"|translate}}
             </div>
-            <ul class="l ">
-              <div class="title"  >
-              <a routerLink='/allmodel/2'>
-               iphone <span> (0) </span>
-               </a>
-               </div>
-
-              <li>
-                <a routerLink='/model/iphone'>iphone1</a>
+            <ul class="l" *ngFor = 'let val of item.children'>
+              <div class="title">
+                <a (click)='goTwoLevel(val.id)'>
+                  {{val.cate_name}}
+                  <span> ({{val.children.length}}) </span>
+                </a>
+              </div>
+              <li *ngFor='let las of val.children'>
+                <a (click)='goGoodsList(las.id)'>{{las.cate_name}}</a>
               </li>
-             
             </ul>
           </div>
         </li>
+     
       </ul>
+    
     </div>
     <ul class="l nav-item">
       <li style="width:22%;">

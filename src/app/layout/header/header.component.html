@@ -2,10 +2,10 @@
   <ul class="column mgao width1024 h34 lh34">
     <li class="topfont l">
       <a href="#">
-          <span class=""></span>
-          <span class="l">{{"Language" | translate}}</span>
-          <span class="alow"></span>
-        </a>
+        <span class=""></span>
+        <span class="l">{{"Language" | translate}}</span>
+        <span class="alow"></span>
+      </a>
       <span class="pixel2"></span>
       <ul class="dn">
         <li>
@@ -26,57 +26,114 @@
         </span>
     </li>
     <li class="r header-top-en_US" style="*width:630px;">
-      
-      <span class="font l myacount" (mouseenter)="myDj=!myDj" (mouseleave)="myDj=!myDj">
+
+      <span class="font l myacount" (mouseenter)="myDj=true" (mouseleave)="myDj=flase">
             <span class="iconfont icon-accountfilling" [style.color] = "myDj ? '#50b5ff' : '#555' "></span>
-            <a class="us-inventory-link" >{{'MyDj' | translate}}</a>
-            <div class="myacount-blank"  [style.display] = "myDj ? 'block' : 'none' "></div>
-            <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display] = "myDj ? 'block' : 'none' ">
-                <ul>
-                    <li><a>My Orders</a></li>        
-                    <li><a>Track My Orders</a></li>
-                </ul>
-            </div>
-        </span>
+      <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
+      <div class="myacount-blank" [style.display]="myDj ? 'block' : 'none' "></div>
+      <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display]="myDj ? 'block' : 'none' ">
+        <ul>
+          <li><a>My Orders</a></li>
+          <li><a>Track My Orders</a></li>
+        </ul>
+      </div>
+      </span>
       <span class="pixel2"></span>
-      <div class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=!loginTouch" (mouseleave)="loginTouch=!loginTouch">
-        <a rel="nofollow" (click)='login()' >
-                  <span class="font" >{{"Login" | translate}}</span>
-         </a>
-        <div class="login-blank" [style.display] = "loginTouch ? 'block' : 'none' " ></div>
-        <ul class="admin-login-box dn" [style.display] = "loginTouch ? 'block' : 'none' ">
-          <form method="post">
+      <div *ngIf='!isLogin' class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=true" (mouseleave)="loginTouch=false;initForm()">
+        <a rel="nofollow" (click)='goLogin()'>
+          <span class="font">{{"Login" | translate}}</span>
+        </a>
+        <div class="login-blank" [style.display]="loginTouch ? 'block' : 'none' "></div>
+        <ul class="admin-login-box dn" [style.display]="loginTouch ? 'block' : 'none' ">
+          <form nz-form [formGroup]="loginForm" >
             <li class="tanchukuang tal cbgfff pdt15 pdb5 pdr30 pdl30">
               <dl class="l">
                 <dt>
-                {{"EmailAddress" | translate}}:
+                  {{"EmailAddress" | translate}}:
                 </dt>
                 <dt>
-                  <input autocomplete="off" name="login[username]" type="text" value="" class="input-small">
+                  <div>
+                    <div nz-form-control nzHasFeedback  [nzValidateStatus]="loginForm.controls.email">
+                      <nz-input formControlName="email" [nzPlaceHolder]="'EmailAddress' | translate" [nzSize]="'large'">
+                        <ng-template #prefix>
+                          <i class="anticon anticon-mail"></i>
+                        </ng-template>
+                      </nz-input>
+                      <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
+                    </div>
+                  </div>
                 </dt>
                 <dt>
-                  {{"Password" |  translate}}:
+                  {{"Password" | translate}}:
                 </dt>
                 <dt>
-                  <input name="login[password]" type="password" value="" class="input-small">
+                  <div>
+                    <div nz-form-control    [nzValidateStatus]="loginForm.controls.password">
+                      <nz-input formControlName="password" [nzType]="'Password'|translate" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                          <i class="anticon anticon-lock"></i>
+                        </ng-template>
+                      </nz-input>
+                      <!-- <div nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.password.hasError('required')">Please input your Password!</div> -->
+                    </div>
+                  </div>
                 </dt>
                 <dt>
-                  <button type="submit" title="Search" class="button_circle logon-btn-new">{{"Login" | translate}}</button>
+                  <button (click)="submitForm()" nz-button [nzType]="'primary'" title="login" class="logon-btn-new">{{"Login" | translate}}</button>
                 </dt>
                 <dt>
                   <img class="mgao" alt="login split line" src="assets/image/login-split-line.jpg">
                 </dt>
                 <dt class="join-free tac">
-                  <a>{{"CreateAccount" | translate}}</a>
-                  <a target="_blank" title="View our membership system" >
+                  <a routerLink='/login'>{{"CreateAccount" | translate}}</a>
+                  <a target="_blank" title="View our membership system">
                     <div class="product-m-i"></div>
                   </a>
                 </dt>
-                
+
               </dl>
             </li>
           </form>
         </ul>
+      </div>
+      <div *ngIf='isLogin' class="prae l" id="admin-level" [class.level-active]="loginTouch" (mouseenter)="loginTouch=true"
+        (mouseleave)="loginTouch=flase">
+        <span class="font l text-auto-ellipsis" style="max-width:90px;">
+	                	<a >Hi ,{{userInfo.firstname }}{{userInfo.lastname}} </a>
+	                </span>
+        <span class="level-num levelbg1"></span>
+        <span class="l level-open-icon"></span>
+        <span class="admin-blank" style="display: none;" [style.display]='loginTouch?"inline":"none"'></span>
+        <div class="login-level" style="display: none;" [style.display]='loginTouch?"block":"none"'>
+          <div class="level-content pdb10">
+            <div class="level-icon">
+              <i class="user-level-icon user-level1"></i>
+              <div class="f16 ibm">
+                <p class="lh20 f14">Bing Member</p>
+                <div class="c-w lh20"><span>Green Horn</span>
+                  <a target="_blank" title="View our membership system">
+                    <div id="product-more-info" class="product-m-i"></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="level-title">
+            <div class="exp-bar-box">
+              <label class="ibm pdr5">EXP.</label>
+              <div class="exp-bar prae" title="5500">
+                <div title="0" class="exp-bar-current" style="width:0px"></div>
+                <div class="exp-number fwb"><span class="c-p">0</span><span class="pdl5 pdr5">/</span> 5500
+                </div>
+
+              </div>
+              <span>
+		                            <a (click)='logOut()'>Log out</a>
+		                        </span>
+            </div>
+          </div>
+        </div>
       </div>
       <span class="pixel2"></span>
       <span class="font l">

@@ -1,9 +1,129 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div >
+<div>
   <app-header></app-header>
   <app-search></app-search>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
+ 
 </div>
 <nz-back-top></nz-back-top>
 
+<nz-modal [nzTitle]='false' [nzWidth]='300' [nzFooter]='false' [nzVisible]="showLogin" [nzTitle]="'Login' | translate" [nzContent]="modalContent"
+  (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)" [nzConfirmLoading]="isConfirmLoading">
+  <ng-template #modalContent>
+    <nz-tabset>
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          {{"SignIn" |translate}}
+        </ng-template>
+        <div class="dialog-content tab-login" style="display: block;">
+          <form nz-form [formGroup]="loginForm" class="login-form" >
+            <div>
+              <label class="lable-title" for="mini-login">Email Address:</label>
+              <div nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="loginForm.controls.email">
+                  <nz-input formControlName="email" [nzPlaceHolder]="'email'" [nzSize]="'large'">
+                    <ng-template #prefix>
+                      <i class="anticon anticon-mail"></i>
+                    </ng-template>
+                  </nz-input>
+                  <div nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.email.hasError('email')">The input is not valid E-mail!</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="lable-title" for="mini-password">Password:</label>
+              <div nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="loginForm.controls.password">
+                  <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+                    <ng-template #prefix>
+                      <i class="anticon anticon-lock"></i>
+                    </ng-template>
+                  </nz-input>
+                  <div nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.password.hasError('required')">Please input your Password!</div>
+                 
+                </div>
+              </div>
+            </div>
+            <div>
+              <div nz-form-control>
+                <label nz-checkbox formControlName="remember" style="font-size: 12px;">
+                    <span>Remember me</span>
+                  </label>
+                <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+
+              </div>
+            </div>
+            <p class="login_error" [style.display]='loginError?"block":"none"'>* Invalid login or password.Please try again!</p>
+            <div>
+              <button (click)="_submitLoginForm()" nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">{{"LogIn" | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </nz-tab>
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          {{"CreateAnAccount" |translate}}
+        </ng-template>
+        <div class="dialog-content tab-register dn" style="display: block;">
+          <form nz-form [formGroup]="registerForm" >
+            <div>
+              <label class="lable-title" for="mini-login">Email Address :</label>
+              <div style="margin-bottom: 10px" nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('email')">
+                  <nz-input [nzSize]="'large'" formControlName="email" [nzId]="'email'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div>
+                  <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('duplicated')"> Email is existed! Please login.</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="lable-title">First Name :</label>
+              <div style="margin-bottom: 10px" nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('firstname')">
+                  <nz-input [nzSize]="'large'" formControlName="firstname" [nzId]="'firstname'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('firstname').dirty&&getFormControl('firstname').hasError('required')">Please input your firstname!</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="lable-title">Last Name :</label>
+              <div style="margin-bottom: 10px" nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('lastname')">
+                  <nz-input [nzSize]="'large'" formControlName="lastname" [nzId]="'lastname'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('lastname').dirty&&getFormControl('lastname').hasError('required')">Please input your lastname!</div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label class="lable-title" >Password :</label>
+              <div style="margin-bottom: 10px" nz-form-item>
+                <div nz-form-control nzHasFeedback [nzValidateStatus]="getFormControl('password')">
+                  <nz-input [nzSize]="'large'" formControlName="password" [nzType]="'password'" [nzId]="'password'" (ngModelChange)="updateConfirmValidator()"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">Please input your password!</div>
+                  <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('minlength')">The minimum password length is 6!</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="lable-title" for="mini-password">Confirm Password :</label>
+              <div style="margin-bottom: 10px" nz-form-item>
+                <div nz-form-control  nzHasFeedback [nzValidateStatus]="getFormControl('checkPassword')">
+                  <nz-input [nzSize]="'large'" formControlName="checkPassword" [nzType]="'password'" [nzId]="'checkPassword'"></nz-input>
+                  <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('required')">Please confirm your password!</div>
+                  <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('confirm')">Two passwords that you enter is inconsistent!</div>
+                  <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('minlength')">The minimum password length is 6!</div>
+                </div>
+              </div>
+           
+            </div>
+            <div>
+              <button nz-button (click)="_submitRegisterForm()" class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">{{" CreateAnAccount	   " | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </ng-template>
+</nz-modal>

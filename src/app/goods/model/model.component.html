@@ -4,16 +4,16 @@
     <ul>
       <li class="icon"></li>
       <li class="home prae">
-        <a class="pdr8 pdl8" title="Home">Home</a>
+        <a class="pdr8 pdl8" routerLink="/home" title="Home">{{'Home' | translate}}</a>
         <font>»</font>
       </li>
       <li class="category170 prae">
-        <a class="pdr8 pdl8"  title="Apple">Apple</a>
+        <a class="pdr8 pdl8"  title="Apple" (click)="goAllModel(firstLvl.id)" >{{firstLvl.cate_name}}</a>
         <font>»</font>
       </li>
       <li class="current prae">
         <div class="last-nav cor">
-          <strong class="pdr8 pdl8 ">iPhone</strong>
+          <strong class="pdr8 pdl8 ">{{secondLvl.cate_name}}</strong>
           <div>
           </div>
         </div>
@@ -28,11 +28,12 @@
     <div class="mod-line-mt"></div>
     <div class="brand_con oh">
       <ul class="oh">
-        <dt class="tac l mgl10 mgt10">
+        <dt class="tac l mgl10 mgt10" *ngFor = 'let item of lastLvl' (click)='goGoodsList(item.id)'>
           <a>
-            <img width="136" class="lazy"  alt="Apple iPhone X">
+            <img [defaultImage]="defaultImage" [lazyLoad]="item.url" width="136" class="lazy"  [alt]="item.cate_name">
+            
           </a>
-          <p><a>Apple iPhone X</a></p>
+          <p><a>{{item.cate_name}}</a></p>
         </dt>
       </ul>
     </div>

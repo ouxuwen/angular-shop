@@ -6,7 +6,7 @@
           <ul class="ul" style="width: 10000px;" #banner>
             <li class='l' *ngFor='let item of bannerImg ' style="width:950px;height: 260px;text-align: center;">
               <a>
-                <img [defaultImage]="defaultImage" [lazyLoad]="item.url">
+                <img [src]="item.url">
               </a>
             </li>
           </ul>

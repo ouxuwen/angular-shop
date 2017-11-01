@@ -1,29 +1,32 @@
-<div class="goods-box"> 
-  <div class="discount" *ngIf = 'discount'>
-
-<span class="product-discount-number">
-{{discounts}}
-</span>
-    </div>
+<div class="goods-box">
+  <div class="discount" *ngIf='discount'>
+    <span class="product-discount-number">
+      {{discounts}}
+    </span>
+  </div>
   <div class="l p-img">
-    <img [defaultImage]="defaultImg" [lazyLoad]="goods.url">
-    
+    <img (click)='goGoodsDetail(goods.id)' [defaultImage]="defaultImg" [lazyLoad]="goods.url">
+
   </div>
   <div class="l p-font">
-    <div class="p-title">
+    <div class="p-title" (click)='goGoodsDetail(goods.id)'>
       <a>
         {{goods.goods_name}}
       </a>
     </div>
     <div class="ratings">
-      <span class="amount rating-links rateing-links-new"><a>Write a review</a></span>
+      <span class="amount rating-links rateing-links-new">
+        <a>Write a review</a>
+      </span>
     </div>
     <div class="pd">
-      <span class="price">$ {{goods.price}} </span><span *ngIf = 'discount'> ~ ${{goods.costprice}} </span>
+      <span class="price">$ {{goods.price}} </span>
+      <span *ngIf='discount'> ~ ${{goods.costprice}} </span>
     </div>
     <div class="min-cart">
-      <input type="number"  min=1 name='count' [(ngModel)] = 'count' style='vertical-align: middle'>
-      <button>Add to Cart</button>
+        <nz-input-number [(ngModel)]="count" [nzMin]="1"  [nzStep]="1" style='vertical-align: middle'></nz-input-number>
+      
+      <button style='vertical-align: middle'>Add to Cart</button>
     </div>
   </div>
 </div>

@@ -1,0 +1,313 @@
+<div class="check-out">
+  <div class=" center width1024 mgao ">
+    <div class="step">
+      <nz-steps>
+        <nz-step [nzTitle]="'Login'" [nzStatus]="'finish'">
+          <ng-template #nzIcon>
+            <i class="anticon anticon-user"></i>
+          </ng-template>
+        </nz-step>
+        <nz-step [nzTitle]="'Cart'" [nzStatus]="'finish'">
+          <ng-template #nzIcon>
+            <i class="anticon anticon-shopping-cart"></i>
+          </ng-template>
+        </nz-step>
+        <nz-step [nzTitle]="'Pay'" [nzStatus]="'process'">
+          <ng-template #nzIcon>
+            <i class="anticon anticon-credit-card"></i>
+          </ng-template>
+        </nz-step>
+        <nz-step [nzTitle]="'Done'" [nzStatus]="'wait'">
+          <ng-template #nzIcon>
+            <i class="anticon anticon-smile-o"></i>
+          </ng-template>
+        </nz-step>
+      </nz-steps>
+    </div>
+
+    <button class="default" nz-button [nzType]="'default'" routerLink='/cart/cart'>
+      <i class="anticon anticon-left"></i>
+      <span>Back to edit your Cart</span>
+    </button>
+
+    <div class="checkout-address-box">
+      <p class="checkout-box-title">
+
+        <span> Shipping Address</span>
+        <a class="r">Address Manage</a>
+      </p>
+
+      <div style="padding:20px;">
+        <div class="checkout" id="shipping_address">
+          <p class="ect  pdb10" for="shipping_address-select">
+            Select a shipping address from your address book or enter a new address.
+          </p>
+          <nz-radio-group [(ngModel)]="address">
+            <ul>
+              <li>
+                <label nz-radio [nzValue]="'A'">
+                  <span>A</span>
+                </label>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <label nz-radio [nzValue]="'B'">
+                  <span>A</span>
+                </label>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <label nz-radio [nzValue]="'C'">
+                  <span>A</span>
+                </label>
+              </li>
+            </ul>
+          </nz-radio-group>
+          <div>
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'">
+              <i class="anticon anticon-plus"></i>
+              <span> Add New Address</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="method">
+      <div class="shipping-methods-box">
+        <p class="checkout-box-title">
+          <span> Goods  List</span>
+          <a class="back-to-cart r" href="javascript:history.go(-1);">Back to edit your Cart</a>
+        </p>
+
+        <div id="separate-ret" class="shipping-methods-list">
+
+
+          <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+            <thead nz-thead>
+              <tr>
+                <th nz-th>
+                  <span>{{"Image" | translate}}</span>
+                </th>
+                <th nz-th>
+                  <span>{{"Product" | translate}}</span>
+                </th>
+
+                <th nz-th>
+                  <span>{{"Price" | translate}}</span>
+                </th>
+                <th nz-th>
+                  <span>{{"Qty" | translate}}</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody nz-tbody>
+              <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                <td nz-td>
+                  <a (click)='goGoodsDetail(data.id)'>
+                    <img style='width:80px'  [defaultImage]="defaultImg" [lazyLoad]="data.url"  alt="">
+                  </a>
+                </td>
+                <td nz-td>
+                  <a (click)='goGoodsDetail(data.id)'>
+                              {{data.goods_name}}
+                          </a>
+                </td>
+                <td nz-td>$ {{data.price}}</td>
+                <td nz-td>{{data.cate_id}}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <!--method start-->
+      <div class="checkout-payments-box">
+        <p class="checkout-box-title">
+          Payment Method </p>
+        <div class="pay_card onestepcheckout-payment-method-block">
+          <div class="payment-deital-box c000">
+            <div class="payment-nav-box">
+              <div style="clear:both;"></div>
+            </div>
+            <ul class="payment-type-box pd30">
+              <li id="container_payment_method_no_select" class="payment-method">
+                <div></div>
+                <ul style="display: none;" id="payment_form_no_select">
+                  <li class="payment-noselct-box">
+                    <p class="payment-desc payment-privacy-protected">Privacy Protected</p>
+                    <p>
+                    </p>
+                    <p class="payment-desc">ETrade Supply will not sell or distribute your contact information under any circumstance.</p>
+                  </li>
+                  <li class="payment-noselct-box">
+                    <p class="payment-desc payment-shop-with-confidence">Shop With Confidence</p>
+                    <p class="payment-desc">You can enjoy 100 days warranty after receiving the goods.</p>
+                  </li>
+                  <li class="payment-noselct-box">
+                    <p class="payment-desc payment-secured-shopping">Secured Shopping</p>
+                    <p class="payment-desc">We guard your information with advanced technology.</p>
+                  </li>
+                </ul>
+              </li>
+              <li id="container_payment_method_paypal_standard" class="payment-method">
+                <div></div>
+                <ul class="form-list" id="payment_form_paypal_standard" style="">
+                  <li style="padding:5px 0;margin:0px;">
+                    <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/paypal-payment.jpg">
+                  </li>
+                  <li style="padding:5px 0;margin:0px;">
+                    PayPal is a trusted global payment platform that has an open and secure payment ecosystem. People and businesses are able
+                    to make secure transactions with each other online, in stores and on mobile devices.
+                  </li>
+                </ul>
+              </li>
+              <li id="container_payment_method_globalcollect" class="payment-method">
+                <div></div>
+                <div id="container_payment_method_globalcollect" class="form-list">
+                  <ul class="form-list" id="payment_form_globalcollect" style="display:none;">
+
+                    <li>
+                      <input type="hidden" value="1" name="payment[payment_product_id]">
+                    </li>
+
+
+                    <li>
+                      <p class="pdt5 pdb5">The Payment Method currently available for ingenico epayments:</p>
+                      <img class="pdt5 pdb20" src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/global-collect-type.jpg">
+                      <p class="c666">BingSupply.com does not store or review your credit card &amp; personal information. As such, should
+                        any issues arise regarding your credit card or
+                        <br> debit card transaction, please contact
+                        <a  target="_blank" style="color:#006699;" class="tdl">ingenico epayments</a>                        or your credit card issuing bank for assistance.</p>
+                    </li>
+                  </ul>
+
+
+                </div>
+
+              </li>
+              <li id="container_payment_method_bankpayment" class="payment-method">
+                <div></div>
+                <ul id="payment_form_bankpayment" style="display:none;">
+                  <li style="padding:10px 0 0;">
+                    <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/wire-transfer-payment.jpg" alt="Wire Transfer">
+                  </li>
+                  <li>
+                    <strong style=" color:#000;padding:10px 0;display:block;">Please transfer the money to the following bank account:</strong>
+
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>Account holder:&nbsp;&nbsp;</strong> SY TECHNOLOGY (HONGKONG) CO., LIMITED</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Account number:&nbsp;&nbsp;</strong> 789-056082-883</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Bank code:&nbsp;&nbsp;</strong> 024</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Bank name:&nbsp;&nbsp;</strong> Hang seng Bank Limited</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>Swift Code:&nbsp;&nbsp;</strong> HASEHKHH</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Beneficiary Bank Address:&nbsp;&nbsp;</strong> 83 Des Voeux Road Central, HK</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p style="padding:0px;margin:5px 0;">
+                      NOTICE: Customers who choose to pay via wire transfer are responsible for all local handling fees and intermediary bank handling
+                      fees. Therefore, customers should confirm the total payment amount with their local bank.
+                      <br>
+                    </p>
+                    <p style="margin-top: 10px;font-weight: bold;">Submitting Your Wire Transfer</p>
+                    <p style="margin-top: 10px; margin-bottom: 10px;">Once you have completed your wire transfer transaction, please click the link below to submit your transaction
+                      details:
+                    </p>
+                    <a target="_blank"  style="color:#006699;text-decoration:underline;">https://www.bingsupply.com</a>
+                    <p style="margin-top: 10px;">We cannot process your order until your payment has been confirmed. Once your payment has been confirmed,
+                      we will send a Payment Confirmation email and then begin to process your order.</p>
+                    <p></p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class=" clear"></div>
+          </div>
+        </div>
+      </div>
+      <!--Payment end-->
+
+
+      <div class="clear"></div>
+      <div class="onestepcheckout-comments l">
+        <label for="id_comments">Comments</label>
+        <br>
+        <nz-input [(ngModel)]="order.comment" nzType="textarea" [nzAutosize]="{
+          minRows: 6,
+          maxRows: 10
+        }" nzPlaceHolder="Any Comments"></nz-input>
+
+      </div>
+      <div class="onestepcheckout-totals r pdt20 pdb20 pdl20 pdr0 mgt20">
+        <table width="380" border="0" cellspacing="0" cellpadding="0" class="balance">
+          <tbody>
+            <tr>
+              <td class="title">
+                Subtotal </td>
+              <td class="value">
+                <span class="price">$3.56</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="title">
+                Shipping </td>
+              <td class="value">
+                <span class="price">$17.26</span>
+              </td>
+            </tr>
+            <tr class="grand-total">
+              <td class="title">
+                Grand total </td>
+              <td class="value">
+                <span class="price">$20.82</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="onestepcheckout-enable-terms tar pd0 pdt10 pdb10 pdl10">
+        <input class="required" type="checkbox" id="id_accept_terms" name="accept_terms" value="1" checked="checked">
+        <label for="id_accept_terms">
+          I agree to BingSupply.com
+          <a style="text-decoration:underline;" id="onestepcheckout-toc-link" target="_blank">Terms and Conditions</a>
+        </label>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="onestepcheckout-place-order">
+        <a routerLink='/person/order' id="onestepcheckout-place-order" href="javascript:void(0)" class="large orange onestepcheckout-button">Place order now</a>
+       
+        <div style="clear:both;"></div>
+        <div class="place-order-wait"></div>
+      </div>
+
+    </div>
+  </div>
+</div>

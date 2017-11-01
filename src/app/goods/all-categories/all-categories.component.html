@@ -29,16 +29,18 @@
             </li>
           </ul>
           <ul class="brand-list">
-            <li>
+            <li *ngFor='let item of allCate'>
               <dl class="line">
-                <dt class="logo-images">
+                <dt class="logo-images" (click)=goAllModel(item.id)>
                   <div align="center" class="category-img">
-                    <a title="Apple" >
-                    <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/category/apple.html.jpg">
+                    <a [title]="item.cate_name" >
+                    <img  [defaultImage]="defaultImage" [lazyLoad]="item.url">
                   </a>
                   </div>
                   <div align="center" class="category-name">
-                    <a title="Apple" class="brand-name" >Apple</a>
+                    <a [title]="item.cate_name" class="brand-name" >
+                      {{item.cate_name}}
+                    </a>
                   </div>
                 </dt>
               </dl>

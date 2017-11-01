@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { routes } from './app.router'
-import { CouponApi } from './config'
+import { routes } from './app.router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventsModule } from 'angular4-events';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/index';
-import { LoginModule } from './login/index';
-import { GoodsModule } from './goods/goods.module';
 import { SharedModule } from './shared/shared.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { HomeService,HttpService,AuthLogin,AuthLogout } from './services';
+
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -26,24 +24,19 @@ export function createTranslateLoader(http: Http) {
     AppComponent,
 
 
-
-
   ],
   imports: [
-    NgZorroAntdModule,
+    RouterModule.forRoot(routes),
+    NgZorroAntdModule.forRoot(),
     SharedModule,
-    GoodsModule,
     BrowserModule,
     LazyLoadImageModule,
-    HomeModule,
     LayoutModule,
     EventsModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(routes),
-    LoginModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -53,7 +46,7 @@ export function createTranslateLoader(http: Http) {
     }
     )
   ],
-  providers: [CouponApi],
+  providers: [HomeService,HttpService,AuthLogin,AuthLogout ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

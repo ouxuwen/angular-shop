@@ -17,6 +17,9 @@
 .font{
     cursor: pointer;
 }
+a{
+    cursor:pointer;
+}
 .myacount{padding:0px 10px; position: relative;margin: 0 -10px;z-index:4;}
 .myacount-list{top:34px;width: 140px;left:8px; box-shadow: 1px 1px 10px rgba(0,0,0,.12);*border:1px solid #ccc;}
 .myacount-list li{clear:both;width: 140px;}
@@ -45,3 +48,69 @@
 .width1024{
     font-size: 13px;
 }
+.text-auto-ellipsis{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.login-level{top:34px;cursor:auto;height: 95px; width: 260px; background: #fff; position: absolute; right: 0px; z-index: 4; box-shadow: 1px 1px 10px rgba(0,0,0,.12); padding: 10px 10px 0 10px;*padding:10px; display: none;*border:1px solid #ccc; }
+.level-content .level-detail{width: 85px; float: left; }
+.level-content .level-icon{float: left; width: 170px; }
+.level-icon li{float:left;}
+.level-title{border-top: 1px solid #dcdcdc;}
+.iphone-level{display: inline-block; zoom: 1; height: 38px; width: 24px; vertical-align: top; }
+.iphone-level-copper{background: url("/assets/image/user-level.png") -50px 0; }
+.iphone-level-silver{background: url("/assets/image/user-level.png") -27px 0; }
+.iphone-level-gold{background: url("/assets/image/user-level.png") -3px 0; }
+.iphone-level-diamond{background: url("/assets/image/diamond-level.gif"); }
+.level-star{background: url("/assets/image/level-icon.png"); display: inline-block; vertical-align: top; zoom: 1; height: 58px; width: 18px; }
+.level-star-diamond{background: url("/assets/image/level-icon.png") 0 0; }
+.level-star-sliver{background: url("/assets/image/level-icon.png") 32px 0 ; }
+.level-star-gold{background: url("/assets/image/level-icon.png") -17px 0; }
+.level-star-copper{background: url("/assets/image/level-icon.png") -49px 0; }
+.level-star-one{height: 15px; }
+.level-star-two{height: 29px; }
+.level-star-three{height: 41px; }
+.level-star-four{height: 53px; }
+.level-num{background: url("/assets/image/user-level-small-icon.png") 0px 0px; float: left; height: 15px; margin: 9px 0 0 5px;line-height: 15px;}
+.levelbg1{background-position:0px -207px;width:73px;}
+.levelbg2{background-position:0px -191px;width:50px;}
+.levelbg3{background-position:0px -175px;width:50px;}
+.levelbg4{background-position:0px -159px;width:50px;}
+.levelbg5{background-position:0px -143px;width:59px;}
+.levelbg6{background-position:0px -127px;width:59px;}
+.levelbg7{background-position:0px -111px;width:50px;}
+.level-detail-num{color:#f46902; font-size:20px; }
+.level-active{background: #fff; box-shadow: 1px 1px 10px rgba(0,0,0,.12);cursor:pointer;margin-left: -10px;padding-left: 10px;padding-right:10px;margin-right:-10px;}
+.user-level-icon{background: url("/assets/image/user-level-icon.png") 0px 0px;height: 40px;width: 40px;display: inline-block;vertical-align: middle;margin:0 5px 0 0;}
+.user-level1{background-position: 0px 0px;}
+.user-level2{background-position: -41px 0px;}
+.user-level3{background-position: -82px 0px;}
+.user-level4{background-position: -123px 0px;}
+.user-level5{background-position: -164px 0px;}
+.user-level6{background-position: -205px 0px;}
+.user-level7{background-position: -246px 0px;}
+
+.level-open-icon{height: 12px; width: 10px;background: url("/assets/image/level-icon.png") -2px -214px; margin: 9px 0 0 6px; }
+.exp-bar{width: 150px; background: #e4e4e4; height: 12px; display: inline-block; *display: inline; zoom:1; vertical-align: middle; }
+.exp-bar-current{background: #f46902; height: 12px; }
+.exp-level-num{color: #f46902; }
+.exp-up-icon{background: url("/assets/image/level-icon.png") -2px -142px; display: inline-block; zoom: 1; height: 11px; width: 10px; vertical-align: middle; }
+.next-up-exp{color: #f46902; font-style: normal; }
+.exp-number{position: absolute;top: 0px;left: 0px;font-size: 12px;line-height: 12px;width: 150px;text-align: center;}
+.product_comment_user{width: 160px;}
+.product_comment_detial{width: 780px; background: #f0faff; border: 1px solid #dedede;}
+.left-comment-arr{background: url("/assets/image/left-comment-arr.png") 0px 0px no-repeat; height: 30px; width: 30px; position: absolute; left:-16px; }
+.prodcut-comment-level{float: left; padding: 0 10px 0 0; color: #3399cc; }
+.comment-star{background: url("/assets/image/level-icon.png") -27px -98px; height: 26px; width: 5px; display: inline-block; *display: inline-block; zoom:1; }
+.comment-level{background: url("/assets/image/level-icon.png") -40px -67px; height: 26px; width: 13px; margin:0 2px; display: inline-block; *display: inline-block; zoom:1; }
+.comment-star{vertical-align: top; }
+.comment-star-gold{background: url("/assets/image/level-icon.png") -19px -98px;}
+.comment-star-silver{background: url("/assets/image/level-icon.png") -76px -98px;}
+.comment-star-diamond{background: url("/assets/image/level-icon.png") -27px -98px;}
+.comment-star-copper{background: url("/assets/image/level-icon.png") -68px -98px;}
+.comment-star-one{height: 7px; }
+.comment-star-two{height: 12px; }
+.comment-star-three{height: 17px; }
+.comment-star-four{height: 22px; }
+.comment-level-gold{background: url("/assets/image/level-icon.png") -26px -67px; }
+.comment-level-silver{background: url("/assets/image/level-icon.png") -2px -67px; }
+.product-m-i{background: url("/assets/image/more-info.png") 0 1px no-repeat;height: 20px;width: 20px;display: inline-block;vertical-align: middle;cursor: pointer;margin-left: 2px;position: relative; z-index: 2;}
+.product-m-i .text-info{display: none;position: absolute;top: 17px;left: -65px;width: 217px;height: 49px;background: url("/assets/image/product-m-i.png") -2px 0px no-repeat;font-size: 13px;font-weight: normal;padding: 20px 15px 10px 18px;line-height: 22px;color: #006599;cursor: auto;z-index: 2;}
+.product-m-i .text-info-small{background: url("/assets/image/product-m-i-small.png") -2px 0px no-repeat;}

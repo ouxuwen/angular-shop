@@ -125,3 +125,60 @@ div{
     padding: 0 8px;
     cursor: pointer;
 }
+.productlist .price-box .regular-price {
+    display: block;
+    text-align: center;
+    padding-top: 17px;
+}
+.regular-price .price {
+    font-weight: bold;
+    color: #e45033;
+    font-size: 16px;
+}
+.title-a {
+    word-wrap: break-word;
+    text-align:justify
+}
+.productlist .promotion_bg {
+    margin-left: 120px;
+}
+
+.promotion_bg {
+    background: url(/assets/image/icons.png) no-repeat -31px -56px;
+    width: 88px;
+    height: 34px;
+    padding: 6px 0px 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    color: #fff;
+    text-align: left;
+    line-height: 20px;
+    position: absolute;
+    margin-left: 77px;
+    margin-top: -8px;
+}
+
+.product-list-car {
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -10px;
+    background-position: -63px 0px;
+    width: 46px;
+    display: none;
+}
+
+
+
+.warehouse-icon {
+    background: url(/assets/image/warehouse.png);
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    vertical-align: middle;
+    zoom: 1;
+}
+.us-warehouse-icon {
+    width: 60px;
+    background-position: 0px 0px;
+}

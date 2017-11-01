@@ -1,41 +1,34 @@
 <div class="center">
-
-
   <div class="ets fix">
 
-    <div class="url width1024 h60 cbg">
+    <!-- <div class="url width1024 h60 cbg">
       <ul>
         <li class="icon"></li>
         <li class="home prae">
-          <a class="pdr8 pdl8"  title="Home">Home</a>
+          <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
           <font>»</font>
         </li>
         <li class="category170 prae">
-          <a class="pdr8 pdl8" title="Apple">Apple</a>
+          <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl.cate_name}}</a>
           <font>»</font>
         </li>
         <li class="category174 prae">
-          <a class="pdr8 pdl8" title="iPhone">iPhone</a>
+          <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl.cate_name}}</a>
           <font>»</font>
         </li>
         <li class="current prae">
           <div class="last-nav cor">
-            <strong class="pdr8 pdl8 ">Apple iPhone 8 Plus</strong>
+            <strong class="pdr8 pdl8">{{lastLvl.cate_name}}</strong>
             <div>
             </div>
           </div>
         </li>
       </ul>
-    </div>
+    </div> -->
     <div class="ets-left">
-
-
       <app-facebook-box></app-facebook-box>
-
     </div>
     <div class="ets-right">
-
-
       <div class="brand oh mod-line-bottom">
         <ul>
           <li class="f14 lh40 h40 pdl15" style="background:#f7f7f7;">
@@ -46,38 +39,14 @@
               <li class="fix attrsearch-wrap attr-parts">
                 <div class="attrsearch-key">Parts:</div>
                 <div class="attrsearch-value">
-
-                  <ul class="attrsearch-value-list fix">
-                    <li>
+                  <ul class="attrsearch-value-list fix " [class.attrsearch-value-list-open]='morePart'>
+                    <li *ngFor = 'let item of parts'>
                       <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=212" title="LCD Only">LCD Only</a>                      (1)
+                      <a [title]="item" > {{item}} </a> (0)
                     </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=214" title="LCD ASSY w/Frame">LCD ASSY w/Frame</a>                      (2)
-                    </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=222" title="Front Housing/Frame">Front Housing/Frame</a>                      (2)
-                    </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=226" title="Glass Lens">Glass Lens</a>                      (4)
-                    </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=227" title="Flex Ribbon">Flex Ribbon</a>                      (3)
-                    </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=230" title="Other Parts">Other Parts</a>                      (1)
-                    </li>
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;parts=231" title="Battery">Battery</a>                      (1)
-                    </li>
+                      
                   </ul>
-                  <a href="javascript:void(0)" class="list-more">More →</a>
+                  <a class="list-more" (click)='morePart = !morePart'>More →</a>
 
                 </div>
               </li>
@@ -88,578 +57,30 @@
                   <ul class="attrsearch-value-list fix">
                     <li>
                       <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;price=-100" title="$0.00 - $99.99"><span class="price">$0.00</span> - <span class="price">$99.99</span></a>                      (12)
+                      <a title="$0.00 - $99.99">
+                        <span class="price">$0.00</span> -
+                        <span class="price">$99.99</span>
+                      </a> (12)
                     </li>
                     <li>
                       <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?mode=grid&amp;price=200-" title="$200.00 and above"><span class="price">$200.00</span> and above</a>                      (2)
+                      <a title="$200.00 and above">
+                        <span class="price">$200.00</span> and above</a> (2)
                     </li>
                   </ul>
 
                 </div>
               </li>
-              <li class="fix attrsearch-wrap attr-grade">
-                <div class="attrsearch-key">Grade:</div>
-                <div class="attrsearch-value">
+              
 
-                  <ul class="attrsearch-value-list fix">
-                    <li>
-                      <span class="spanbg"></span>
-                      <a href="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?grade=253&amp;mode=grid" title="Grade S+">Grade S+</a>                      (14)
-                    </li>
-                  </ul>
-
-                </div>
-              </li>
-              <script type="text/javascript">
-                decorateDataList('narrow-by-list')
-              </script>
             </ul>
-            <p class="pdt10 pdr10 pdl10"><a style="margin-left: 54px;" class="c-n tdl" href="http://www.etradesupply.com/knowledge-base/cat/faq/post/quality/">
-                     Check grade and condition explanations here&gt;&gt;</a>
-              <a style="margin-left: 100px;" class="c-n tdl" href="http://www.imikoko.com/?acc=afkfrometstoimikk" target="_blank" rel="nofollow">
-              Find cell phone accessories here&gt;&gt;</a>
-            </p>
+            
           </li>
         </ul>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div class="productlist">
-        <ul class="products-grid first odd">
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-screen-and-digitizer-assembly-with-frame-black-grade-s.html"
-                title="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - Black - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - Black - Grade S+ (0)"
-                  data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  style="display: block;">
-                  </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-screen-and-digitizer-assembly-with-frame-black-grade-s.html"
-                  title="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - Black - Grade S+">For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - Black - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29764">
-                    <span class="price">$279.60</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29764" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-screen-and-digitizer-assembly-with-frame-white-grade-s.html"
-                title="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - White - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - White - Grade S+ (0)"
-                  data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_White_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_White_-_Grade_S_0_.jpg"
-                  style="display: block;">
-                  </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-screen-and-digitizer-assembly-with-frame-white-grade-s.html"
-                  title="For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - White - Grade S+">For Apple iPhone 8 Plus LCD Screen and Digitizer Assembly with Frame Replacement - White - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29763">
-                    <span class="price">$279.60</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29763" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-black-grade-s.html" title="For iPhone 8 Plus Glass Lens Replacement - Black - Grade S+ (0)">
-                <img class="lazy mgao" alt="For iPhone 8 Plus Glass Lens Replacement - Black - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_iPhone_8_Plus_Glass_Lens_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_iPhone_8_Plus_Glass_Lens_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75"><a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-black-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens Replacement - Black - Grade S+">For Apple iPhone 8 Plus Glass Lens Replacement - Black - Grade S+</a></div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29836">
-                    <span class="price">$27.17</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="alert-products-id" type="hidden" value="29836/">
-              <span class="ibm outstock-wrap"><span style="color:#ffffff;">Availability Notice</span></span>
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-white-grade-s.html" title="For iPhone 8 Plus Glass Lens Replacement - White - Grade S+ (0)">
-                <img class="lazy mgao" alt="For iPhone 8 Plus Glass Lens Replacement - White - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_iPhone_8_Plus_Glass_Lens_Replacement_-_White_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_iPhone_8_Plus_Glass_Lens_Replacement_-_White_-_Grade_S_0_.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75"><a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-white-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens Replacement - White - Grade S+">For Apple iPhone 8 Plus Glass Lens Replacement - White - Grade S+</a></div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29835">
-                    <span class="price">$27.17</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="alert-products-id" type="hidden" value="29835/">
-              <span class="ibm outstock-wrap"><span style="color:#ffffff;">Availability Notice</span></span>
-            </div>
-          </li>
-          <div class="p_borderbottom"></div>
-        </ul>
-        <ul class="products-grid even">
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-with-frame-black-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - Black - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - Black - Grade S+ (0)" data-original="https://www.etradesupply.com/skin/frontend/default/default/images/catalog/product/placeholder/small_image.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/default/images/catalog/product/placeholder/small_image.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-with-frame-black-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - Black - Grade S+">For Apple iPhone 8 Plus Glass Lens with Frame Replacement - Black - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29820">
-                    <span class="price">$44.14</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="alert-products-id" type="hidden" value="29820/">
-              <span class="ibm outstock-wrap"><span style="color:#ffffff;">Availability Notice</span></span>
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-with-frame-white-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - White - Grade S+ (8)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - White - Grade S+ (8)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Glass_Lens_with_Frame_Replacement_-_White_-_Grade_S_8_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Glass_Lens_with_Frame_Replacement_-_White_-_Grade_S_8_.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-glass-lens-with-frame-white-grade-s.html" title="For Apple iPhone 8 Plus Glass Lens with Frame Replacement - White - Grade S+">For Apple iPhone 8 Plus Glass Lens with Frame Replacement - White - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29821">
-                    <span class="price">$44.14</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="alert-products-id" type="hidden" value="29821/">
-              <span class="ibm outstock-wrap"><span style="color:#ffffff;">Availability Notice</span></span>
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-digitizer-frame-black-grade-s.html" title="For Apple iPhone 8 Plus Digitizer Frame Replacement - Black - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Digitizer Frame Replacement - Black - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Digitizer_Frame_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Digitizer_Frame_Replacement_-_Black_-_Grade_S_0_.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-digitizer-frame-black-grade-s.html" title="For Apple iPhone 8 Plus Digitizer Frame Replacement - Black - Grade S+">For Apple iPhone 8 Plus Digitizer Frame Replacement - Black - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29779">
-                    <span class="price">$26.97</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button model="right" pid="29779" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-digitizer-frame-white-grade-s.html" title="For Apple iPhone 8 Plus Digitizer Frame Replacement - White - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Digitizer Frame Replacement - White - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Digitizer_Frame_Replacement_-_White_-_Grade_S_0_.jpg"
-                  src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Digitizer_Frame_Replacement_-_White_-_Grade_S_0_.jpg"
-                  style="display: block;">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-digitizer-frame-white-grade-s.html" title="For Apple iPhone 8 Plus Digitizer Frame Replacement - White - Grade S+">For Apple iPhone 8 Plus Digitizer Frame Replacement - White - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29778">
-                    <span class="price">$26.97</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button model="right" pid="29778" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <div class="p_borderbottom"></div>
-        </ul>
-        <ul class="products-grid odd">
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-battery-grade-s.html" title="For iPhone 8 Plus Battery Replacement - Grade S+ (0)">
-                <img class="lazy mgao" alt="For iPhone 8 Plus Battery Replacement - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_iPhone_8_Plus_Battery_Replacement_-_Grade_S_0_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75"><a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-battery-grade-s.html" title="For Apple iPhone 8 Plus Battery Replacement - Grade S+">For Apple iPhone 8 Plus Battery Replacement - Grade S+</a></div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29685">
-                    <span class="price">$40.12</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29685" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-backlight-with-home-button-extension-flex-ribbon-grade-s.html"
-                title="For Apple iPhone 8 Plus LCD Backlight With Home Button Extension Flex Ribbon Replacement - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus LCD Backlight With Home Button Extension Flex Ribbon Replacement - Grade S+ (0)"
-                  data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_LCD_Backlight_With_Home_Button_Extension_Flex_Ribbon_Replacement_-_Grade_S_0_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-                  </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-lcd-backlight-with-home-button-extension-flex-ribbon-grade-s.html"
-                  title="For Apple iPhone 8 Plus LCD Backlight With Home Button Extension Flex Ribbon Replacement - Grade S+">For Apple iPhone 8 Plus LCD Backlight With Home Button Extension Flex Ribbon Replacement - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29851">
-                    <span class="price">$71.17</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29851" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-loud-speaker-antenna-flex-cable-grade-s.html" title="For Apple iPhone 8 Plus Loud Speaker Antenna Flex Cable Replacement - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Loud Speaker Antenna Flex Cable Replacement - Grade S+ (0)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Loud_Speaker_Antenna_Flex_Cable_Replacement_-_Grade_S_0_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-loud-speaker-antenna-flex-cable-grade-s.html" title="For Apple iPhone 8 Plus Loud Speaker Antenna Flex Cable Replacement - Grade S+">For Apple iPhone 8 Plus Loud Speaker Antenna Flex Cable Replacement - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29816">
-                    <span class="price">$9.73</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button model="right" pid="29816" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-gold-grade-s.html" title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Gold - Grade S+ (1)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Gold - Grade S+ (1)" data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Charging_Port_Flex_Cable_Ribbon_Replacement_-_Gold_-_Grade_S_1_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-gold-grade-s.html"
-                  title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Gold - Grade S+">For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Gold - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29813">
-                    <span class="price">$42.13</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button model="right" pid="29813" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <div class="p_borderbottom"></div>
-        </ul>
-        <ul class="products-grid last even">
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-light-gray-grade-s.html" title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Light Gray - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Light Gray - Grade S+ (0)"
-                  data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Charging_Port_Flex_Cable_Ribbon_Replacement_-_Light_Gray_-_Grade_S_0_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-light-gray-grade-s.html"
-                  title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Light Gray - Grade S+">For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Light Gray - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29814">
-                    <span class="price">$42.13</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29814" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <li>
-            <div class="p_img">
-              <a href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-dark-gray-grade-s.html" title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Dark Gray - Grade S+ (0)">
-                <img class="lazy mgao" alt="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Dark Gray - Grade S+ (0)"
-                  data-original="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Plus_Charging_Port_Flex_Cable_Ribbon_Replacement_-_Dark_Gray_-_Grade_S_0_.jpg"
-                  src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
-              </a>
-            </div>
-            <div class="tac">
-              <div class="oh h75">
-                <a class="title-a" href="https://www.etradesupply.com/apple-iphone-8-plus-charging-port-flex-cable-ribbon-dark-gray-grade-s.html"
-                  title="For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Dark Gray - Grade S+">For Apple iPhone 8 Plus Charging Port Flex Cable Ribbon Replacement - Dark Gray - Grade S+</a>
-              </div>
-
-
-
-              <div class="price-box" rel="nofollow">
-                <span class="regular-price" id="product-price-29815">
-                    <span class="price">$42.13</span> </span>
-
-              </div>
-
-            </div>
-            <div class="clear1px"></div>
-            <div class="alpha alpha-no-margin on">
-              <input class="stock-cart-count tac txt-stock" type="text" value="1">
-
-
-
-              <button pid="29815" action="https://www.etradesupply.com/checkout/cart/addtocart/" class="stock-cart button ibm h25 lh25 model-vertical-align">
-	            		<span>
-	            			<span>
-	            				Add to Cart
-	            			</span>
-	            		</span>
-	            	</button>
-              <input id="inventory" type="hidden" value="0">
-            </div>
-          </li>
-          <div class="p_borderbottom"></div>
-        </ul>
+        <app-goods-box2 *ngFor='let item of goods' [goods]='item'></app-goods-box2>
       </div>
-
-
       <div class="toolbar-bottom">
         <div class="toolbar">
           <div class="option bottom">
@@ -669,11 +90,11 @@
               </li>
               <li>
                 <div class="limiter">
-                  <select onchange="location=this.value">
-			                        <option selected="selected" value="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?limit=20&amp;mode=grid">20</option>
-                              <option value="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?limit=40&amp;mode=grid">40</option>
-                               <option value="https://www.etradesupply.com/apple/iphone/apple-iphone-8-plus.html?limit=60&amp;mode=grid">60</option>
-                			</select>
+                  <select>
+                    <option selected="selected">20</option>
+                    <option>40</option>
+                    <option>60</option>
+                  </select>
                 </div>
               </li>
               <li class="pager">
@@ -682,12 +103,12 @@
           </div>
         </div>
       </div>
-       <div class="prolist-desc clearfix">
-      For Apple iPhone 8 Plus Battery Replacement - Grade S+
+      <!-- <div class="prolist-desc clearfix">
+        For  {{lastLvl.cate_name}}
+      </div> -->
     </div>
   </div>
-    </div>
 
 
-   
+
 </div>

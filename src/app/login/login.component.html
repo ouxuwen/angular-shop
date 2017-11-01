@@ -23,6 +23,7 @@
                     <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('email')">
                       <nz-input [nzSize]="'large'" formControlName="email" [nzId]="'email'"></nz-input>
                       <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div>
+                      <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('duplicated')">This Email is existed! Please login.</div>
                     </div>
                   </div>
                   <div nz-form-item nz-row>
@@ -32,6 +33,7 @@
                     <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('password')">
                       <nz-input [nzSize]="'large'" formControlName="password" [nzType]="'password'" [nzId]="'password'" (ngModelChange)="updateConfirmValidator()"></nz-input>
                       <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">Please input your password!</div>
+                      <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('minlength')">The minimum password length is 6!</div>
                     </div>
                   </div>
                   <div nz-form-item nz-row>
@@ -42,6 +44,7 @@
                       <nz-input [nzSize]="'large'" formControlName="checkPassword" [nzType]="'password'" [nzId]="'checkPassword'"></nz-input>
                       <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('required')">Please confirm your password!</div>
                       <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('confirm')">Two passwords that you enter is inconsistent!</div>
+                      <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('minlength')">The minimum password length is 6!</div>
                     </div>
                   </div>
                   <div nz-form-item nz-row>
@@ -95,18 +98,18 @@
               <div class="col-2 l registered-users" style="width:42%;">
                 <h3 class="c-n f20 pdt15 pdb15">Registered Customers</h3>
                 <p>If you have an account with us, please log in.</p>
-                <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+                <form nz-form [formGroup]="loginForm" class="login-form" >
                   <div nz-form-item nz-row>
                     <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
                       <label for="email" nz-form-item-required>E-mail</label>
                     </div>
-                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getLoginControl('userName')">
-                      <nz-input formControlName="userName" [nzPlaceHolder]="'Email' | translate" [nzSize]="'large'">
+                    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getLoginControl('email')">
+                      <nz-input formControlName="email" [nzPlaceHolder]="'Email' | translate" [nzSize]="'large'">
                         <ng-template #prefix>
                           <i class="anticon anticon-user"></i>
                         </ng-template>
                       </nz-input>
-                      <div nz-form-explain *ngIf="loginForm.controls.userName.dirty&&loginForm.controls.userName.hasError('required')">Please input your username!</div>
+                      <div nz-form-explain *ngIf="loginForm.controls.email.dirty&&loginForm.controls.email.hasError('required')">Please input your email!</div>
                     </div>
                   </div>
                   <div nz-form-item nz-row>
@@ -132,7 +135,7 @@
                       <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
                       <br>
 
-                      <button style="margin-top:20px;" nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">Log in</button>
+                      <button (click)="login()" style="margin-top:20px;" nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">Log in</button>
 
                     </div>
                   </div>

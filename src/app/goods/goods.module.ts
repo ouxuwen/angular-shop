@@ -6,31 +6,37 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { AllmodelComponent } from './allmodel/allmodel.component';
-import { SharedModule} from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 import { ModelComponent } from './model/model.component';
-import { GoodsListComponent } from './goods-list/goods-list.component'
+import { GoodsListComponent } from './goods-list/goods-list.component';
+import { ImageZoomModule } from 'angular2-image-zoom';
+import { CategoriesComponent } from './categories/categories.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 @NgModule({
-    declarations: [
-      // components
-      GoodsComponent,
-      AllmodelComponent,
-      AllCategoriesComponent,
-      ModelComponent,
-      GoodsListComponent,
-    ],
-    exports: [
-    ],
-    imports: [
-      SharedModule,
-      RouterModule.forChild(routes),
-      LazyLoadImageModule,
-      CommonModule,
-      TranslateModule
-    ],
-    providers: [
-        
-    
-    ]
-  })
-  export class GoodsModule {}
+  declarations: [
+    // components
+    GoodsComponent,
+    AllmodelComponent,
+    AllCategoriesComponent,
+    ModelComponent,
+    GoodsListComponent,
+    CategoriesComponent,
+  ],
+  exports: [
+  ],
+  imports: [
+    ImageZoomModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    LazyLoadImageModule,
+    CommonModule,
+    TranslateModule,
+    NgZorroAntdModule
+  ],
+  providers: [
+
+
+  ]
+})
+export class GoodsModule { }

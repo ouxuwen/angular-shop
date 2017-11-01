@@ -1,10 +1,16 @@
-
+@import '../shared/common/color';
 div{
     font-family: "open sans",Arial,Geneva, sans-serif !important;
     font-size: 13px  ;
     color:#000;
 }
-.width1024{width:1200px;}
+.width1024{width:1200px;
+  .ant-form-item{
+    margin-bottom:24px;
+  }
+
+}
+
 .mgao{
     margin: 0 auto;
 }

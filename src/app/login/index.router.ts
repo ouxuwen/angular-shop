@@ -1,5 +1,6 @@
 import { LoginComponent } from './login.component';
-
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 export const HomeRoutes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
+  { path: "forget-password", component: ForgetPasswordComponent }
 ];
