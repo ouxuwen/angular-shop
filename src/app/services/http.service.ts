@@ -10,10 +10,11 @@ const productApi = '';
 const debugApi = 'http://www.admin.com/app';
 @Injectable()
 export class HttpService {
-
+  token :any;
   subscription: Subscription;
   constructor(public eventsService: EventsService, public translateService: TranslateService, public http: Http, private confirmServ: NzModalService) {
     this.initTranslate();
+    
   }
 
   public cancel() {
@@ -81,6 +82,10 @@ export class HttpService {
    */
   private static buildURLSearchParams(paramMap): URLSearchParams {
     let params = new URLSearchParams();
+    if(localStorage.getItem('userInfo')){
+      let token = JSON.parse(localStorage.getItem('userInfo')).token;
+      params.set("token", token);
+    }
     if (!paramMap) {
       return params;
     }
@@ -88,6 +93,9 @@ export class HttpService {
       let val = paramMap[key];
       params.set(key, val);
     }
+
+    
+    
     return params;
   }
 

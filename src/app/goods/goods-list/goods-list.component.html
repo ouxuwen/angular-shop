@@ -1,7 +1,7 @@
 <div class="center">
   <div class="ets fix">
 
-    <!-- <div class="url width1024 h60 cbg">
+    <div class="url width1024 h60 cbg">
       <ul>
         <li class="icon"></li>
         <li class="home prae">
@@ -9,22 +9,23 @@
           <font>»</font>
         </li>
         <li class="category170 prae">
-          <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl.cate_name}}</a>
+          <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
           <font>»</font>
         </li>
         <li class="category174 prae">
-          <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl.cate_name}}</a>
+          <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl?.cate_name}}</a>
           <font>»</font>
         </li>
         <li class="current prae">
           <div class="last-nav cor">
-            <strong class="pdr8 pdl8">{{lastLvl.cate_name}}</strong>
+            <strong class="pdr8 pdl8">{{lastLvl?.cate_name}}</strong>
             <div>
             </div>
           </div>
         </li>
       </ul>
-    </div> -->
+    </div>
+
     <div class="ets-left">
       <app-facebook-box></app-facebook-box>
     </div>
@@ -33,6 +34,7 @@
         <ul>
           <li class="f14 lh40 h40 pdl15" style="background:#f7f7f7;">
             <span class="fwb pdl10 pdr10">Shop by</span>
+            <span>{{lastLvl?.cate_name}} </span>
           </li>
           <li class="brand-img oh pd15">
             <ul>
@@ -40,11 +42,12 @@
                 <div class="attrsearch-key">Parts:</div>
                 <div class="attrsearch-value">
                   <ul class="attrsearch-value-list fix " [class.attrsearch-value-list-open]='morePart'>
-                    <li *ngFor = 'let item of parts'>
-                      <span class="spanbg"></span>
-                      <a [title]="item" > {{item}} </a> (0)
+                    <li *ngFor='let item of parts;let i = index' (click)='selectPart(i+1,item)' [class.dn]='partsId' [class.pud]="partsId&&partsId==i+1">
+                      <span *ngIf='partsId' class="spanbg">You've chosen </span>
+                      <a [title]="item" [style.color.red]='partsId'> {{item}} </a>
+                      <a *ngIf='partsId' class="remove closechoose" title="Remove This Item">x</a>
                     </li>
-                      
+
                   </ul>
                   <a class="list-more" (click)='morePart = !morePart'>More →</a>
 
@@ -57,44 +60,62 @@
                   <ul class="attrsearch-value-list fix">
                     <li>
                       <span class="spanbg"></span>
-                      <a title="$0.00 - $99.99">
-                        <span class="price">$0.00</span> -
-                        <span class="price">$99.99</span>
-                      </a> (12)
+                      <a>
+                        Ascending
+                        <i class="anticon anticon-arrow-up"></i>
+                      </a>
                     </li>
                     <li>
                       <span class="spanbg"></span>
-                      <a title="$200.00 and above">
-                        <span class="price">$200.00</span> and above</a> (2)
+                      <a>
+                        Reverse
+                        <i class="anticon anticon-arrow-down"></i>
+                      </a>
                     </li>
                   </ul>
 
                 </div>
               </li>
-              
+
 
             </ul>
-            
+
           </li>
         </ul>
       </div>
-      <div class="productlist">
-        <app-goods-box2 *ngFor='let item of goods' [goods]='item'></app-goods-box2>
+      <div class="option top toolbar-sort-wrap">
+
+        <span>
+          Total :
+        </span>
+
+
+        <strong class="fanye">{{showGoodsList.length}} Item(s)</strong>
+
       </div>
+      <div class="productlist">
+        <nz-spin  style="position:absolute; top:50%;left:50%;" [nzSpinning]="nzSpinning"></nz-spin>
+        <app-goods-box2 *ngFor='let item of finallyList' [goods]='item'></app-goods-box2>
+      
+        <div class="clear"></div>
+
+      </div>
+      <div *ngIf='finallyList.length ==0' class="search_no">Search no results !</div>
       <div class="toolbar-bottom">
         <div class="toolbar">
           <div class="option bottom">
             <ul>
               <li>
-                Show:
+                Show : &nbsp;
               </li>
               <li>
-                <div class="limiter">
-                  <select>
-                    <option selected="selected">20</option>
-                    <option>40</option>
-                    <option>60</option>
+                <div class="limiter" style='width: 870px;'>
+                  <select [(ngModel)]='showNum' (ngModelChange)="changeShowList($event)">
+                    <option selected="selected" value="20">20</option>
+                    <option value="40">40</option>
+                    <option value="60">60</option>
                   </select>
+                  <nz-pagination style="float:right; " (ngModelChange)='changePage()' [nzPageSize]="showNum" [(nzPageIndex)]="_current" [nzTotal]="showGoodsList.length" [nzSize]="'small'"></nz-pagination>
                 </div>
               </li>
               <li class="pager">
@@ -103,9 +124,9 @@
           </div>
         </div>
       </div>
-      <!-- <div class="prolist-desc clearfix">
-        For  {{lastLvl.cate_name}}
-      </div> -->
+      <div class="prolist-desc clearfix">
+        For {{lastLvl?.cate_name}}
+      </div>
     </div>
   </div>
 

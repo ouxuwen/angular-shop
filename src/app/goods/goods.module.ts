@@ -10,9 +10,9 @@ import { SharedModule } from '../shared/shared.module';
 import { AllCategoriesComponent } from './all-categories/all-categories.component';
 import { ModelComponent } from './model/model.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
-import { ImageZoomModule } from 'angular2-image-zoom';
 import { CategoriesComponent } from './categories/categories.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     // components
@@ -26,13 +26,13 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
   exports: [
   ],
   imports: [
-    ImageZoomModule,
     SharedModule,
     RouterModule.forChild(routes),
     LazyLoadImageModule,
     CommonModule,
     TranslateModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    FormsModule, ReactiveFormsModule 
   ],
   providers: [
 

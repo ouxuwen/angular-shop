@@ -56,7 +56,7 @@
 
             <div id="local_content">
               <div class="prae brlr">
-                <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
+                <nz-table #nzTable [nzDataSource]="cartList" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
                   (nzPageSizeChange)="_refreshStatus()">
                   <thead nz-thead>
                     <tr>
@@ -67,7 +67,7 @@
                       <th nz-th>
                         <span>{{"Image" | translate}}</span>
                       </th>
-                      <th nz-th>
+                      <th width='600' nz-th>
                         <span>{{"Product" | translate}}</span>
                       </th>
 
@@ -94,18 +94,19 @@
                       </td>
                       <td nz-td>
                         <a (click)='goGoodsDetail(data.id)'>
-                          <img style='width:80px'  [defaultImage]="defaultImg" [lazyLoad]="data.url"  alt="">
+                          <img style='width:80px' [defaultImage]="defaultImg" [lazyLoad]="data.url" alt="">
                         </a>
                       </td>
-                      <td nz-td >
+                      <td nz-td>
                         <a (click)='goGoodsDetail(data.id)'>
-                            {{data.goods_name}}
+                          {{data.goods_name}}
                         </a>
                       </td>
                       <td nz-td>$ {{data.price}}</td>
-                      <td nz-td>{{data.cate_id}}</td>
+                      <td nz-td>$ {{data.price*data.goods_sum}}</td>
                       <td nz-td>
-                        <nz-input-number style="text-align:center" [ngModelOptions]="{standalone: true}" [(ngModel)]="demoValue" [nzMin]="1" [nzStep]="1"></nz-input-number>
+                        <nz-input-number style="text-align:center" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.goods_sum" [nzMin]="1"
+                          [nzStep]="1"></nz-input-number>
                       </td>
                       <td nz-td>
                         <button nz-button [nzType]="'danger'">
@@ -167,7 +168,7 @@
                                   <tr>
                                     <td class="title">Total (Excluding Freight)</td>
                                     <td class="value">
-                                      <span class="price">$3.56</span>
+                                      <span class="price">$ {{cartTotal}}</span>
                                     </td>
                                   </tr>
                                   <tr>
@@ -194,7 +195,7 @@
                         <li style="position:relative;">
                           <button (click)='goCheckOut(1)' type="button" title="Proceed to Checkout" id="btn-proceed-checkout-id" class="btn-proceed-checkout orange btn-checkout">
                             <span class="cf">
-                              <span class="cf" >Proceed to Checkout</span>
+                              <span class="cf">Proceed to Checkout</span>
                             </span>
                           </button>
 

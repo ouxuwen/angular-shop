@@ -15,7 +15,7 @@
 .float_top { width: 195px; }
 
 .product-warpper-left { width: 400px; margin-right: 30px; float: left; }
-.product-warpper-left .more-views {width: 400px;}
+.product-warpper-left .more-views {width: 400px; overflow: hidden}
 .product-warpper-left .omit {width: 387px;overflow: hidden;height: 62px;}
 .product-warpper-left .left_img {background:url(/assets/image/licon.png) no-repeat -312px -51px; width:12px; height:60px; float:left; cursor:pointer; margin-top:4px}
 .product-warpper-left .right_img {background: url(/assets/image/licon.png) no-repeat -328px -51px;width: 12px;height: 60px;float: right;margin-top: -59px;margin-right: 0px;cursor: pointer;}
@@ -96,7 +96,7 @@ display: block;color: #fff;text-align: left;line-height: 47px;position: absolute
 .product-warpper-right .plus:hover {border:1px #666 solid;}
 .product-warpper-right .minus {background:url(/assets/image/licon.png) no-repeat -409px -211px; width:13px; height:13px; border:1px #CCCCCC solid; display:block; float:left; margin:18px 4px 0 3px;}
 .product-warpper-right .minus:hover {border:1px #666 solid;}
-.cart-btn-lists{margin: 8px 0 0 20px;}
+.cart-btn-lists{ display: inline-block ;;margin: 8px 0 0 20px;}
 .buy-cart{height:33px;background-color: #6699cc;}
 .buy-cart:hover {background-color: #005d8c;}
 .product-detail-box{border:1px solid #ccc;border-top:0px;}
@@ -328,3 +328,41 @@ a.points-link:hover{ color: #0c9eef;}
 .totalhidden .total_price { margin-left:20px; float:left; color:#000000; font-weight:normal;}
 .totalhidden span {  margin-left:5px; float:left; color:#000000;}
 .buy-city a.selected{border:2px solid #3398cc;}
+
+.little{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border:1px solid #eee;
+    background: rgba(78, 78, 78, 0.21)
+}
+.big{
+    position: absolute;
+    width:400px;
+    height: 400px;
+    border:1px solid #eee;
+    top:0;
+    left:400px;
+    overflow: hidden;
+    z-index: 50;
+    img{
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        
+    }
+}
+#imgList{
+    transition: all 0.3s linear;
+    width: 2000px;
+    height: 62px;
+}
+
+.disabledClick{
+    cursor:not-allowed !important;   
+}
+#totalshow{
+    color:red;
+    font-weight: bold;
+    font-family: 14px;
+}

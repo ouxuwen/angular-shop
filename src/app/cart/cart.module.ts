@@ -8,7 +8,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { CartRoutes } from './cart.router';
-
+import { HomeService } from '../services/home.service';
 
 
 
@@ -31,7 +31,7 @@ import { CartRoutes } from './cart.router';
     ReactiveFormsModule
   ],
   providers: [
-
+    HomeService
 
   ]
 })

@@ -1,175 +1,170 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HomeService } from '../services'
+import { HomeService } from '../services';
+import { NzModalService } from 'ng-zorro-antd';
+import { EventsService } from 'angular4-events';
 @Component({
   selector: 'app-goods',
   templateUrl: './goods.component.html',
   styleUrls: ['./goods.component.scss']
 })
 export class GoodsComponent implements OnInit {
-
-  constructor(public router: Router, public activeRouter: ActivatedRoute,private homeService:HomeService) {
-    this.activeRouter.queryParams.subscribe(res =>{
+  allCateList: any;
+  lastLvl: any;
+  secondLvl: any;
+  firstLvl: any;
+  constructor(private events:EventsService,private confirmServ: NzModalService,public router: Router, public activeRouter: ActivatedRoute, private homeService: HomeService) {
+    this.activeRouter.queryParams.subscribe(res => {
       this.goodsId = res['goodsId'];
+      
       this.getGoodsInfo();
+      
     })
-    
+
   }
-  isSpinning:boolean = false;
-  goodsId:any;
-  goodsInfo :any;
+  isSpinning: boolean = false;
+  goodsId: any;
+  goodsInfo: any;
   ngOnInit() {
   }
-  zoomedImageSrc ="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_7_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_Black_-_Grade_S_2__1.jpg";
-  smallImageSrc = "https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_7_LCD_Screen_and_Digitizer_Assembly_with_Frame_Replacement_-_Black_-_Grade_S_2__1.jpg";
-
-
-  getGoodsInfo(){
+  zoomedImageSrc = "";
+  defaultImg = 'assets/image/loading.gif';
+  showGoods: any;
+  imgIndex = 0;
+  goodsIndex = 0;
+  goodsCount:number = 1;
+  goodsTotalPrice:number = 0.00;
+  getGoodsInfo() {
+    
+   
     this.isSpinning = true;
     this.homeService.goods_info({info_id:this.goodsId}).map(res => res.json()).subscribe(res =>{
-        this.goodsInfo= res.data;
+        this.goodsInfo = res.data;
+        this.zoomedImageSrc = this.goodsInfo.gallery[0].url;
+        this.showGoods = this.goodsInfo.goods_list[this.goodsIndex];
+    
         this.isSpinning = false;
+        
+          let id = this.goodsInfo.goods_info.cate_id;
+          this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
+          if (this.allCateList) {
+            this.allCateList.forEach(element => {
+              element['children'].forEach(val => {
+                val['children'].forEach(item => {
+                  if (id == item.id) {
+                    this.lastLvl = item;
+                    this.secondLvl = val;
+                    this.firstLvl = element;
+                  }
+                })
+              })
+            });
+          }
+          
+    
+        
     },err =>{
       this.isSpinning = false;
     })
   }
-  data = {
-    "msg": "ok",
-    "status": 1,
-    "data": {
-      "goods_info": {
-        "id": 48,
-        "goods_name": "For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R",
-        "sku": "Bi-71924465",
-        "cate_id": 62,
-        "brand_id": 0,
-        "unit_id": 26,
-        "keyword": "",
-        "content": "",
-        "is_new": 1,
-        "is_rec": 1,
-        "is_hot": 1,
-        "price": "20.00",
-        "costprice": "30.00",
-        "fenxiao_rate": "1.00",
-        "daili_rate": null,
-        "sort": 0,
-        "create_time": 1509552223,
-        "update_time": 0,
-        "putway": 1
-      },
-      "goods": {
-        "id": 51,
-        "info_id": 48,
-        "sku": "Bi-23504157",
-        "putway": 1,
-        "price": "1.00",
-        "costprice": "2.00",
-        "barcode": "",
-        "stbiknum": null,
-        "stbikmax": null,
-        "stbikmin": null,
-        "standard_value1": "black",
-        "standard_value2": "",
-        "standard_value3": "",
-        "standard_value4": "",
-        "standard_value5": "",
-        "fenxiao_rate": "1.00",
-        "daili_rate": null,
-        "create_time": 1509552223,
-        "update_time": 0,
-        "status": 1,
-        "standard": [
-          "black",
-          0,
-          0
-        ]
-      },
-      "goods_list": [
-        {
-          "id": 51,
-          "info_id": 48,
-          "sku": "Bi-23504157",
-          "putway": 1,
-          "price": "1.00",
-          "costprice": "2.00",
-          "barcode": "",
-          "stbiknum": null,
-          "stbikmax": null,
-          "stbikmin": null,
-          "standard_value1": "black",
-          "standard_value2": "",
-          "standard_value3": "",
-          "standard_value4": "",
-          "standard_value5": "",
-          "fenxiao_rate": "1.00",
-          "daili_rate": null,
-          "create_time": 1509552223,
-          "update_time": 0,
-          "status": 1
-        },
-        {
-          "id": 52,
-          "info_id": 48,
-          "sku": "Bi-22830479",
-          "putway": 1,
-          "price": "1.00",
-          "costprice": "2.00",
-          "barcode": "",
-          "stbiknum": null,
-          "stbikmax": null,
-          "stbikmin": null,
-          "standard_value1": "while",
-          "standard_value2": "",
-          "standard_value3": "",
-          "standard_value4": "",
-          "standard_value5": "",
-          "fenxiao_rate": "1.00",
-          "daili_rate": null,
-          "create_time": 1509552223,
-          "update_time": 0,
-          "status": 1
-        }
-      ],
-      "gallery": [
-        {
-          "info_id": 48,
-          "url": "http://oyiph6mjm.bkt.clouddn.com/931bae59a73584778799bfd10488981a.png"
-        },
-        {
-          "info_id": 48,
-          "url": "http://oyiph6mjm.bkt.clouddn.com/b5a8a83827aa3640601d759f320ac3a7.png"
-        }
-      ],
-      "standard_list": [
-        {
-          "id": 2,
-          "info_id": 48,
-          "name": "color",
-          "create_time": 1509552223,
-          "update_time": 0,
-          "value_list": [
-            {
-              "id": 3,
-              "info_id": 48,
-              "standard_id": 2,
-              "standard_value": "black",
-              "create_time": 1509552223,
-              "update_time": 0,
-              "status": 0
-            },
-            {
-              "id": 4,
-              "info_id": 48,
-              "standard_id": 2,
-              "standard_value": "while",
-              "create_time": 1509552223,
-              "update_time": 0,
-              "status": 0
-            }
-          ]
-        }
-      ]
+
+  /**
+   * change the showing imgae
+   */
+  changeImgIndex(index) {
+    this.imgIndex = index;
+    this.zoomedImageSrc = this.goodsInfo.gallery[index].url;
+  }
+  load() {
+    console.log('loading');
+
+  }
+  mouseIn: boolean = false;
+  mouseX: number = 0;
+  mouseY: number = 0;
+  mouseMove(e) {
+    let wrap = document.getElementById('wrap');
+    this.mouseX = e.clientX - 50 - wrap.getBoundingClientRect()['x'];
+    this.mouseY = e.clientY - 50 - wrap.getBoundingClientRect()['y'];
+    if (this.mouseX < 0) {
+      this.mouseX = 0;
+    }
+    if (this.mouseX > 300) {
+      this.mouseX = 300;
+    }
+    if (this.mouseY < 0) {
+      this.mouseY = 0;
+    }
+    if (this.mouseY > 300) {
+      this.mouseY = 300;
     }
   }
+
+  changeGoodsIndex(i){
+    this.goodsIndex = i;
+    this.showGoods = this.goodsInfo.goods_list[this.goodsIndex];
+  }
+
+  addWishList(id){
+
+  }
+  dj :number= 0;
+  moveLeft(i){
+    let ul = document.getElementById('imgList');
+    let num = this.goodsInfo.gallery.length;
+    this.dj += i;
+    if(num>6 && this.dj >=(6-num)&&this.dj<=0){
+      ul.style.marginLeft=(this.dj)*62+"px";
+    }
+  }
+  goAllModel(id) {
+    this.router.navigate(['/goods/all-model'], { queryParams: { cate: id } })
+  }
+  goModel(id) {
+    this.router.navigate(['/goods/model'], { queryParams: { cate: id } })
+  }
+  goGoodsList(id) {
+    this.router.navigate(['/goods/goods-list'], { queryParams: { cate: id } })
+  }
+  addToCart(){
+    this.isSpinning = true;
+    let data  = {
+      goods_id:this.showGoods.id,
+      info_id:this.showGoods.info_id,
+      goods_sum:this.goodsCount
+    }
+    this.homeService.add_to_cart(data).subscribe(res =>{
+      this.isSpinning = false;
+      this.events.publish('cart');
+      if( res.json().status = 1){
+        this.confirmServ.success({
+          title: 'Success',
+          content: res.json().msg,
+          okText:"Confirm"
+        });
+      }
+    },err =>{
+      this.isSpinning = false;
+    })
+  }
+  addToWishList(){
+    this.isSpinning = true;
+    let data  = {
+      goods_id:this.showGoods.id,
+      info_id:this.showGoods.info_id,
+    }
+    this.homeService.add_goods_collect(data).subscribe(res =>{
+      this.isSpinning = false;
+      if( res.json().status = 1){
+        this.confirmServ.success({
+          title: 'Success',
+          content: res.json().msg
+        });
+      }
+    },err =>{
+      this.isSpinning = false;
+    })
+  }
+  
+
 }

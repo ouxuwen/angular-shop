@@ -8,7 +8,7 @@
       </li>
       <li class="current prae">
         <div class="last-nav cor">
-          <strong class="pdr8 pdl8 ">{{firstLvl.cate_name}}</strong>
+          <strong class="pdr8 pdl8 ">{{firstLvl?.cate_name}}</strong>
           <div>
           </div>
         </div>
@@ -28,13 +28,13 @@
         <li class="oh db" style="width:100%;border-bottom:1px #CCCCCC dashed;" *ngFor = 'let item of secondLvl'>
           <dl class="oh">
             <h4 class="f14 fw h30 c069">
-              <a (click)='goModel(item.id)'>{{item.cate_name}}</a>
+              <a (click)='goModel(item.id)'>{{item?.cate_name}}</a>
             </h4>
             <dt class="tac l mgl10 mgt10" *ngFor = 'let val of item.children' (click)='goGoodsList(val.id)'>
               <a >
                 <img [defaultImage]="defaultImage" [lazyLoad]="val.url" width="136" class="lazy"  style="display: block;">
               </a>
-              <p><a>{{val.cate_name}}</a></p>
+              <p><a>{{val?.cate_name}}</a></p>
             </dt>
             
           </dl>

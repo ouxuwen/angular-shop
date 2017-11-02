@@ -33,7 +33,7 @@
         </div>
         <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;" [style.display]="showCart ? 'block' : 'none' ">
           <li class="cart-header"></li>
-          <li class="cart-list fix" *ngIf='cartCount ==0'>
+          <li class="cart-list fix" *ngIf='cartCount ==0 || !isLogin '>
             <dl class="pdl30 pdr30 pdt10">
               <dt class="mgb10 lh18 z" style="list-style-position:outside;">
                 <p class="fwb">
@@ -45,23 +45,24 @@
               </dt>
             </dl>
           </li>
-          <li class="cart-list fix" *ngIf='cartCount >0'>
+          <div *ngIf='cartCount >0 && isLogin '>
+          <li class="cart-list fix" *ngFor='let item of cartList'>
             <dl class="pdl30 pdr30">
               <dt class="mgb10 lh18 z" style="list-style-position:outside;">
                 <li class="item fix">
-                  <a 
-                    title="" class="product-image">
-                    <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/thumbnail/50x50/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Tempered_Glass_Screen_Protector_without_Package_5D_-_Black_-_Grade_R_0_.jpg"
-                      width="50" height="50" alt="For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R">
+                  <a (click)='goGoodsDetail(item.info_id)'
+                    [title]="item.goods_name" class="product-image">
+                    <img [src]="item.url"
+                      width="50" height="50" >
                   </a>
                   <div class="headrcart-details l tal pdr10">
                     <p class="product-name">
-                      <a>For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R</a>
+                      <a (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}}</a>
                     </p>
                   </div>
                   <div class="headcart-qty l tar">
-                    <strong>1</strong> x
-                    <span class="price">AUD $4.58</span>
+                    <strong>{{item.goods_sum}}</strong> x
+                    <span class="price">AUD $ {{item.price}}</span>
                     <br>
                     <a title="Remove This Item" 
                       class="btn-remove"></a>
@@ -70,44 +71,19 @@
               </dt>
             </dl>
           </li>
-          <li class="cart-list fix" *ngIf='cartCount >0'>
-            <dl class="pdl30 pdr30">
-              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
-                <li class="item fix">
-                  <a 
-                    title="" class="product-image">
-                    <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/thumbnail/50x50/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Tempered_Glass_Screen_Protector_without_Package_5D_-_Black_-_Grade_R_0_.jpg"
-                      width="50" height="50" alt="For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R">
-                  </a>
-                  <div class="headrcart-details l tal pdr10">
-                    <p class="product-name">
-                      <a>For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R</a>
-                    </p>
-                  </div>
-                  <div class="headcart-qty l tar">
-                    <strong>1</strong> x
-                    <span class="price">AUD $4.58</span>
-                    <br>
-                    <a 
-                      title="Remove This Item" 
-                      class="btn-remove"></a>
-                  </div>
-                </li>
-              </dt>
-            </dl>
-          </li>
+        </div>
 
-          <li class="cart-footer" *ngIf='cartCount ==0'></li>
-          <li class="cart_bottom" *ngIf='cartCount >0'>
+          <li class="cart-footer" *ngIf='cartCount ==0 || !isLogin'></li>
+          <li class="cart_bottom" *ngIf='cartCount >0 && isLogin'>
             <dl>
               <dt>
                 <div class="summary">
                   <div class="tar pdt10">
                     <span class="label">
                       Cart Subtotal:</span>
-                    <span class="price">AUD $4.58</span>
+                    <span class="price">AUD $ {{ cartTotal }}</span>
                   </div>
-                  <button type="button" title="View My Cart" class="headcart-button bra3 r tac br1 cor mgt5 mgb20  f13 " onclick="setLocation('https://www.etradesupply.com/checkout/cart/')">
+                  <button type="button" title="View My Cart" class="headcart-button bra3 r tac br1 cor mgt5 mgb20  f13 " routerLink='/cart/cart'>
                     View My Cart </button>
                 </div>
               </dt>
@@ -132,7 +108,7 @@
       <ul class="brand-list " [class.list-hid]='hidden && notHome'>
         <nz-spin [nzSpinning]='isGettingCate'></nz-spin>
         <li *ngFor = 'let item of allCateList '>
-          <a (click)='goOneLevel(1)'>{{item.cate_name}}</a>
+          <a (click)='goOneLevel(item.id)'>{{item.cate_name}}</a>
           <div class="list-content">
             <div class="more" (click)='goOneLevel(item.id)'>
               {{"More"|translate}}

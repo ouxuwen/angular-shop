@@ -4,7 +4,7 @@
       <span class="promotion_bg" *ngIf='discount'>
         <span class="product-discount-number">{{discounts}}</span>
       </span>
-      <span class="warehouse-icon us-warehouse-icon product-list-car"></span>
+      
       <img (click)='goGoodsDetail(goods.id)' width="160px" class="lazy mgao" [alt]="goods.goods_name" [defaultImage]="defaultImg" [lazyLoad]="goods.url" style="display: block;">
     </a>
   </div>

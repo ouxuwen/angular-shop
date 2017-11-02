@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute} from '@angular/router';
+import { HomeService } from '../services/home.service';
+import { EventsService } from 'angular4-events';
+import { NzModalService } from 'ng-zorro-antd';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,49 +15,12 @@ export class CartComponent implements OnInit {
   _allChecked = false;
   _indeterminate = false;
   _displayData = [];
-  data = [{
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  },
-  {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }] ;
-  constructor(public router : Router,public route:ActivatedRoute) {
+  data = [] ;
+  cartCount: number = 0;
+  cartTotal = 0;
+  cartList: any=[];
+  constructor(private confirmServ: NzModalService,public eventsService: EventsService, public homeService: HomeService,public router : Router,public route:ActivatedRoute) {
+    this.getCart() ;
   }
   _displayDataChange($event) {
     this._displayData = $event;
@@ -94,5 +60,15 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/cart/check-out'],{queryParams:{check:id}});
   }
 
+  getCart() {
+    this.homeService.cart_list().map(res => res.json()).subscribe(res => {
+      if (res.status == 1) {
+        this.cartList = res.data.list;
+        this.cartCount = res.data.list.length;
+        this.cartTotal = res.data.total_price;
+      }
+    })
+  }
+  
   
 }

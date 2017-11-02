@@ -4,7 +4,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { HomeService } from '../../services/home.service';
-import {　EventsService } from 'angular4-events'
+import { EventsService } from 'angular4-events';
 
 @Component({
   selector: 'app-search',
@@ -12,23 +12,33 @@ import {　EventsService } from 'angular4-events'
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  cartCount: number = 1;
+ 
   showCart: boolean = false;
-
+  cartCount: number = 0;
+  cartTotal = 0;
+  cartList: any = [];
   hidden: boolean = false;
   notHome: boolean = false;
   allCateList: any;
   isGettingCate: boolean = false;
-  constructor(public eventsService : EventsService,public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
-    this.eventsService.subscribe('cartEvents').subscribe(res =>{
-      console.log(res);
+  isLogin:boolean = false;
+
+  constructor(public eventsService: EventsService, public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
+    
+    this.eventsService.subscribe('cart').subscribe(res => {
+      this.getCart();
     })
     this.getAllCateList();
-   }
+    if(localStorage.getItem('userInfo')){
+      this.getCart();
+      this.isLogin = true;
+    }
+   
+  }
 
   ngOnInit() {
     console.log(this.router);
-    
+
     this.router.events
       .filter(event => event instanceof NavigationEnd)
 
@@ -56,25 +66,25 @@ export class SearchComponent implements OnInit {
       let arr = res['cate_list'];
       let newArr = [];
       arr.forEach(val => {
-        if(val.pid == 0){
+        if (val.pid == 0) {
           newArr.push(val);
         }
       });
-      newArr.forEach((val,i) => {
+      newArr.forEach((val, i) => {
         newArr[i]['children'] = []
-        arr.forEach((item,j )=>{
-          if(item.pid == val.id){
+        arr.forEach((item, j) => {
+          if (item.pid == val.id) {
             newArr[i]['children'].push(item);
           }
         })
       })
 
-      newArr.forEach((val,i)=>{
+      newArr.forEach((val, i) => {
         let child = val['children'];
-        child.forEach((item,j)=>{
-          newArr[i]['children'][j]['children']=[]
-          arr.forEach((m,n)=>{
-            if(m.pid == item.id){
+        child.forEach((item, j) => {
+          newArr[i]['children'][j]['children'] = []
+          arr.forEach((m, n) => {
+            if (m.pid == item.id) {
               newArr[i]['children'][j]['children'].push(m)
             }
           })
@@ -82,29 +92,37 @@ export class SearchComponent implements OnInit {
       })
       this.allCateList = newArr;
       console.dir(newArr)
-      localStorage.setItem('allCateList',JSON.stringify(newArr));
-      
+      localStorage.setItem('allCateList', JSON.stringify(newArr));
+
     }, err => {
       this.isGettingCate = false;
     })
   }
 
-  goOneLevel(id?){
-    this.router.navigate(['/goods/all-model'], { queryParams: { cate: id} });
+  goOneLevel(id?) {
+    this.router.navigate(['/goods/all-model'], { queryParams: { cate: id } });
   }
-  goTwoLevel(id?){
-    this.router.navigate(['/goods/model'], { queryParams: { cate: id} });
+  goTwoLevel(id?) {
+    this.router.navigate(['/goods/model'], { queryParams: { cate: id } });
   }
-  goGoodsList(id?){
-    this.router.navigate(['/goods/goods-list'],{ queryParams: { cate: id} })
+  goGoodsList(id?) {
+    this.router.navigate(['/goods/goods-list'], { queryParams: { cate: id } })
   }
-
-  goMyCart(){
+  goGoodsDetail(id){
+    this.router.navigate(['/goods/goods-detail'], { queryParams: { goodsId: id } })
+  }
+  goMyCart() {
     this.router.navigate(['/cart/cart']);
   }
 
-  getCart(){
-
+  getCart() {
+    this.homeService.cart_list().map(res => res.json()).subscribe(res => {
+      if (res.status == 1) {
+        this.cartList = res.data.list;
+        this.cartCount = res.data.list.length;
+        this.cartTotal = res.data.total_price;
+      }
+    })
   }
 
 
