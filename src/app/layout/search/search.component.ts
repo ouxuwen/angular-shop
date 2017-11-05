@@ -5,14 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { HomeService } from '../../services/home.service';
 import { EventsService } from 'angular4-events';
-
+import { NzModalService } from 'ng-zorro-antd';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
- 
+
   showCart: boolean = false;
   cartCount: number = 0;
   cartTotal = 0;
@@ -21,19 +21,19 @@ export class SearchComponent implements OnInit {
   notHome: boolean = false;
   allCateList: any;
   isGettingCate: boolean = false;
-  isLogin:boolean = false;
+  isLogin: boolean = false;
+  isSpinning: boolean = false;
+  constructor(private confirmServ: NzModalService, public eventsService: EventsService, public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
 
-  constructor(public eventsService: EventsService, public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
-    
     this.eventsService.subscribe('cart').subscribe(res => {
       this.getCart();
     })
     this.getAllCateList();
-    if(localStorage.getItem('userInfo')){
+    if (localStorage.getItem('userInfo')) {
       this.getCart();
       this.isLogin = true;
     }
-   
+
   }
 
   ngOnInit() {
@@ -108,7 +108,7 @@ export class SearchComponent implements OnInit {
   goGoodsList(id?) {
     this.router.navigate(['/goods/goods-list'], { queryParams: { cate: id } })
   }
-  goGoodsDetail(id){
+  goGoodsDetail(id) {
     this.router.navigate(['/goods/goods-detail'], { queryParams: { goodsId: id } })
   }
   goMyCart() {
@@ -116,14 +116,37 @@ export class SearchComponent implements OnInit {
   }
 
   getCart() {
+    this.isSpinning = true;
     this.homeService.cart_list().map(res => res.json()).subscribe(res => {
+      this.isSpinning = false;
       if (res.status == 1) {
         this.cartList = res.data.list;
         this.cartCount = res.data.list.length;
         this.cartTotal = res.data.total_price;
       }
+    }, err => {
+      this.isSpinning = false;
     })
   }
 
+  deleteCartItem(id) {
+    this.isSpinning = true;
+    let data = {
+      id: id
+    }
+    this.homeService.delete_to_cart(data).map(res => res.json()).subscribe(res => {
+      this.isSpinning = false;
+      if (res.status == 1) {
+        this.getCart();
+        this.confirmServ.success({
+          title: "Success",
+          content: " Delete Success !",
+          okText: "Confirm"
+        })
+      }
+    }, err => {
+      this.isSpinning = false;
+    })
+  }
 
 }

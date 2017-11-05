@@ -10,19 +10,22 @@ import { OrderBoxComponent } from './order-box/order-box.component';
 import { GoodsBox2Component } from './goods-box2/goods-box2.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AddressBoxComponent } from './address-box/address-box.component';
+
 @NgModule({
   declarations: [
     GoodsBoxComponent,
     FaceBoxComponent,
     OrderBoxComponent,
     GoodsBox2Component,
-    AddressBoxComponent
+    AddressBoxComponent,
+   
   ],
   exports: [
     GoodsBoxComponent,
     FaceBoxComponent,
     OrderBoxComponent,
-    GoodsBox2Component
+    GoodsBox2Component,
+    AddressBoxComponent
   ],
   imports: [
     NgZorroAntdModule,

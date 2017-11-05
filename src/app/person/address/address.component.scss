@@ -1,0 +1,102 @@
+.address{
+    font-size: 14px;
+    .col2-set {
+        padding: 10px 0;
+    }
+    
+    
+    .fix {
+        zoom: 1;
+    }
+    .mgb10 {
+        margin-bottom: 10px;
+    }
+    
+    .f20 {
+        font-size: 20px !important;
+    }
+    button, input[type='submit'] {
+        height: 28px;
+        padding: 0 15px;
+        color: #ddd;
+        border: 0px;
+        border-radius: 2px;
+        background-color: #336699;
+        cursor: pointer;
+        color: #fff;
+        margin: 5px 0;
+        font-family: "open sans",Arial,Geneva, sans-serif;
+    }
+    .my-account .col2-set {
+        padding: 10px 0;
+    }
+    
+
+    .fix {
+        zoom: 1;
+    }    
+    .my-account .buttons-set {
+        clear: both;
+        margin-left: 0;
+    }
+    .back-link {
+        margin-top: 10px;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    .addresses-list ol .item {
+        padding-bottom: 20px;
+    }
+    
+
+    .addresses-list li.item {
+        border: 1px solid #ccc;
+        padding: 10px 13px;
+        margin: 0 0 10px;
+    }
+   
+    .prae {
+        position: relative;
+    }
+    
+    li {
+        list-style: none;
+    }
+    .address-close {
+        position: absolute;
+        top: 4px;
+        right: 10px;
+        height: 10px;
+        width: 10px;
+        font-style: normal;
+        cursor: pointer;
+    }
+    
+    
+    .f18 {
+        font-size: 18px !important;
+    }
+    .defalut-address {
+        background: #ff6349;
+        color: #fff;
+        padding: 2px 15px;
+    }
+    .addresses-list address {
+        margin: 10px 0;
+    }
+    
+
+    address, caption, cite, code, dfn, em, th, var {
+        font-style: normal;
+        font-weight: normal;
+    }
+    .addresses-list p {
+        margin: 0;
+    }
+    
+    
+    .tar {
+        text-align: right;
+    }
+}

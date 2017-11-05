@@ -8,28 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AllCategoriesComponent implements OnInit {
   allCate:any = [
-    {
-      "id": 1,
-      "pid": 0,
-      "cate_name": "国产",
-      "cover": 0,
-      "create_time": 1486199792,
-      "update_time": 0,
-      "sort": 0,
-      "status": 1,
-      url:""
-    },
-    {
-      "id": 2,
-      "pid": 0,
-      "cate_name": "进口",
-      "cover": 0,
-      "create_time": 1486199958,
-      "update_time": 0,
-      "sort": 0,
-      "status": 1,
-      url:""
-    }
   ];
   defaultImage = 'assets/image/timg.gif';
   constructor(public homeService : HomeService,public router: Router) {

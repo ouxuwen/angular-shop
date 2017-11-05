@@ -13,12 +13,12 @@ export class GoodsComponent implements OnInit {
   lastLvl: any;
   secondLvl: any;
   firstLvl: any;
-  constructor(private events:EventsService,private confirmServ: NzModalService,public router: Router, public activeRouter: ActivatedRoute, private homeService: HomeService) {
+  constructor(private homeService: HomeService, private events: EventsService, private confirmServ: NzModalService, public router: Router, public activeRouter: ActivatedRoute) {
     this.activeRouter.queryParams.subscribe(res => {
       this.goodsId = res['goodsId'];
-      
+
       this.getGoodsInfo();
-      
+
     })
 
   }
@@ -32,38 +32,38 @@ export class GoodsComponent implements OnInit {
   showGoods: any;
   imgIndex = 0;
   goodsIndex = 0;
-  goodsCount:number = 1;
-  goodsTotalPrice:number = 0.00;
+  goodsCount: number = 1;
+  goodsTotalPrice: number = 0.00;
+
+  
   getGoodsInfo() {
-    
-   
     this.isSpinning = true;
-    this.homeService.goods_info({info_id:this.goodsId}).map(res => res.json()).subscribe(res =>{
-        this.goodsInfo = res.data;
-        this.zoomedImageSrc = this.goodsInfo.gallery[0].url;
-        this.showGoods = this.goodsInfo.goods_list[this.goodsIndex];
-    
-        this.isSpinning = false;
-        
-          let id = this.goodsInfo.goods_info.cate_id;
-          this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
-          if (this.allCateList) {
-            this.allCateList.forEach(element => {
-              element['children'].forEach(val => {
-                val['children'].forEach(item => {
-                  if (id == item.id) {
-                    this.lastLvl = item;
-                    this.secondLvl = val;
-                    this.firstLvl = element;
-                  }
-                })
-              })
-            });
-          }
-          
-    
-        
-    },err =>{
+    this.homeService.goods_info({ info_id: this.goodsId }).map(res => res.json()).subscribe(res => {
+      this.goodsInfo = res.data;
+      this.zoomedImageSrc = this.goodsInfo.gallery[0].url;
+      this.showGoods = this.goodsInfo.goods_list[this.goodsIndex];
+
+      this.isSpinning = false;
+
+      let id = this.goodsInfo.goods_info.cate_id;
+      this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
+      if (this.allCateList) {
+        this.allCateList.forEach(element => {
+          element['children'].forEach(val => {
+            val['children'].forEach(item => {
+              if (id == item.id) {
+                this.lastLvl = item;
+                this.secondLvl = val;
+                this.firstLvl = element;
+              }
+            })
+          })
+        });
+      }
+
+
+
+    }, err => {
       this.isSpinning = false;
     })
   }
@@ -100,21 +100,21 @@ export class GoodsComponent implements OnInit {
     }
   }
 
-  changeGoodsIndex(i){
+  changeGoodsIndex(i) {
     this.goodsIndex = i;
     this.showGoods = this.goodsInfo.goods_list[this.goodsIndex];
   }
 
-  addWishList(id){
+  addWishList(id) {
 
   }
-  dj :number= 0;
-  moveLeft(i){
+  dj: number = 0;
+  moveLeft(i) {
     let ul = document.getElementById('imgList');
     let num = this.goodsInfo.gallery.length;
     this.dj += i;
-    if(num>6 && this.dj >=(6-num)&&this.dj<=0){
-      ul.style.marginLeft=(this.dj)*62+"px";
+    if (num > 6 && this.dj >= (6 - num) && this.dj <= 0) {
+      ul.style.marginLeft = (this.dj) * 62 + "px";
     }
   }
   goAllModel(id) {
@@ -126,45 +126,45 @@ export class GoodsComponent implements OnInit {
   goGoodsList(id) {
     this.router.navigate(['/goods/goods-list'], { queryParams: { cate: id } })
   }
-  addToCart(){
+  addToCart() {
     this.isSpinning = true;
-    let data  = {
-      goods_id:this.showGoods.id,
-      info_id:this.showGoods.info_id,
-      goods_sum:this.goodsCount
+    let data = {
+      goods_id: this.showGoods.id,
+      info_id: this.showGoods.info_id,
+      goods_sum: this.goodsCount
     }
-    this.homeService.add_to_cart(data).subscribe(res =>{
+    this.homeService.add_to_cart(data).subscribe(res => {
       this.isSpinning = false;
       this.events.publish('cart');
-      if( res.json().status = 1){
+      if (res.json().status = 1) {
         this.confirmServ.success({
           title: 'Success',
           content: res.json().msg,
-          okText:"Confirm"
+          okText: "Confirm"
         });
       }
-    },err =>{
+    }, err => {
       this.isSpinning = false;
     })
   }
-  addToWishList(){
+  addToWishList() {
     this.isSpinning = true;
-    let data  = {
-      goods_id:this.showGoods.id,
-      info_id:this.showGoods.info_id,
+    let data = {
+      goods_id: this.showGoods.id,
+      info_id: this.showGoods.info_id,
     }
-    this.homeService.add_goods_collect(data).subscribe(res =>{
+    this.homeService.add_goods_collect(data).subscribe(res => {
       this.isSpinning = false;
-      if( res.json().status = 1){
+      if (res.json().status = 1) {
         this.confirmServ.success({
           title: 'Success',
           content: res.json().msg
         });
       }
-    },err =>{
+    }, err => {
       this.isSpinning = false;
     })
   }
-  
+
 
 }

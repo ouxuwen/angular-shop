@@ -1,36 +1,38 @@
 <div class="goods-box2">
-  <div class="p_img">
-    <a [title]="goods.goods_name">
+  <nz-spin [nzSpinning]='isSpinning'>
+    <div class="p_img">
+      <a [title]="goods.goods_name">
       <span class="promotion_bg" *ngIf='discount'>
         <span class="product-discount-number">{{discounts}}</span>
       </span>
       
-      <img (click)='goGoodsDetail(goods.id)' width="160px" class="lazy mgao" [alt]="goods.goods_name" [defaultImage]="defaultImg" [lazyLoad]="goods.url" style="display: block;">
+      <img (click)='goGoodsDetail(goods.info_id)' width="160px" class="lazy mgao" [alt]="goods.goods_name" [defaultImage]="defaultImg" [lazyLoad]="goods.url" style="display: block;">
     </a>
-  </div>
-  <div class="tac">
-    <div class="oh h75">
-      <a class="title-a" (click)='goGoodsDetail(goods.id)' [title]="goods.goods_name">{{goods.goods_name}}</a>
     </div>
-    <div class="price-box" rel="nofollow">
-      <p class="old-price">
-        <span class="price" id="old-price-28266">
+    <div class="tac">
+      <div class="oh h75">
+        <a class="title-a" (click)='goGoodsDetail(goods.info_id)' [title]="goods.goods_name">{{goods.goods_name}}</a>
+      </div>
+      <div class="price-box" rel="nofollow">
+        <p class="old-price">
+          <span class="price" id="old-price-28266">
           ${{goods.costprice}}</span>
-      </p>
-      <span class="regular-price" id="product-price-29764">
-        <span class="price">${{goods.price}}</span>
-      </span>
+        </p>
+        <span class="regular-price" id="product-price-29764">
+        <span class="price">${{goods.price }}</span>
+        </span>
+      </div>
     </div>
-  </div>
-  <div class="clear1px"></div>
-  <div class="alpha alpha-no-margin on">
-    <nz-input-number [(ngModel)]="count" [nzMin]="1" [nzStep]="1" style='vertical-align: middle'></nz-input-number>
-    <button pid="29764" class="stock-cart button ibm h25 lh25 model-vertical-align" >
+    <div class="clear1px"></div>
+    <div class="alpha alpha-no-margin on">
+      <nz-input-number [(ngModel)]="count" [nzMin]="1" [nzStep]="1" style='vertical-align: middle'></nz-input-number>
+      <button pid="29764" class="stock-cart button ibm h25 lh25 model-vertical-align" (click)='addToCart()'>
       <span>
         <span>
-          Add to Cart
+            {{"AddtoCart"|translate}}
         </span>
       </span>
     </button>
-  </div>
+    </div>
+  </nz-spin>
 </div>

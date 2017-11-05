@@ -1,32 +1,34 @@
 <div class="goods-box">
-  <div class="discount" *ngIf='discount'>
-    <span class="product-discount-number">
+  <nz-spin [nzSpinning]='isSpinning'>
+    <div class="discount" *ngIf='discount'>
+      <span class="product-discount-number">
       {{discounts}}
     </span>
-  </div>
-  <div class="l p-img">
-    <img (click)='goGoodsDetail(goods.id)' [defaultImage]="defaultImg" [lazyLoad]="goods.url">
+    </div>
+    <div class="l p-img">
+      <img (click)='goGoodsDetail(goods.info_id)' [defaultImage]="defaultImg" [lazyLoad]="goods.url">
 
-  </div>
-  <div class="l p-font">
-    <div class="p-title" (click)='goGoodsDetail(goods.id)'>
-      <a>
+    </div>
+    <div class="l p-font">
+      <div class="p-title" (click)='goGoodsDetail(goods.info_id)'>
+        <a>
         {{goods.goods_name}}
       </a>
-    </div>
-    <div class="ratings">
-      <span class="amount rating-links rateing-links-new">
+      </div>
+      <div class="ratings">
+        <span class="amount rating-links rateing-links-new">
         <a>Write a review</a>
       </span>
+      </div>
+      <div class="pd">
+        <span class="price">$ {{goods.price}} </span>
+        <span *ngIf='discount'> ~ ${{goods.costprice}} </span>
+      </div>
+      <div class="min-cart">
+        <nz-input-number [(ngModel)]="count" [nzMin]="1" [nzStep]="1" style='vertical-align: middle'></nz-input-number>
+
+        <button style='vertical-align: middle' (click)='addToCart()'>{{"AddtoCart"|translate}}</button>
+      </div>
     </div>
-    <div class="pd">
-      <span class="price">$ {{goods.price}} </span>
-      <span *ngIf='discount'> ~ ${{goods.costprice}} </span>
-    </div>
-    <div class="min-cart">
-        <nz-input-number [(ngModel)]="count" [nzMin]="1"  [nzStep]="1" style='vertical-align: middle'></nz-input-number>
-      
-      <button style='vertical-align: middle'>Add to Cart</button>
-    </div>
-  </div>
+  </nz-spin>
 </div>

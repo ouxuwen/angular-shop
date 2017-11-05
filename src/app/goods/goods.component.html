@@ -1,31 +1,31 @@
 <div class="center">
-  <nz-spin [nzSpinning]='isSpinning' >
+  <nz-spin [nzSpinning]='isSpinning'>
     <div class="main-container col1-layout">
       <div class="main">
 
         <div class="url width1024 h60 cbg">
-            <ul>
-                <li class="icon"></li>
-                <li class="home prae">
-                  <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
-                  <font>»</font>
-                </li>
-                <li class="category170 prae">
-                  <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
-                  <font>»</font>
-                </li>
-                <li class="category174 prae">
-                  <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl?.cate_name}}</a>
-                  <font>»</font>
-                </li>
-                <li class="current prae">
-                  <div class="last-nav cor">
-                    <strong class="pdr8 pdl8" (click)=' goGoodsList(lastLvl.id)'>{{lastLvl?.cate_name}}</strong>
-                    <div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+          <ul>
+            <li class="icon"></li>
+            <li class="home prae">
+              <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
+              <font>»</font>
+            </li>
+            <li class="category170 prae">
+              <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
+              <font>»</font>
+            </li>
+            <li class="category174 prae">
+              <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl?.cate_name}}</a>
+              <font>»</font>
+            </li>
+            <li class="current prae">
+              <div class="last-nav cor">
+                <strong class="pdr8 pdl8" (click)=' goGoodsList(lastLvl.id)'>{{lastLvl?.cate_name}}</strong>
+                <div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
         <div class="">
           <div class="product-warpper-left">
@@ -196,7 +196,7 @@
               </li>
 
               <li class="bottom-ds" style="clear:both;">
-                <div class="buy-options fix" *ngIf ='goodsInfo?.standard_list.length>0'>
+                <div class="buy-options fix" *ngIf='goodsInfo?.standard_list.length>0'>
                   <h5>Options:</h5>
                   <div class="buy-options-box l">
                     <a (click)='changeGoodsIndex(i)' *ngFor='let item of goodsInfo.goods_list;let i =index' [class.isSalable]="goodsIndex != i"
@@ -212,20 +212,20 @@
                   <li class="qty ibm lh50 h50"><span>Qty:</span></li>
 
                   <li class="add_buy  ibm h50 ov">
-                    <nz-input-number style='margin-top:12px; ' (ngModelChange)="goodsTotalPrice = goodsCount*showGoods?.price" [(ngModel)]="goodsCount" [nzSize]="'small'"
-                      [nzMin]="1" [nzStep]="1"></nz-input-number>
+                    <nz-input-number style='margin-top:12px; ' (ngModelChange)="goodsTotalPrice = goodsCount*showGoods?.price" [(ngModel)]="goodsCount"
+                      [nzSize]="'small'" [nzMin]="1" [nzStep]="1"></nz-input-number>
                     <div class="prae cart-btn-lists">
-                      <button (click)='addToCart()' type="button" title="add to cart" id="add-cart" class="buy-cart cfff cor mg0 fwb ibm">ADD TO CART</button>
+                      <button (click)='addToCart()' type="button" title="add to cart" id="add-cart" class="buy-cart cfff cor mg0 fwb ibm">{{  "AddtoCart" | translate}}</button>
                       <a (click)='addToWishList()' class="add-to-wish ibm" title="Add to wish list">add to wish list</a>
 
                     </div>
                   </li>
                   <li class="ibm lh50 h50">
                     <div class="totalhidden">
-                      
+
                       <span class="total_price">Total Price:</span>
                       <!--<span id="totalshow">$93.41</span>-->
-                      <span id="totalshow">$ {{ goodsCount*showGoods?.price}}</span>
+                      <span id="totalshow">$ {{ goodsCount*showGoods?.price | number:'1.2-2'}}</span>
 
                     </div>
                   </li>

@@ -19,8 +19,10 @@ export class CartComponent implements OnInit {
   cartCount: number = 0;
   cartTotal = 0;
   cartList: any=[];
+  isSpinning: boolean = false;
   constructor(private confirmServ: NzModalService,public eventsService: EventsService, public homeService: HomeService,public router : Router,public route:ActivatedRoute) {
     this.getCart() ;
+    
   }
   _displayDataChange($event) {
     this._displayData = $event;
@@ -32,6 +34,14 @@ export class CartComponent implements OnInit {
     const allUnChecked = this._displayData.every(value => !value.checked);
     this._allChecked = allChecked;
     this._indeterminate = (!allChecked) && (!allUnChecked);
+    this._displayData.forEach(value =>{
+      this.cartTotal = 0;
+      if(value.checked){
+        this.cartTotal += value.price*value.goods_sum
+      }
+    })
+    console.log(this._displayData);
+
   };
 
   _checkAll(value) {
@@ -56,8 +66,8 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/goods/goods-detail'],{queryParams:{goodsId:id}});
   }
 
-  goCheckOut(id){
-    this.router.navigate(['/cart/check-out'],{queryParams:{check:id}});
+  goCheckOut(){
+    this.router.navigate(['/cart/check-out']);
   }
 
   getCart() {
@@ -69,6 +79,41 @@ export class CartComponent implements OnInit {
       }
     })
   }
+
+  confirmDetele(id){
+    this.confirmServ.confirm({
+      title:"Are you sure to delete this one ?",
+      okText:"Confirm",
+      cancelText:"Cancel",
+      onOk:()=>{
+        this.deleteCartItem(id)
+      }
+    })
+  }
+
+  deleteCartItem(id) {
+    this.isSpinning = true;
+    let data = {
+      id: id
+    }
+    this.homeService.delete_to_cart(data).map(res => res.json()).subscribe(res => {
+      this.isSpinning = false;
+      if (res.status == 1) {
+        this.getCart();
+        this.confirmServ.success({
+          title: "Success",
+          content: " Delete Success !",
+          okText: "Confirm"
+        })
+      }
+    }, err => {
+      this.isSpinning = false;
+    })
+  }
   
+  updateCart(id){
+
+  }
+
   
 }

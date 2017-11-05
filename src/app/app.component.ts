@@ -22,7 +22,7 @@ export class AppComponent {
     })
   }
   title = 'app';
-
+  emailValid:boolean = false;
   ngOnInit() {
     this.translateService.addLangs(["zh", "en"]);
     this.translateService.setDefaultLang('en')
@@ -75,7 +75,7 @@ export class AppComponent {
       this.registerForm.controls[i].markAsDirty();
     }
 
-    if (this.registerForm.invalid) {
+    if (this.registerForm.invalid || !this.emailValid) {
       return;
     }
     this.homeService.register(this.loginForm.value).subscribe(res => {
@@ -111,15 +111,17 @@ export class AppComponent {
   }
 
   userNameAsyncValidator = (control: FormControl): any => {
-    return Observable.create(function (observer) {
-      setTimeout(() => {
-        if (control.value === '1@1') {
+    return Observable.create((observer)=> {
+      this.homeService.checkEmail({email:this.getFormControl('email').value}).map(res => res.json()).subscribe(res=>{
+        if(res.status == 0){
           observer.next({ error: true, duplicated: true });
-        } else {
+          this.emailValid = false;
+        }else{
           observer.next(null);
+          this.emailValid = true;
         }
         observer.complete();
-      }, 1000);
+      })
     });
   };
 

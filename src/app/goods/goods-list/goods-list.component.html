@@ -8,21 +8,23 @@
           <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
           <font>»</font>
         </li>
-        <li class="category170 prae">
-          <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
-          <font>»</font>
-        </li>
-        <li class="category174 prae">
-          <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl?.cate_name}}</a>
-          <font>»</font>
-        </li>
-        <li class="current prae">
-          <div class="last-nav cor">
-            <strong class="pdr8 pdl8">{{lastLvl?.cate_name}}</strong>
-            <div>
+        <div *ngIf='paramSearch.cate_id'>
+          <li class="category170 prae">
+            <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
+            <font>»</font>
+          </li>
+          <li class="category174 prae">
+            <a class="pdr8 pdl8" title="iPhone" (click)='goModel(secondLvl.id)'>{{secondLvl?.cate_name}}</a>
+            <font>»</font>
+          </li>
+          <li class="current prae">
+            <div class="last-nav cor">
+              <strong class="pdr8 pdl8">{{lastLvl?.cate_name}}</strong>
+              <div>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        </div>
       </ul>
     </div>
 
@@ -94,9 +96,9 @@
 
       </div>
       <div class="productlist">
-        <nz-spin  style="position:absolute; top:50%;left:50%;" [nzSpinning]="nzSpinning"></nz-spin>
+        <nz-spin style="position:absolute; top:50%;left:50%;" [nzSpinning]="nzSpinning"></nz-spin>
         <app-goods-box2 *ngFor='let item of finallyList' [goods]='item'></app-goods-box2>
-      
+
         <div class="clear"></div>
 
       </div>
@@ -115,7 +117,8 @@
                     <option value="40">40</option>
                     <option value="60">60</option>
                   </select>
-                  <nz-pagination style="float:right; " (ngModelChange)='changePage()' [nzPageSize]="showNum" [(nzPageIndex)]="_current" [nzTotal]="showGoodsList.length" [nzSize]="'small'"></nz-pagination>
+                  <nz-pagination style="float:right; " (ngModelChange)='changePage()' [nzPageSize]="showNum" [(nzPageIndex)]="_current" [nzTotal]="total"
+                    [nzSize]="'small'"></nz-pagination>
                 </div>
               </li>
               <li class="pager">

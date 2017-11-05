@@ -56,7 +56,7 @@
 
             <div id="local_content">
               <div class="prae brlr">
-                <nz-table #nzTable [nzDataSource]="cartList" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
+                <nz-table [nzLoading]='isSpinng' #nzTable [nzDataSource]="cartList" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
                   (nzPageSizeChange)="_refreshStatus()">
                   <thead nz-thead>
                     <tr>
@@ -74,7 +74,7 @@
                       <th nz-th>
                         <span>{{"Price" | translate}}</span>
                       </th>
-                      <th nz-th>
+                      <th nz-th style='text-align:center'>
                         <span>{{"Qty" | translate}}</span>
                       </th>
                       <th nz-th>
@@ -100,16 +100,24 @@
                       <td nz-td>
                         <a (click)='goGoodsDetail(data.id)'>
                           {{data.goods_name}}
+                          <span style="color:red ">{{data.standard_value1}}</span>
                         </a>
                       </td>
                       <td nz-td>$ {{data.price}}</td>
-                      <td nz-td>$ {{data.price*data.goods_sum}}</td>
+                     
                       <td nz-td>
-                        <nz-input-number style="text-align:center" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.goods_sum" [nzMin]="1"
-                          [nzStep]="1"></nz-input-number>
+                          <button  class="add">
+                              -
+                            </button>
+                        <span class="sum" style=" width:50px; text-align:center"  >
+                        {{data.goods_sum}}</span>
+                          <button class="add" >
+                              +
+                            </button>
                       </td>
+                      <td nz-td>$ {{data.price*data.goods_sum | number:'1.2-2'}}</td>
                       <td nz-td>
-                        <button nz-button [nzType]="'danger'">
+                        <button nz-button [nzType]="'danger'" (click)='confirmDetele(data.id)'>
                           <span>{{"Remove" |translate }}</span>
                         </button>
 
@@ -126,13 +134,9 @@
                   <tr>
                     <td width="100%" rowspan="1" valign="top">
                       <div>
-                        <input warehouse="0" checked="checked" type="checkbox" class="cart-select-all ibm">
-                        <button type="button" style="display:none;" class="button update-cart-btns" title="Update Shopping Cart">
-                          <span>
-                            <span>Update Shopping Cart</span>
-                          </span>
-                        </button>
-                        <button type="submit" onclick="return remove_confirm()" name="update_cart_action" value="delete_qty" title="Remove Selected Items"
+                        
+                        
+                        <button (click)='_checkAll(false)' type="submit"  name="update_cart_action" value="delete_qty" title="Remove Selected Items"
                           class="button ibm">
                           <span>
                             <span>Remove Selected Items</span>
@@ -168,7 +172,7 @@
                                   <tr>
                                     <td class="title">Total (Excluding Freight)</td>
                                     <td class="value">
-                                      <span class="price">$ {{cartTotal}}</span>
+                                      <span class="price">$ {{cartTotal |  number:'1.2-2'}}</span>
                                     </td>
                                   </tr>
                                   <tr>
@@ -193,7 +197,7 @@
                     <td align="right" class="separateorder_content">
                       <ul class="checkout-types">
                         <li style="position:relative;">
-                          <button (click)='goCheckOut(1)' type="button" title="Proceed to Checkout" id="btn-proceed-checkout-id" class="btn-proceed-checkout orange btn-checkout">
+                          <button (click)='goCheckOut()' type="button" title="Proceed to Checkout" id="btn-proceed-checkout-id" class="btn-proceed-checkout orange btn-checkout">
                             <span class="cf">
                               <span class="cf">Proceed to Checkout</span>
                             </span>

@@ -1,5 +1,7 @@
 import { Component, OnInit,Input,Output,ViewChild,ElementRef } from '@angular/core';
-
+import { HomeService} from '../../services/home.service';
+import { EventsService } from 'angular4-events';
+import { NzModalService } from 'ng-zorro-antd';
 @Component({
   selector: 'app-order-box',
   templateUrl: './order-box.component.html',
@@ -8,12 +10,13 @@ import { Component, OnInit,Input,Output,ViewChild,ElementRef } from '@angular/co
 export class OrderBoxComponent implements OnInit {
 
   defaultImg  = 'assets/image/timg.gif';
-  constructor() { }
+  constructor(private homeService: HomeService,private events:EventsService,private confirmServ: NzModalService) { }
 
   
   ngOnInit() {
     
   }
 
+  
   
 }

@@ -22,7 +22,7 @@
 
     <div class="add-cart l cor cart-show-btn" (mouseenter)="showCart=true" (mouseleave)="showCart=flase">
       <div (click)='goMyCart()'>
-        <span   class="iconfont icon-cart"></span> {{"MyCart" | translate}}
+        <span class="iconfont icon-cart"></span> {{"MyCart" | translate}}
       </div>
 
       <div class="cart-number">
@@ -32,63 +32,63 @@
 
         </div>
         <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;" [style.display]="showCart ? 'block' : 'none' ">
-          <li class="cart-header"></li>
-          <li class="cart-list fix" *ngIf='cartCount ==0 || !isLogin '>
-            <dl class="pdl30 pdr30 pdt10">
-              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
-                <p class="fwb">
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">{{ "EmptyCart"|translate }}
+          <nz-spin [nzSpinning]='isSpinning'>
+            <li class="cart-header"></li>
+            <li class="cart-list fix" *ngIf='cartCount ==0 || !isLogin '>
+              <dl class="pdl30 pdr30 pdt10">
+                <dt class="mgb10 lh18 z" style="list-style-position:outside;">
+                  <p class="fwb">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">{{ "EmptyCart"|translate }}
+                      </font>
                     </font>
-                  </font>
-                </p>
-              </dt>
-            </dl>
-          </li>
-          <div *ngIf='cartCount >0 && isLogin '>
-          <li class="cart-list fix" *ngFor='let item of cartList'>
-            <dl class="pdl30 pdr30">
-              <dt class="mgb10 lh18 z" style="list-style-position:outside;">
-                <li class="item fix">
-                  <a (click)='goGoodsDetail(item.info_id)'
-                    [title]="item.goods_name" class="product-image">
+                  </p>
+                </dt>
+              </dl>
+            </li>
+            <div *ngIf='cartCount >0 && isLogin '>
+              <li class="cart-list fix" *ngFor='let item of cartList'>
+                <dl class="pdl30 pdr30">
+                  <dt class="mgb10 lh18 z" style="list-style-position:outside;">
+                    <li class="item fix">
+                      <a (click)='goGoodsDetail(item.info_id)' [title]="item.goods_name" class="product-image">
                     <img [src]="item.url"
                       width="50" height="50" >
                   </a>
-                  <div class="headrcart-details l tal pdr10">
-                    <p class="product-name">
-                      <a (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}}</a>
-                    </p>
-                  </div>
-                  <div class="headcart-qty l tar">
-                    <strong>{{item.goods_sum}}</strong> x
-                    <span class="price">AUD $ {{item.price}}</span>
-                    <br>
-                    <a title="Remove This Item" 
-                      class="btn-remove"></a>
-                  </div>
-                </li>
-              </dt>
-            </dl>
-          </li>
-        </div>
+                      <div class="headrcart-details l tal pdr10">
+                        <p class="product-name">
+                          <a (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}}</a>
+                        </p>
+                      </div>
+                      <div class="headcart-qty l tar">
+                        <strong>{{item.goods_sum}}</strong> x
+                        <span class="price">AUD $ {{item.price}}</span>
+                        <br>
+                        <a (click)='deleteCartItem(item.id)' title="Remove This Item" class="btn-remove"></a>
+                      </div>
+                    </li>
+                  </dt>
+                </dl>
+              </li>
+            </div>
 
-          <li class="cart-footer" *ngIf='cartCount ==0 || !isLogin'></li>
-          <li class="cart_bottom" *ngIf='cartCount >0 && isLogin'>
-            <dl>
-              <dt>
-                <div class="summary">
-                  <div class="tar pdt10">
-                    <span class="label">
+            <li class="cart-footer" *ngIf='cartCount ==0 || !isLogin'></li>
+            <li class="cart_bottom" *ngIf='cartCount >0 && isLogin'>
+              <dl>
+                <dt>
+                  <div class="summary">
+                    <div class="tar pdt10">
+                      <span class="label">
                       Cart Subtotal:</span>
-                    <span class="price">AUD $ {{ cartTotal }}</span>
-                  </div>
-                  <button type="button" title="View My Cart" class="headcart-button bra3 r tac br1 cor mgt5 mgb20  f13 " routerLink='/cart/cart'>
+                      <span class="price">AUD $ {{ cartTotal | number:'1.2-2' }}</span>
+                    </div>
+                    <button type="button" title="View My Cart" class="headcart-button bra3 r tac br1 cor mgt5 mgb20  f13 " routerLink='/cart/cart'>
                     View My Cart </button>
-                </div>
-              </dt>
-            </dl>
-          </li>
+                  </div>
+                </dt>
+              </dl>
+            </li>
+          </nz-spin>
         </ul>
 
       </div>
@@ -104,16 +104,16 @@
         <span class="label" routerLink='/goods/all-categories'>{{"AllBrand" | translate}}</span>
         <span class="iconfont icon-moreunfold"></span>
       </div>
-      
+
       <ul class="brand-list " [class.list-hid]='hidden && notHome'>
         <nz-spin [nzSpinning]='isGettingCate'></nz-spin>
-        <li *ngFor = 'let item of allCateList '>
+        <li *ngFor='let item of allCateList '>
           <a (click)='goOneLevel(item.id)'>{{item.cate_name}}</a>
           <div class="list-content">
             <div class="more" (click)='goOneLevel(item.id)'>
               {{"More"|translate}}
             </div>
-            <ul class="l" *ngFor = 'let val of item.children'>
+            <ul class="l" *ngFor='let val of item.children'>
               <div class="title">
                 <a (click)='goTwoLevel(val.id)'>
                   {{val.cate_name}}
@@ -126,9 +126,9 @@
             </ul>
           </div>
         </li>
-     
+
       </ul>
-    
+
     </div>
     <ul class="l nav-item">
       <li style="width:22%;">

@@ -1,3 +1,119 @@
-<p>
-  address-box works!
-</p>
+<nz-modal [nzWidth]='700' [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel($event)">
+  <ng-template #modalTitle>
+    Edit Address
+  </ng-template>
+  <ng-template #modalContent>
+      <nz-spin [nzSpinning]='isSpinning'>
+    <form nz-form [formGroup]="addressForm">
+      <div nz-row>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="firstname" nz-form-item-required>Firstname</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('firstname')">
+              <nz-input [nzSize]="'large'" [(ngModel)]='address.firstname' formControlName="firstname" [nzId]="'firstname'"></nz-input>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="lastname" nz-form-item-required>Lastname</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('lastname')">
+              <nz-input [nzSize]="'large'"  [(ngModel)]='address.lastname' formControlName="lastname" [nzId]="'lastname'"></nz-input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="telephone" nz-form-item-required>Telephone</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('telephone')">
+              <nz-input [nzSize]="'large'" [(ngModel)]='address.telephone' formControlName="telephone" [nzId]="'telephone'"></nz-input>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]='12'>
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]='8'>
+                  <label for="state" nz-form-item-required>State</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('state')">
+                  
+                  <nz-select  formControlName="state" style="width: 100%;" [(ngModel)]="address.state" nzAllowClear>
+                      <nz-option
+                        *ngFor="let option of city"
+                        [nzLabel]="option.name"
+                        [nzValue]="option.name"
+                        >
+                      </nz-option>
+                    </nz-select>
+                </div>
+              </div>
+         
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="city" nz-form-item-required>City</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('city')">
+              <nz-input [nzSize]="'large'"  [(ngModel)]='address.city' formControlName="city" [nzId]="'city'"></nz-input>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]='12'>
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]='8'>
+                  <label for="streetaddress" nz-form-item-required>Streetaddress</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('streetaddress')">
+                  <nz-input [nzSize]="'streetaddress'"  [(ngModel)]='address.streetaddress'  formControlName="streetaddress" [nzId]="'streetaddress'"></nz-input>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="zipcode" nz-form-item-required>Zipcode</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('zipcode')">
+              <nz-input [nzSize]="'large'"  [(ngModel)]='address.zipcode' formControlName="zipcode" [nzId]="'zipcode'"></nz-input>
+            </div>
+          </div>
+        </div>
+        <div nz-col [nzSpan]='12'>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]='8'>
+              <label for="country" nz-form-item-required>Country</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]='16'  >
+              <nz-input [nzDisabled]='true'  [(ngModel)]='address.country' [nzSize]="'country'" formControlName="country" [nzId]="'country'"></nz-input>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </form>
+  </nz-spin>
+  </ng-template>
+  <ng-template #modalFooter>
+    <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel()">
+        Back
+      </button>
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="handleOk()" [nzLoading]="isConfirmLoading">
+        Subimit
+      </button>
+  </ng-template>
+</nz-modal>

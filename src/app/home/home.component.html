@@ -23,24 +23,26 @@
       </div>
       <div class="product-title">
         <ul>
-          <li [class.active]="productIndex == 0" (mouseenter)='productIndex =0 '>
+          <li [class.active]="productIndex == 0" (mouseenter)='productIndex =0 ;getGoodsByClass("is_exc")'>
             <a>{{"ExceptionalDeals" | translate}}</a>
           </li>
-          <li [class.active]="productIndex == 1" (mouseenter)='productIndex =1 '>
+          <li [class.active]="productIndex == 1" (mouseenter)='productIndex =1 ;getGoodsByClass("is_new")'>
             <a>{{"NewArrivals" | translate}}</a>
           </li>
-          <li [class.active]="productIndex == 2" (mouseenter)='productIndex =2 '>
+          <li [class.active]="productIndex == 2" (mouseenter)='productIndex =2 ;getGoodsByClass("is_hot")'>
             <a>{{"BestSellers" | translate}}</a>
           </li>
-          <li [class.active]="productIndex == 3" (mouseenter)='productIndex =3 '>
-            <a>{{"U.S.Inventory" | translate}}</a>
+          <li [class.active]="productIndex == 3" (mouseenter)='productIndex =3 ;getGoodsByClass("is_rec")'>
+            <a>{{"Recommend" | translate}}</a>
           </li>
         </ul>
       </div>
-      <div class="product-box">
-        <app-goods-box *ngFor='let item of goods' [goods]='item'></app-goods-box>
+      <nz-spin [nzSpinning]='isSpinning'>
+        <div class="product-box">
+          <app-goods-box *ngFor='let item of goods' [goods]='item'></app-goods-box>
 
-      </div>
+        </div>
+      </nz-spin>
       <div>
         <div class="advantage mgt80">
           <h2 class="tac c-t f18 mgb15">
@@ -128,9 +130,9 @@
       </div>
 
     </div>
-    <div class="facebook" >
+    <div class="facebook">
       <app-facebook-box></app-facebook-box>
     </div>
-   
+
   </div>
 </div>

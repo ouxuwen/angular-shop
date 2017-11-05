@@ -11,66 +11,84 @@ export class HomeComponent implements OnInit {
   timer: any;
   left = 0;
   currentIndex = 0;
-  goods = [{
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "11.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  },
-  {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "21.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }];
+  isFinish:boolean = false;
+  isSpinning: boolean = false;
+  // goods = [{
+  //   "id": 46,
+  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
+  //   "cate_id": 62,
+  //   "price": "11.00",
+  //   "costprice": "1.00",
+  //   "cover": 572,
+  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
+  // },
+  // {
+  //   "id": 46,
+  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
+  //   "cate_id": 62,
+  //   "price": "1.00",
+  //   "costprice": "1.00",
+  //   "cover": 572,
+  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
+  // }, {
+  //   "id": 46,
+  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
+  //   "cate_id": 62,
+  //   "price": "1.00",
+  //   "costprice": "1.00",
+  //   "cover": 572,
+  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
+  // }, {
+  //   "id": 46,
+  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
+  //   "cate_id": 62,
+  //   "price": "1.00",
+  //   "costprice": "1.00",
+  //   "cover": 572,
+  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
+  // }, {
+  //   "id": 46,
+  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
+  //   "cate_id": 62,
+  //   "price": "1.00",
+  //   "costprice": "21.00",
+  //   "cover": 572,
+  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
+  // }];
+  goods = [];
   productIndex = 0;
   @ViewChild('banner') banner: ElementRef;
 
-  constructor(public homeService : HomeService ) { }
-  
+  constructor(public homeService: HomeService) {
+    this.getGoodsByClass("is_exc");
+  }
+
   ngOnInit() {
     this.getIndex();
   }
 
-  getIndex(){
-    this.homeService.getIndex().map(res => res.json().data).subscribe(res =>{
+  getIndex() {
+    this.homeService.getIndex().map(res => res.json().data).subscribe(res => {
       this.bannerImg = res.ads1_list;
       console.log(this.bannerImg);
     })
   }
 
 
-
+  getGoodsByClass(type) {
+    this.isSpinning = true;
+    let data = {};
+    data[type] = 1;
+    this.homeService.getCateGoodsList(data).map(res => res.json()).subscribe(res => {
+      this.isSpinning = false;
+      if (res.status == 1) {
+        this.goods = res.data.list.data;
+      }
+    }, err => {
+      this.isSpinning = false;
+    }
+    )
+  }
 
 
 

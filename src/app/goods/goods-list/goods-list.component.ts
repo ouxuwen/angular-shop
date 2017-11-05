@@ -18,28 +18,54 @@ export class GoodsListComponent implements OnInit {
   morePart: boolean = false;
   partsId = null;
   _current = 1;
-  showNum :number = 20;
+  showNum: number = 20;
+  total: number = 0;
+  paramSearch = {
+    keywords: null,
+    cate_id: null,
+    is_new: null,
+    is_rec: null,
+    is_hot: null,
+    is_exc: null,
+    current: null,
+    page_size: 20
+  }
   constructor(public homeService: HomeService, public router: Router, public activeRouter: ActivatedRoute) {
     this.activeRouter.queryParams.subscribe(params => {
-      let id = JSON.parse(params['cate']);
-      this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
-      if (this.allCateList) {
-        this.allCateList.forEach(element => {
-          element['children'].forEach(val => {
-            val['children'].forEach(item => {
-              if (id == item.id) {
-                this.lastLvl = item;
-                this.secondLvl = val;
-                this.firstLvl = element;
-              }
+
+
+      if (params['cate']) {
+        let id = JSON.parse(params['cate']);
+        this.paramSearch.cate_id = id;
+
+        this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
+        if (this.allCateList) {
+          this.allCateList.forEach(element => {
+            element['children'].forEach(val => {
+              val['children'].forEach(item => {
+                if (id == item.id) {
+                  this.lastLvl = item;
+                  this.secondLvl = val;
+                  this.firstLvl = element;
+                }
+              })
             })
-          })
-        });
+          });
+        }
       }
-      this.getCateList(id);
+
+      if (params['keywords']) {
+        console.log(params['keywords'])
+        this.paramSearch.keywords = params['keywords'];
+
+      }
+
+
+
+      this.getCateList();
 
     })
-    
+
   }
 
   ngOnInit() {
@@ -69,7 +95,7 @@ export class GoodsListComponent implements OnInit {
 
 
   selectPart(id, item?) {
-   
+
     if (this.partsId) {
       this.partsId = null;
       this.showGoodsList = this.goods;
@@ -90,26 +116,33 @@ export class GoodsListComponent implements OnInit {
     this.getShowList();
   }
 
-  changePage(){
+  changePage() {
     this.getShowList();
   }
-  getCateList(id) {
+  getCateList() {
     this.nzSpinning = true;
-    this.homeService.getCateGoodsList({ cate_id: id }).subscribe(res => {
+
+
+
+    this.homeService.getCateGoodsList(this.paramSearch).subscribe(res => {
       this.nzSpinning = false;
-      this.goods = res.json().data;
+      this.goods = res.json().data.list.data;
       this.showGoodsList = this.goods;
+      this.total = res.json().data.total;
+      this._current = res.json().data.list.current_page;
+      this.showNum = res.json().data.list.per_page;
+      console.log(res.json());
       this.getShowList();
     }, err => {
       this.nzSpinning = false;
     })
   }
 
-  finallyList:any=[];
-  getShowList(){
-    
+  finallyList: any = [];
+  getShowList() {
+
     let arr = JSON.parse(JSON.stringify(this.showGoodsList));
-    this.finallyList= arr.slice((this._current-1)*this.showNum,this._current*this.showNum);
+    this.finallyList = arr.slice((this._current - 1) * this.showNum, this._current * this.showNum);
 
   }
 }

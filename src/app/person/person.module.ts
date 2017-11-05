@@ -9,12 +9,16 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
 import { MyBingComponent } from './my-bing/my-bing.component';
-import { SharedModule } from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module';
+import { AddressComponent } from './address/address.component';
+import { WishListComponent } from './wish-list/wish-list.component'
 @NgModule({
     declarations: [
         PersonComponent,
         OrderComponent,
-        MyBingComponent
+        MyBingComponent,
+        AddressComponent,
+        WishListComponent
 
     ],
     exports: [

@@ -22,7 +22,6 @@
     "NewArrivals":"New Arrivals",
     "BestSellers":"Best Sellers",
     "Inventory":"U.S. Inventory",
-    
     "English":"英 语",
     "Chinese":"中文简体",
     "MChinese":"中文繁体",
@@ -69,5 +68,8 @@
     "Showing":"显 示",
     "RecordsPrePage":"项 每页",
     "DiscountPercentage":"折 扣",
-    "SendSuccess":"发送成功 , 稍后请检查邮箱。"
+    "SendSuccess":"发送成功 , 稍后请检查邮箱。",
+    "AddtoCart":"Add to Cart",
+    "EmptyCart":"Your cart is empty",
+    "Recommend":"Recommend"
 }

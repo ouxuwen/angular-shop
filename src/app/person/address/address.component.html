@@ -1,0 +1,52 @@
+<div class="address">
+  <div class="address_book_list">
+    <p class="f20 mgb10">My Address Book</p>
+    <button type="button" title="Add New Address" class="button" (click)='addAddress()'><span><span>Add New Address</span></span></button>
+  </div>
+  <div class="col2-set addresses-list fix">
+    <nz-spin [nzSpinning]='isSpinning'> 
+      <div class="addresses-additional">
+        <ol>
+          <li class="item prae">
+            <i class="address-close f18" onclick="return deleteAddress('133320');">x</i>
+            <span class="defalut-address">Default Billing Address</span>
+            <address>
+              mo mo<br> asdf
+              <br> asdf
+              <br> asdf, Alabama, asdf<br> United States<br> Mobile: 123
+            </address>
+            <p class="tar">
+              <a class="c-n tdl">
+                        Set as default shipping address                    </a>
+              <span class="separator">|</span>
+              <a class="c-n tdl">
+                        Edit Address                    </a>
+            </p>
+          </li>
+          <li class="item prae">
+            <i class="address-close f18" onclick="return deleteAddress('133321');">x</i>
+            <span class="defalut-address">Default Shipping Address</span>
+            <address>
+              mo mo<br> asdf
+              <br> asdf
+              <br> asdf, Alabama, asdf<br> United States<br> Mobile: 123
+            </address>
+            <p class="tar">
+              <a class="c-n tdl">
+                        Set as default billing address                    </a>
+              <span class="separator">|</span>
+              <a class="c-n tdl">
+                        Edit Address                    </a>
+            </p>
+          </li>
+        </ol>
+      </div>
+    </nz-spin>
+  </div>
+  <div class="buttons-set">
+    <p class="back-link"><a><small>« </small>Back</a></p>
+  </div>
+
+</div>
+
+<app-address-box [isVisible]='isVisible' [addressId]='addressId' (close)='isVisible = false;'></app-address-box>

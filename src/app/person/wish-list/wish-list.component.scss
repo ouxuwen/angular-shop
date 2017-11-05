@@ -1,0 +1,91 @@
+.my-account{
+    font-family: "open sans",Arial,Geneva, sans-serif;
+    font-size: 13px;
+    color: #555555;
+    .br0 {
+        border: 0px;
+    }
+    .pdb20 {
+        padding-bottom: 20px;
+    }
+
+    .f20 {
+        font-size: 20px !important;
+    }
+  
+    .pd0 {
+        padding: 0;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    .mydatatable th {
+        background: #fcfcfc;
+        height: 40px;
+        line-height: 40px;
+    }
+    
+    
+    .mydatatable td, .mydatatable th {
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+   
+    .brr0 {
+        border-right: none !important;
+    }
+    .brlr0 {
+        border-right: none!important;
+        border-left: none!important;
+    }
+    .product-name {
+        text-align: left;
+        margin-left: 10px;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+    .product-name a {
+        font-size: 12px;
+    }
+    .a-center {
+        text-align: center !important;
+    }
+    button, input[type='submit'] {
+        height: 28px;
+        padding: 0 15px;
+        color: #ddd;
+        border: 0px;
+        border-radius: 2px;
+        background-color: #336699;
+        cursor: pointer;
+        color: #fff;
+        margin: 5px 0;
+        font-family: "open sans",Arial,Geneva, sans-serif;
+    }
+    .tdl {
+        text-decoration: underline;
+    }
+    
+ 
+    .c-n {
+        color: #6699cc;
+    }
+    .buttons-set.buttons-set2 {
+        clear: both;
+        margin-top: 35px;
+        margin-left: 0!important;
+    }
+    .back-link {
+        margin-top: 10px;
+    }
+    .order-success, .buttons-set, .payment-information {
+  
+        margin-bottom: 15px;
+        margin-right: 90px;
+    }
+    button:hover,input[type='submit']:hover{background-color:#0c9eef;}
+}

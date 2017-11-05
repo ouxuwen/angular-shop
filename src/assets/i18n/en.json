@@ -22,7 +22,6 @@
     "NewArrivals":"New Arrivals",
     "BestSellers":"Best Sellers",
     "Inventory":"U.S. Inventory",
-    
     "English":"English",
     "Chinese":"Simple Chinese",
     "MChinese":"Tranditional Chinese",
@@ -69,5 +68,8 @@
     "Showing":"Showing",
     "RecordsPrePage":"Records Pre Page",
     "DiscountPercentage":"Discount Percentage",
-    "SendSuccess":"Send Successfully ,  Please check the mailbox later."
+    "SendSuccess":"Send Successfully ,  Please check the mailbox later.",
+    "AddtoCart":"Add to Cart",
+    "EmptyCart":"Your cart is empty",
+    "Recommend":"Recommend"
 }
