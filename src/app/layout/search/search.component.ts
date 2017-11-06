@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   isGettingCate: boolean = false;
   isLogin: boolean = false;
   isSpinning: boolean = false;
+  keywords:any;
   constructor(private confirmServ: NzModalService, public eventsService: EventsService, public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
 
     this.eventsService.subscribe('cart').subscribe(res => {
@@ -115,6 +116,10 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/cart/cart']);
   }
 
+  goSearch(){
+    this.router.navigate(['/goods/goods-list'], { queryParams: { keywords: this.keywords } })
+  }
+
   getCart() {
     this.isSpinning = true;
     this.homeService.cart_list().map(res => res.json()).subscribe(res => {
@@ -126,6 +131,17 @@ export class SearchComponent implements OnInit {
       }
     }, err => {
       this.isSpinning = false;
+    })
+  }
+
+  confirmDetele(id){
+    this.confirmServ.confirm({
+      title:"Are you sure to delete this one ?",
+      okText:"Confirm",
+      cancelText:"Cancel",
+      onOk:()=>{
+        this.deleteCartItem(id)
+      }
     })
   }
 

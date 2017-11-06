@@ -5,18 +5,18 @@
     </div>
     <div class="searchbox l">
       <div>
-        <input id="search" type="text" value="" class="search-input" name="q" [placeholder]="'PleaseEnter' | translate">
-        <button title="Search" class="search-button">
+        <input [(ngModel)]='keywords' id="search" type="text" value="" class="search-input" name="keywords" [placeholder]="'PleaseEnter' | translate">
+        <button (click)='goSearch()' title="Search" class="search-button">
           <span class="iconfont icon-search"></span>
         </button>
 
       </div>
       <div class="hotword">
-        <a>LCD</a> ,
-        <a>lcd and digitizer assembly</a> ,
-        <a>Front Housing Replacement</a> ,
-        <a>4 lcd</a> ,
-        <a>LCD Screen</a>
+        <a>LCD </a> ,
+        <a> Battery </a> ,
+        <a> Speaker </a> ,
+        <a> Camera </a> ,
+        <a> Other </a>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
                         <strong>{{item.goods_sum}}</strong> x
                         <span class="price">AUD $ {{item.price}}</span>
                         <br>
-                        <a (click)='deleteCartItem(item.id)' title="Remove This Item" class="btn-remove"></a>
+                        <a (click)='confirmDetele(item.id)' title="Remove This Item" class="btn-remove"></a>
                       </div>
                     </li>
                   </dt>

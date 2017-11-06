@@ -10,7 +10,6 @@
               </a>
             </li>
           </ul>
-
           <div class="pre btn" (click)='btn(-1)'><span class="iconfont icon-back"></span></div>
           <div class="next btn" (click)='btn(1)'><span class="iconfont icon-more"></span></div>
 
@@ -18,8 +17,6 @@
             <li class="l" [class.active]='i == currentIndex' *ngFor='let item of bannerImg;index as i ' (mouseenter)='point(i)'></li>
           </ul>
         </div>
-
-
       </div>
       <div class="product-title">
         <ul>

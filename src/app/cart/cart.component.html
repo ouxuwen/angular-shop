@@ -56,8 +56,8 @@
 
             <div id="local_content">
               <div class="prae brlr">
-                <nz-table [nzLoading]='isSpinng' #nzTable [nzDataSource]="cartList" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()"
-                  (nzPageSizeChange)="_refreshStatus()">
+                <nz-table [nzLoading]='isSpinng' #nzTable [nzDataSource]="cartList" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)"
+                  (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
                   <thead nz-thead>
                     <tr>
                       <th nz-th [nzCheckbox]="true">
@@ -104,14 +104,14 @@
                         </a>
                       </td>
                       <td nz-td>$ {{data.price}}</td>
-                     
+
                       <td nz-td>
-                          <button  class="add">
+                        <button class="add" (click)="downToCart(data)">
                               -
                             </button>
-                        <span class="sum" style=" width:50px; text-align:center"  >
+                        <span class="sum" style=" width:50px; text-align:center">
                         {{data.goods_sum}}</span>
-                          <button class="add" >
+                        <button class="add" (click)="addToCart(data)">
                               +
                             </button>
                       </td>
@@ -134,9 +134,9 @@
                   <tr>
                     <td width="100%" rowspan="1" valign="top">
                       <div>
-                        
-                        
-                        <button (click)='_checkAll(false)' type="submit"  name="update_cart_action" value="delete_qty" title="Remove Selected Items"
+
+
+                        <button (click)='_checkAll(false)' type="submit" name="update_cart_action" value="delete_qty" title="Remove Selected Items"
                           class="button ibm">
                           <span>
                             <span>Remove Selected Items</span>

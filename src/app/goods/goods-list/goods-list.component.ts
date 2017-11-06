@@ -14,7 +14,7 @@ export class GoodsListComponent implements OnInit {
   showGoodsList: Array<any> = [];
   goods: any;
   nzSpinning: boolean = false;
-  parts = ["LCD", "LCD ASSY", "Battery", "Frame", "Button", "Housing", "Glass", "Speaker", "Camera", "Other", "Earpiece", "Charger", "Cables", "Cases", "Screen", "Adhesives"];
+  parts = [{ "name": "LCD" }, { "name": "LCD ASSY" }, { "name": "Battery" }, { "name": "Frame" }, { "name": "Button" }, { "name": "Housing" }, { "name": "Glass" }, { "name": "Speaker" }, { "name": "Camera" }, { "name": "Other" }, { "name": "Earpiece" }, { "name": "Charger" }, { "name": "Cables" }, { "name": "Cases" }, { "name": "Screen" }, { "name": "Adhesives" }];
   morePart: boolean = false;
   partsId = null;
   _current = 1;
@@ -30,6 +30,8 @@ export class GoodsListComponent implements OnInit {
     current: null,
     page_size: 20
   }
+  categoryList: any = {};
+  objectKeys = Object.keys;
   constructor(public homeService: HomeService, public router: Router, public activeRouter: ActivatedRoute) {
     this.activeRouter.queryParams.subscribe(params => {
 
@@ -52,12 +54,16 @@ export class GoodsListComponent implements OnInit {
             })
           });
         }
+      } else {
+        this.paramSearch.cate_id = null;
       }
 
       if (params['keywords']) {
         console.log(params['keywords'])
         this.paramSearch.keywords = params['keywords'];
 
+      } else {
+        this.paramSearch.keywords = null;
       }
 
 
@@ -93,6 +99,13 @@ export class GoodsListComponent implements OnInit {
     }
   }
 
+  up() {
+    this.showGoodsList.sort(this.upSort('price'));
+  }
+
+  down() {
+    this.showGoodsList.sort(this.downSort('price'));
+  }
 
   selectPart(id, item?) {
 
@@ -121,9 +134,6 @@ export class GoodsListComponent implements OnInit {
   }
   getCateList() {
     this.nzSpinning = true;
-
-
-
     this.homeService.getCateGoodsList(this.paramSearch).subscribe(res => {
       this.nzSpinning = false;
       this.goods = res.json().data.list.data;
@@ -131,7 +141,14 @@ export class GoodsListComponent implements OnInit {
       this.total = res.json().data.total;
       this._current = res.json().data.list.current_page;
       this.showNum = res.json().data.list.per_page;
-      console.log(res.json());
+      this.categoryList = {};
+      this.goods.forEach(value => {
+        if (this.categoryList[value.cate_name]) {
+          this.categoryList[value.cate_name] += 1;
+        } else {
+          this.categoryList[value.cate_name] = 1;
+        }
+      })
       this.getShowList();
     }, err => {
       this.nzSpinning = false;

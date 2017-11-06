@@ -8,7 +8,7 @@
           <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
           <font>»</font>
         </li>
-        <div *ngIf='paramSearch.cate_id'>
+        <div *ngIf='paramSearch.cate_id '>
           <li class="category170 prae">
             <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
             <font>»</font>
@@ -25,6 +25,15 @@
             </div>
           </li>
         </div>
+        <div *ngIf="paramSearch.keywords">
+          <li class="current prae">
+            <div class="last-nav cor">
+              <strong class="pdr8 pdl8">Search results for " {{paramSearch.keywords}} "</strong>
+              <div>
+              </div>
+            </div>
+          </li>
+        </div>
       </ul>
     </div>
 
@@ -32,6 +41,11 @@
       <app-facebook-box></app-facebook-box>
     </div>
     <div class="ets-right">
+      <div *ngIf="paramSearch.keywords" class="lh25 page-title">
+
+        <h2>Search results for '{{paramSearch.keywords}}'</h2>
+
+      </div>
       <div class="brand oh mod-line-bottom">
         <ul>
           <li class="f14 lh40 h40 pdl15" style="background:#f7f7f7;">
@@ -40,13 +54,25 @@
           </li>
           <li class="brand-img oh pd15">
             <ul>
+              <li *ngIf="paramSearch.keywords" class="fix attrsearch-wrap attr-category">
+                <div class="attrsearch-key">Category:</div>
+                <div class="attrsearch-value">
+                  <ul class="attrsearch-value-list fix">
+                    <li *ngFor='let item of objectKeys(categoryList)'>
+                      <span class="spanbg"></span>
+                      <a > {{item}} </a>
+                     ( {{categoryList[item]}}   )
+                    </li>
+                  </ul>
+                </div>
+              </li>
               <li class="fix attrsearch-wrap attr-parts">
                 <div class="attrsearch-key">Parts:</div>
                 <div class="attrsearch-value">
                   <ul class="attrsearch-value-list fix " [class.attrsearch-value-list-open]='morePart'>
                     <li *ngFor='let item of parts;let i = index' (click)='selectPart(i+1,item)' [class.dn]='partsId' [class.pud]="partsId&&partsId==i+1">
                       <span *ngIf='partsId' class="spanbg">You've chosen </span>
-                      <a [title]="item" [style.color.red]='partsId'> {{item}} </a>
+                      <a [title]="item" [style.color.red]='partsId'> {{item.name}} </a>
                       <a *ngIf='partsId' class="remove closechoose" title="Remove This Item">x</a>
                     </li>
 
@@ -60,14 +86,14 @@
                 <div class="attrsearch-value">
 
                   <ul class="attrsearch-value-list fix">
-                    <li>
+                    <li (click)='up()'>
                       <span class="spanbg"></span>
                       <a>
                         Ascending
                         <i class="anticon anticon-arrow-up"></i>
                       </a>
                     </li>
-                    <li>
+                    <li (click)='down()'>
                       <span class="spanbg"></span>
                       <a>
                         Reverse
@@ -92,7 +118,7 @@
         </span>
 
 
-        <strong class="fanye">{{showGoodsList.length}} Item(s)</strong>
+        <strong class="fanye">{{total}} Item(s)</strong>
 
       </div>
       <div class="productlist">
@@ -132,7 +158,4 @@
       </div>
     </div>
   </div>
-
-
-
 </div>
