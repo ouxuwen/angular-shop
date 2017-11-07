@@ -178,4 +178,10 @@ export class HomeService {
     order_cancel(data) {
         return this.httpService.postJson('/order/set_default_address', data);
     }
+
+    sendResetPsdEmail(data){
+        return this.httpService.postJson('/member/send_email', data);
+    }
+
+    
 }   
