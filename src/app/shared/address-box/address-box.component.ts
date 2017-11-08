@@ -21,6 +21,7 @@ export class AddressBoxComponent implements OnInit {
   constructor(private fb: FormBuilder, private homeService: HomeService, private events: EventsService, private confirmServ: NzModalService) {
     this.initForm();
     if (this.addressId) {
+      console.log(this.addressId)
       this.getAddress(this.addressId)
     }
   }
@@ -29,10 +30,17 @@ export class AddressBoxComponent implements OnInit {
   isConfirmLoading = false;
 
 
+  ngOnChanges(){
+    if (this.addressId) {
+      this.getAddress(this.addressId)
+    }
+  }
+
+
   address = {
     firstname: null,
     lastname: null,
-    telephone: null,
+    mobile: null,
     streetaddress: null,
     city: null,
     state: null,
@@ -40,7 +48,7 @@ export class AddressBoxComponent implements OnInit {
     country: 'United States',
   }
   ngOnInit() {
-
+    
   }
 
   getAddress(id) {
@@ -63,7 +71,7 @@ export class AddressBoxComponent implements OnInit {
     this.addressForm = this.fb.group({
       firstname: [null, [Validators.required]],
       lastname: [null, [Validators.required,]],
-      telephone: [null, [Validators.required]],
+      mobile: [null, [Validators.required]],
       streetaddress: [null, [Validators.required]],
       city: [null, [Validators.required]],
       state: [null, [Validators.required]],
@@ -87,17 +95,42 @@ export class AddressBoxComponent implements OnInit {
     }
     this.isConfirmLoading = true;
 
-    
-    
-    setTimeout(() => {
-      this.close.emit();
-      this.isConfirmLoading = false;
-      this.confirmServ.success({
-        title: "Success",
-        
-        okText:"Confire "
+    if(this.addressId){
+      this.homeService.update_address(this.address).map(res => res.json()).subscribe(res =>{
+        this.isConfirmLoading = false;
+       
+        if(res.status == 1){
+          this.close.emit();
+          this.confirmServ.success({
+            title: "Success",
+            
+            okText:"Confire "
+          })
+        }
+       
+      },err =>{
+        this.isConfirmLoading = false;
       })
-    }, 3000);
+    }else{
+      this.homeService.add_address(this.address).map(res => res.json()).subscribe(res =>{
+        this.isConfirmLoading = false;
+       
+        if(res.status == 1){
+          this.close.emit();
+          this.confirmServ.success({
+            title: "Success",
+            
+            okText:"Confire "
+          })
+        }
+       
+      },err =>{
+        this.isConfirmLoading = false;
+      })
+    }
+    
+    
+   
   }
 
   handleCancel = () => {

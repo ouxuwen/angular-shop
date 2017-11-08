@@ -7,35 +7,22 @@
     <nz-spin [nzSpinning]='isSpinning'> 
       <div class="addresses-additional">
         <ol>
-          <li class="item prae">
-            <i class="address-close f18" onclick="return deleteAddress('133320');">x</i>
-            <span class="defalut-address">Default Billing Address</span>
+          
+          <li class="item prae" *ngFor = 'let item of addressList'>
+            <i class="address-close f18" (click)='removeAddress(item.id)'>x</i>
+            <span class="defalut-address" *ngIf='item.is_default == 1'>Default Shipping Address</span>
             <address>
-              mo mo<br> asdf
-              <br> asdf
-              <br> asdf, Alabama, asdf<br> United States<br> Mobile: 123
+              name: {{item.firstname}} ,{{ item.lastname}}
+              <br> Zipcode :{{ item.zipcode}}
+              <br> {{ item.state }} , {{ item.city }}, {{ item.streetaddress }}
+              <br> United States
+              <br> Mobile : {{item.mobile}}
             </address>
             <p class="tar">
-              <a class="c-n tdl">
-                        Set as default shipping address                    </a>
-              <span class="separator">|</span>
-              <a class="c-n tdl">
-                        Edit Address                    </a>
-            </p>
-          </li>
-          <li class="item prae">
-            <i class="address-close f18" onclick="return deleteAddress('133321');">x</i>
-            <span class="defalut-address">Default Shipping Address</span>
-            <address>
-              mo mo<br> asdf
-              <br> asdf
-              <br> asdf, Alabama, asdf<br> United States<br> Mobile: 123
-            </address>
-            <p class="tar">
-              <a class="c-n tdl">
+              <a class="c-n tdl" (click)='setDefault(item.id)'>
                         Set as default billing address                    </a>
               <span class="separator">|</span>
-              <a class="c-n tdl">
+              <a class="c-n tdl" (click)='editAddress(item.id)'>
                         Edit Address                    </a>
             </p>
           </li>
@@ -44,9 +31,9 @@
     </nz-spin>
   </div>
   <div class="buttons-set">
-    <p class="back-link"><a><small>« </small>Back</a></p>
+    <p class="back-link" routerLink='/person/person'><a><small>« </small>Back</a></p>
   </div>
 
 </div>
 
-<app-address-box [isVisible]='isVisible' [addressId]='addressId' (close)='isVisible = false;'></app-address-box>
+<app-address-box [isVisible]='isVisible' [addressId]='addressId' (close)='isVisible = false;getAddressList()'></app-address-box>

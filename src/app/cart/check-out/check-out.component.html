@@ -34,7 +34,7 @@
       <p class="checkout-box-title">
 
         <span> Shipping Address</span>
-        <a class="r">Address Manage</a>
+        <a class="r" routerLink='/person/address'>Address Manage</a>
       </p>
 
       <div style="padding:20px;">
@@ -43,30 +43,22 @@
             Select a shipping address from your address book or enter a new address.
           </p>
           <nz-radio-group [(ngModel)]="address">
-            <ul>
+            <ul *ngFor='let item of addressList'>
               <li>
-                <label nz-radio [nzValue]="'A'">
-                  <span>A</span>
+                <label nz-radio [nzValue]="item.id" [nzChecked]='item.is_default == 1'>
+                  <span>{{item.firstname}}</span>,
+                  <span>{{item.lastname}}</span>,
+                  <span>{{item.mobile}}</span>,
+                  <span>{{item.state}}</span>,
+                  <span>{{item.city}}</span>,
+                  <span>{{item.streetaddress}}</span>
                 </label>
               </li>
             </ul>
-            <ul>
-              <li>
-                <label nz-radio [nzValue]="'B'">
-                  <span>A</span>
-                </label>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <label nz-radio [nzValue]="'C'">
-                  <span>A</span>
-                </label>
-              </li>
-            </ul>
+            
           </nz-radio-group>
           <div>
-            <button nz-button [nzType]="'primary'" [nzSize]="'large'">
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)='addAddress()'>
               <i class="anticon anticon-plus"></i>
               <span> Add New Address</span>
             </button>
@@ -311,3 +303,5 @@
     </div>
   </div>
 </div>
+
+<app-address-box [isVisible]='isVisible' [addressId]='addressId' (close)='isVisible = false;getAddress()'></app-address-box>

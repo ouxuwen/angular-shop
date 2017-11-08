@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { CartRoutes } from './cart.router';
 import { HomeService } from '../services/home.service';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { HomeService } from '../services/home.service';
   ],
   imports: [
     RouterModule.forChild(CartRoutes),
+    SharedModule,
     LazyLoadImageModule,
     TranslateModule,
     CommonModule,
