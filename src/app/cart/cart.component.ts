@@ -73,7 +73,22 @@ export class CartComponent implements OnInit {
   }
 
   goCheckOut() {
-    this.router.navigate(['/cart/check-out']);
+    let arr = []
+    this._displayData.forEach(value => {
+      
+      if (value.checked) {
+              arr.push(value);
+             
+      }
+    })
+    if(arr.length ==0 ){
+      this.confirmServ.error({
+        title:"No goods select to order !",
+        okText:"Confirm"
+      })
+    }else{
+      this.router.navigate(['/cart/check-out']);
+    }
   }
 
   getCart() {
@@ -175,4 +190,6 @@ export class CartComponent implements OnInit {
 
     })
   }
+
+ 
 }

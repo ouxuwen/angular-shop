@@ -165,8 +165,8 @@ export class HomeService {
         return this.httpService.postJson('/member/set_default_address', data);
     }
 
-    order_confirm(data) {
-        return this.httpService.postJson('/order/order_confirm', data);
+    order_confirm() {
+        return this.httpService.postJson('/order/order_confirm');
     }
     order_create(data) {
         return this.httpService.postJson('/order/order_create', data);

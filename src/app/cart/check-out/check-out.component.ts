@@ -9,48 +9,9 @@ import { NzModalService } from 'ng-zorro-antd';
   styleUrls: ['./check-out.component.scss']
 })
 export class CheckOutComponent implements OnInit {
-  data = [{
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  },
-  {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }, {
-    "id": 46,
-    "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-    "cate_id": 62,
-    "price": "1.00",
-    "costprice": "1.00",
-    "cover": 572,
-    "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  }];
+  data = {
+    "list":[]
+  };
 
   address: any;
   order = {
@@ -58,10 +19,12 @@ export class CheckOutComponent implements OnInit {
   }
   constructor( private homeService: HomeService, private events: EventsService, private confirmServ: NzModalService,public router: Router, ) { 
     this.getAddress();
+    this.orderConfirm();
   }
   isVisible:boolean = false;
   addressId:any;
   addressList : any =[];
+  isSpinning:boolean = false;
   addAddress() {
     this.isVisible = true;
     this.addressId = null;
@@ -81,6 +44,19 @@ export class CheckOutComponent implements OnInit {
       if(res.status == 1){
         this.addressList = res.data;
       }
+    })
+  }
+
+  orderConfirm(){
+    this.isSpinning = true;
+    this.homeService.order_confirm().map(res => res.json()).subscribe(res =>{
+      this.isSpinning = false;
+      if(res.status == 1){
+        this.data = res.data;
+        
+      }
+    },err =>{
+      this.isSpinning = false;
     })
   }
 }
