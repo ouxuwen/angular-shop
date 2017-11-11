@@ -15,7 +15,7 @@ export class CheckOutComponent implements OnInit {
 
   address: any;
   order = {
-    comment: ""
+    content: ""
   }
   constructor( private homeService: HomeService, private events: EventsService, private confirmServ: NzModalService,public router: Router, ) { 
     this.getAddress();
@@ -58,5 +58,33 @@ export class CheckOutComponent implements OnInit {
     },err =>{
       this.isSpinning = false;
     })
+  }
+
+  createOrder(){
+    this.issSpinning = true;
+    let data = {
+      address_id :this.address,
+      content:this.order.content
+    }
+    this.homeService.order_create(data).map(res => res.json()).subscribe(res =>{
+      this.issSpinning = false;
+      if(res.status == 1){
+        this.payNow(res.data.order_id);
+      }
+    },err =>{
+      this.issSpinning = false;
+    })
+  }
+  issSpinning:boolean = false;
+  payNow(id){
+    this.issSpinning = true;
+    this.homeService.pay({order_id:id}).map(res => res.json()).subscribe(res =>{
+     
+      if(res.status == 1){
+        location.href = res.data;
+      }
+    },err =>{
+      this.issSpinning=false;
+      })
   }
 }

@@ -176,12 +176,19 @@ export class HomeService {
         return this.httpService.postJson('/order/order_list', data);
     }
     order_cancel(data) {
-        return this.httpService.postJson('/order/set_default_address', data);
+        return this.httpService.postJson('/order/order_cancel', data);
+    }
+
+    all_order_list(){
+        return this.httpService.postJson('/order/all_order_list',);
     }
 
     sendResetPsdEmail(data){
         return this.httpService.postJson('/member/send_email', data);
     }
 
+    pay(data){
+        return this.httpService.postJson('/order/paypal',data);
+    }
     
 }   

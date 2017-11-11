@@ -1,3 +1,4 @@
+
 <div class="check-out">
   <div class=" center width1024 mgao ">
     <div class="step">
@@ -154,7 +155,7 @@
                 <div></div>
                 <ul class="form-list" id="payment_form_paypal_standard" style="">
                   <li style="padding:5px 0;margin:0px;">
-                    <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/paypal-payment.jpg">
+                    <img src="assets/image/paypal-payment.jpg">
                   </li>
                   <li style="padding:5px 0;margin:0px;">
                     PayPal is a trusted global payment platform that has an open and secure payment ecosystem. People and businesses are able
@@ -174,7 +175,7 @@
 
                     <li>
                       <p class="pdt5 pdb5">The Payment Method currently available for ingenico epayments:</p>
-                      <img class="pdt5 pdb20" src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/global-collect-type.jpg">
+                      <img class="pdt5 pdb20" src="assets/image/global-collect-type.jpg">
                       <p class="c666">BingSupply.com does not store or review your credit card &amp; personal information. As such, should
                         any issues arise regarding your credit card or
                         <br> debit card transaction, please contact
@@ -190,7 +191,7 @@
                 <div></div>
                 <ul id="payment_form_bankpayment" style="display:none;">
                   <li style="padding:10px 0 0;">
-                    <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/wire-transfer-payment.jpg" alt="Wire Transfer">
+                    <img src="assets/image/wire-transfer-payment.jpg" alt="Wire Transfer">
                   </li>
                   <li>
                     <strong style=" color:#000;padding:10px 0;display:block;">Please transfer the money to the following bank account:</strong>
@@ -236,7 +237,7 @@
                     <p style="margin-top: 10px; margin-bottom: 10px;">Once you have completed your wire transfer transaction, please click the link below to submit your transaction
                       details:
                     </p>
-                    <a target="_blank"  style="color:#006699;text-decoration:underline;">https://www.bingsupply.com</a>
+                    <a target="_blank"  style="color:#006699;text-decoration:underline;">http://www.bingsupply.com</a>
                     <p style="margin-top: 10px;">We cannot process your order until your payment has been confirmed. Once your payment has been confirmed,
                       we will send a Payment Confirmation email and then begin to process your order.</p>
                     <p></p>
@@ -255,7 +256,7 @@
       <div class="onestepcheckout-comments l">
         <label for="id_comments">Comments</label>
         <br>
-        <nz-input [(ngModel)]="order.comment" nzType="textarea" [nzAutosize]="{
+        <nz-input [(ngModel)]="order.content" nzType="textarea" [nzAutosize]="{
           minRows: 6,
           maxRows: 10
         }" nzPlaceHolder="Any Comments"></nz-input>
@@ -298,7 +299,7 @@
       </div>
       <div style="clear:both;"></div>
       <div class="onestepcheckout-place-order">
-        <a routerLink='/person/order' id="onestepcheckout-place-order" href="javascript:void(0)" class="large orange onestepcheckout-button">Place order now</a>
+        <a (click)='createOrder()' id="onestepcheckout-place-order" href="javascript:void(0)" class="large orange onestepcheckout-button">Place order now</a>
        
         <div style="clear:both;"></div>
         <div class="place-order-wait"></div>
@@ -307,5 +308,7 @@
     </div>
   </div>
 </div>
-
+<div class="black" *ngIf='issSpinning'>
+  <img src="assets/image/timg.gif" alt="">
+</div>
 <app-address-box [isVisible]='isVisible' [addressId]='addressId' (close)='isVisible = false;getAddress()'></app-address-box>
