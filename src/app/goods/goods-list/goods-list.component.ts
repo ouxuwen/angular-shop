@@ -100,11 +100,11 @@ export class GoodsListComponent implements OnInit {
   }
 
   up() {
-    this.showGoodsList.sort(this.upSort('price'));
+    this.finallyList.sort(this.upSort('price'));
   }
 
   down() {
-    this.showGoodsList.sort(this.downSort('price'));
+    this.finallyList.sort(this.downSort('price'));
   }
 
   selectPart(id, item?) {

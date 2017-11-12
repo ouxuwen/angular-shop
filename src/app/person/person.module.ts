@@ -11,14 +11,18 @@ import { OrderComponent } from './order/order.component';
 import { MyBingComponent } from './my-bing/my-bing.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddressComponent } from './address/address.component';
-import { WishListComponent } from './wish-list/wish-list.component'
+import { WishListComponent } from './wish-list/wish-list.component';
+import { TrackOrderComponent } from './track-order/track-order.component';
+import { SettingComponent } from './setting/setting.component'
 @NgModule({
     declarations: [
         PersonComponent,
         OrderComponent,
         MyBingComponent,
         AddressComponent,
-        WishListComponent
+        WishListComponent,
+        TrackOrderComponent,
+        SettingComponent
 
     ],
     exports: [

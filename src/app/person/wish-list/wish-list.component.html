@@ -40,7 +40,7 @@
             <p>
               <nz-input-number [(ngModel)]="data.goodsNum" [nzMin]="1" [nzStep]="1"></nz-input-number>
             </p>
-            <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+            <button (click)='addToCart(data)' type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
 
           </td>
           <td nz-td><a (click)='deleteWishItem(data.id)' class="btn-remove btn-remove2 tdl c-n">Remove</a></td>
@@ -52,7 +52,7 @@
 
     <div class="buttons-set buttons-set2">
       <!-- <button type="submit" onclick="this.name='save_and_share'" title="Share Wishlist" class="button btn-share"><span><span>Share Wishlist</span></span></button> -->
-      <button type="button" title="Add All to Cart" class="button btn-add"><span><span>Add All to Cart</span></span></button>
+      <button style='display:none' type="button" title="Add All to Cart" class="button btn-add"><span><span>Add All to Cart</span></span></button>
       <button type="submit" title="Update Wishlist" class="button btn-update"><span><span>Update Wishlist</span></span></button>
     </div>
 

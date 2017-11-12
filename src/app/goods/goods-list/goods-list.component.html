@@ -50,7 +50,8 @@
         <ul>
           <li class="f14 lh40 h40 pdl15" style="background:#f7f7f7;">
             <span class="fwb pdl10 pdr10">Shop by</span>
-            <span>{{lastLvl?.cate_name}} </span>
+            <span *ngIf='paramSearch.cate_id '>{{lastLvl?.cate_name}} </span>
+            <span *ngIf='paramSearch.keywords '>{{paramSearch?.keywords}} </span>
           </li>
           <li class="brand-img oh pd15">
             <ul>
@@ -66,7 +67,7 @@
                   </ul>
                 </div>
               </li>
-              <li class="fix attrsearch-wrap attr-parts">
+              <!-- <li class="fix attrsearch-wrap attr-parts">
                 <div class="attrsearch-key">Parts:</div>
                 <div class="attrsearch-value">
                   <ul class="attrsearch-value-list fix " [class.attrsearch-value-list-open]='morePart'>
@@ -80,7 +81,7 @@
                   <a class="list-more" (click)='morePart = !morePart'>More →</a>
 
                 </div>
-              </li>
+              </li> -->
               <li class="fix attrsearch-wrap attr-price">
                 <div class="attrsearch-key">Price:</div>
                 <div class="attrsearch-value">

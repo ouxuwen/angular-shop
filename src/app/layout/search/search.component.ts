@@ -116,8 +116,13 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/cart/cart']);
   }
 
-  goSearch(){
-    this.router.navigate(['/goods/goods-list'], { queryParams: { keywords: this.keywords } })
+  goSearch(data?){
+    if(data){
+      this.router.navigate(['/goods/goods-list'], { queryParams: { keywords: data } })
+    }else{
+      this.router.navigate(['/goods/goods-list'], { queryParams: { keywords: this.keywords } })
+    }
+  
   }
 
   getCart() {

@@ -21,7 +21,7 @@
         </li>
         <li style="border:0px;">
           <i class="order-icon review"></i>
-          <a  (click)='status=3;changeShow("3")'>
+          <a (click)='status=3;changeShow("3")'>
             <span class="ibm">Pending review
               <span class="c-w pdl10 pdr10">{{this.doneList.length}}</span>
               <img src="assets/image/pendding-reivew.jpg">
@@ -88,12 +88,12 @@
                 <tbody>
                   <tr class="show_order_item">
                     <td width="105" class="thumb-img pd10">
-                      <a>
+                      <a (click)='goGoodsDetail(item.order_goods[0].info_id)'>
                         <img border="0" [src]="item.order_goods[0].url" height="105" width="105">
                       </a>
                     </td>
                     <td width="205" class="pd5 desc product_discribe">
-                      <a class="product_name">{{item.order_goods[0].goods_name}}</a>
+                      <a class="product_name" (click)='goGoodsDetail(item.order_goods[0].info_id)'>{{item.order_goods[0].goods_name}}</a>
                     </td>
                     <td width="120" class="tac price">
                       <span class="price">$ {{item.order_goods[0].goods_price}}</span>
@@ -103,18 +103,18 @@
                       <span class="price">$ {{item.order_goods[0].goods_total}}</span>
                     </td>
                     <td width="160" class="tac rowspan_list" rowspan="1" valign="middle">
-                      <a class="db c-n">View Order</a>
+                      <a (click)='showDetail(item)' class="db c-n">View Order</a>
 
                       <span class="paymentBridge" style="position:relative;">
                         <a style="color:#6699cc;" (click)='payNow(item.id)' *ngIf='item.status ==0'>Pay Now</a>
                         <a style="color:#6699cc;" *ngIf='item.status ==1'>PendingShip</a>
                         <a style="color:#6699cc;" *ngIf='item.status ==2'>Shiped</a>
-                        <a style="color:#6699cc;" *ngIf='item.status ==3'>Done</a>                                                   
+                        <a style="color:#6699cc;" *ngIf='item.status ==3'>Done</a>
                       </span>
-                      <a class="db c-n confirm_cancel" style="cursor:pointer;" (click)=' confirmDetele(i,item.id)'>Cancel Order</a>
+                      <a class="db c-n confirm_cancel" style="cursor:pointer;" (click)='confirmDetele(i,item.id)'>Delete Order</a>
                     </td>
                     <td width="120" class="tac rowspan_list" rowspan="1" valign="middle">
-                      <a>Reorder</a>
+                      <a (click)='showDetail(item)'>Detail</a>
                     </td>
                   </tr>
 
@@ -128,3 +128,70 @@
   </div>
 
 </nz-spin>
+
+<nz-modal [nzWidth]="800" [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel($event)">
+  <ng-template #modalTitle>
+    Order Detail #{{showItem.order_sn}} {{"CreateTime" | translate}}: {{showItem.create_time | date}}
+  </ng-template>
+  <ng-template #modalContent>
+    <div>
+      <table border="1" style="width:100%;">
+        <thead>
+          <tr>
+            <th class="order-title">
+              {{"Image" | translate}}
+
+            </th>
+            <th class="order-title">
+              {{"GoodsName" | translate}}
+
+            </th>
+            <th class="order-title">
+              {{"Price" | translate}}
+
+            </th>
+            <th class="order-title">
+              {{"Qty" | translate}}
+
+            </th>
+            <th class="order-title">
+              {{"Total" | translate}}
+
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="show_order_item" *ngFor='let item of showItem.order_goods'>
+            <td width="105" class="thumb-img pd10">
+              <a (click)='goGoodsDetail(item.info_id)'>
+                <img border="0" [src]="item.url" height="105" width="105">
+              </a>
+            </td>
+            <td width="305" class="pd5 desc product_discribe">
+              <a class="product_name" (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}} {{item.standard_value1}} {{item.standard_value2}} {{item.standard_value3}}</a>
+            </td>
+            <td width="120" class="tac price">
+              <span class="price">$ {{item.goods_price}}</span>
+            </td>
+            <td width="90" class="tac quantity">{{item.goods_sum | number:'1.0-2'}}</td>
+            <td class="tac rowspan_list" valign="middle">
+              <span class="price">$ {{item.goods_total}}</span>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+  <ng-template #modalFooter>
+    <div style="text-align:center">
+      <button (click)='handleCancel(e)' nz-button [nzType]="'default'" [nzSize]="'large'">
+        {{"Close" | translate}}
+      </button>
+    </div>
+
+  </ng-template>
+</nz-modal>

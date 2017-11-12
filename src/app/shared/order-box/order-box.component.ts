@@ -27,6 +27,8 @@ export class OrderBoxComponent implements OnInit {
   cancelList = [];
   isSpinning: boolean = false;
   showList: any = [];
+  showItem: any = {};
+  isVisible: boolean = false;
   getAllOrderList() {
     this.isSpinning = true;
     this.homeService.all_order_list().map(res => res.json()).subscribe(res => {
@@ -34,7 +36,7 @@ export class OrderBoxComponent implements OnInit {
       if (res.status == 1) {
         this.orderList = res.data;
         this.showList = this.orderList;
-        if(res.data){
+        if (res.data) {
           res.data.forEach(val => {
             if (val.status == 0) {
               this.pendingPay.push(val);
@@ -49,30 +51,30 @@ export class OrderBoxComponent implements OnInit {
             }
           });
         }
-        
+
       }
     }, err => {
       this.isSpinning = false;
     })
   }
 
-  confirmDetele(index,id) {
+  confirmDetele(index, id) {
     this.confirmServ.confirm({
       title: "Are you sure to delete this one ?",
       okText: "Confirm",
       cancelText: "Cancel",
       onOk: () => {
-        this.cancelOrder(index,id)
+        this.cancelOrder(index, id)
       }
     })
   }
 
-  cancelOrder(index,id) {
+  cancelOrder(index, id) {
     this.isSpinning = true;
     this.homeService.order_cancel({ id: id }).map(res => res.json()).subscribe(res => {
       this.isSpinning = false;
-      if(res.status == 1){
-        this.showList.splice(index,1);
+      if (res.status == 1) {
+        this.showList.splice(index, 1);
       }
 
     }, err => {
@@ -80,37 +82,49 @@ export class OrderBoxComponent implements OnInit {
     })
   }
 
-  changeShow(e){
+  changeShow(e) {
     console.log(e)
-     switch(e){
-       case "0":
-       this.showList = this.pendingPay;
-       break;
-       case "1":
-       this.showList = this.pendingShip;
-       break;
-       case "2":
-       this.showList = this.shiped;
-       break;
-       case "3":
-       this.showList = this.doneList;
-       break;
-       case "5":
-       this.showList = this.orderList;
-       break;
-       
-     }
+    switch (e) {
+      case "0":
+        this.showList = this.pendingPay;
+        break;
+      case "1":
+        this.showList = this.pendingShip;
+        break;
+      case "2":
+        this.showList = this.shiped;
+        break;
+      case "3":
+        this.showList = this.doneList;
+        break;
+      case "5":
+        this.showList = this.orderList;
+        break;
+
+    }
   }
 
-  payNow(id){
+  payNow(id) {
     this.isSpinning = true;
-    this.homeService.pay({order_id:id}).map(res => res.json()).subscribe(res =>{
-     
-      if(res.status == 1){
+    this.homeService.pay({ order_id: id }).map(res => res.json()).subscribe(res => {
+
+      if (res.status == 1) {
         location.href = res.data;
       }
-    },err =>{
-      this.isSpinning=false;
-      })
+    }, err => {
+      this.isSpinning = false;
+    })
   }
+
+  showDetail(item) {
+    this.showItem = item;
+    this.isVisible = true;
+
+  }
+  handleCancel = (e) => {
+    this.isVisible = false;
+    this.showItem = {};
+  }
+
+  
 }
