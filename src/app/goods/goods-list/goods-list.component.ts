@@ -16,9 +16,10 @@ export class GoodsListComponent implements OnInit {
   nzSpinning: boolean = false;
   parts = [{ "name": "LCD" }, { "name": "LCD ASSY" }, { "name": "Battery" }, { "name": "Frame" }, { "name": "Button" }, { "name": "Housing" }, { "name": "Glass" }, { "name": "Speaker" }, { "name": "Camera" }, { "name": "Other" }, { "name": "Earpiece" }, { "name": "Charger" }, { "name": "Cables" }, { "name": "Cases" }, { "name": "Screen" }, { "name": "Adhesives" }];
   morePart: boolean = false;
+  moreCate: boolean = false;
   partsId = null;
-  _current = 1;
-  showNum: number = 20;
+  cateId = null;
+
   total: number = 0;
   paramSearch = {
     keywords: null,
@@ -27,15 +28,13 @@ export class GoodsListComponent implements OnInit {
     is_rec: null,
     is_hot: null,
     is_exc: null,
-    current: null,
+    current: 1,
     page_size: 20
   }
   categoryList: any = {};
   objectKeys = Object.keys;
   constructor(public homeService: HomeService, public router: Router, public activeRouter: ActivatedRoute) {
     this.activeRouter.queryParams.subscribe(params => {
-
-
       if (params['cate']) {
         let id = JSON.parse(params['cate']);
         this.paramSearch.cate_id = id;
@@ -100,11 +99,11 @@ export class GoodsListComponent implements OnInit {
   }
 
   up() {
-    this.finallyList.sort(this.upSort('price'));
+    this.showGoodsList.sort(this.upSort('price'));
   }
 
   down() {
-    this.finallyList.sort(this.downSort('price'));
+    this.showGoodsList.sort(this.downSort('price'));
   }
 
   selectPart(id, item?) {
@@ -121,16 +120,27 @@ export class GoodsListComponent implements OnInit {
         }
       })
     }
-    this.getShowList();
+    this.getCateList();
+  }
+
+  selectCate(id) {
+    if (this.paramSearch.cate_id) {
+      this.paramSearch.cate_id = null;
+      this.getCateList();
+    } else {
+      this.paramSearch.cate_id = id;
+      this.getCateList();
+    }
   }
 
   changeShowList(e) {
-    console.log(e);
-    this.getShowList();
+    this.paramSearch.page_size= Number(e);
+    this.getCateList();
   }
 
-  changePage() {
-    this.getShowList();
+  changePage(e) {
+    this.paramSearch.current = e;
+    this.getCateList();
   }
   getCateList() {
     this.nzSpinning = true;
@@ -139,27 +149,22 @@ export class GoodsListComponent implements OnInit {
       this.goods = res.json().data.list.data;
       this.showGoodsList = this.goods;
       this.total = res.json().data.total;
-      this._current = res.json().data.list.current_page;
-      this.showNum = res.json().data.list.per_page;
+      this.paramSearch.current = res.json().data.list.current_page;
+      this.paramSearch.page_size = res.json().data.list.per_page;
       this.categoryList = {};
       this.goods.forEach(value => {
         if (this.categoryList[value.cate_name]) {
-          this.categoryList[value.cate_name] += 1;
+          this.categoryList[value.cate_name]['num'] += 1;
         } else {
-          this.categoryList[value.cate_name] = 1;
+          this.categoryList[value.cate_name] = {num:1,id:value.cate_id};
         }
       })
-      this.getShowList();
+      
     }, err => {
       this.nzSpinning = false;
     })
   }
 
-  finallyList: any = [];
-  getShowList() {
-
-    let arr = JSON.parse(JSON.stringify(this.showGoodsList));
-    this.finallyList = arr.slice((this._current - 1) * this.showNum, this._current * this.showNum);
-
-  }
+  
+  
 }

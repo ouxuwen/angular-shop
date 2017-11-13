@@ -109,7 +109,7 @@
   </nz-spin>
   </ng-template>
   <ng-template #modalFooter>
-    <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel()">
+    <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel($event)">
         Back
       </button>
     <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="handleOk()" [nzLoading]="isConfirmLoading">

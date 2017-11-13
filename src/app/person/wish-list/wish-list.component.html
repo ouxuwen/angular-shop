@@ -4,7 +4,7 @@
       <p class="f20 pdb20">My Wishlist</p>
     </div>
 
-    <nz-table #nzTable [nzSize]='small' [nzBordered]='true' [nzLoading]='isSpinning' [nzDataSource]="data" [nzPageSize]="10">
+    <nz-table #nzTable [nzSize]='"small"' [nzBordered]='true' [nzLoading]='isSpinning' [nzDataSource]="data" [nzPageSize]="10">
       <thead nz-thead>
         <tr>
           <th nz-th><span>Image</span></th>
@@ -53,7 +53,7 @@
     <div class="buttons-set buttons-set2">
       <!-- <button type="submit" onclick="this.name='save_and_share'" title="Share Wishlist" class="button btn-share"><span><span>Share Wishlist</span></span></button> -->
       <button style='display:none' type="button" title="Add All to Cart" class="button btn-add"><span><span>Add All to Cart</span></span></button>
-      <button type="submit" title="Update Wishlist" class="button btn-update"><span><span>Update Wishlist</span></span></button>
+      <button (click)='update()' type="submit" title="Update Wishlist" class="button btn-update"><span><span>Update Wishlist</span></span></button>
     </div>
 
 

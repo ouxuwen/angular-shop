@@ -78,4 +78,8 @@ export class WishListComponent implements OnInit {
     })
   }
 
+  update(){
+    this.getWishList();
+  }
+
 }

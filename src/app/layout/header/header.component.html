@@ -10,33 +10,37 @@
       <ul class="dn">
         <li>
           <span class="font">
-                <a rel="nofollow" (click)='changeLang("en")'>English</a>
-            </span>
+            <a rel="nofollow" (click)='changeLang("en")'>English</a>
+          </span>
         </li>
         <li>
           <span class="font">
-                <a rel="nofollow" (click)='changeLang("zh")'>中文</a>
-            </span>
+            <a rel="nofollow" (click)='changeLang("zh")'>中文</a>
+          </span>
         </li>
       </ul>
     </li>
     <li class="l">
       <span class="font">
-            <a rel="nofollow" >{{"AboutPayment" | translate}}</a>
-        </span>
+        <a rel="nofollow">{{"AboutPayment" | translate}}</a>
+      </span>
     </li>
     <li class="r header-top-en_US" style="*width:630px;">
 
-      <span class="font l myacount" (mouseenter)="myDj=true" (mouseleave)="myDj=flase">
-            <span class="iconfont icon-accountfilling" [style.color] = "myDj ? '#50b5ff' : '#555' "></span>
-      <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
-      <div class="myacount-blank" [style.display]="myDj ? 'block' : 'none' "></div>
-      <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display]="myDj ? 'block' : 'none' ">
-        <ul>
-          <li><a routerLink='/person/order'>My Orders</a></li>
-          <li><a routerLink="/person/track-order">Track My Orders</a></li>
-        </ul>
-      </div>
+      <span class="font l myacount" (mouseenter)="myDj=true" (mouseleave)="myDj=false">
+        <span class="iconfont icon-accountfilling" [style.color]="myDj ? '#50b5ff' : '#555' "></span>
+        <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
+        <div class="myacount-blank" [style.display]="myDj ? 'block' : 'none' "></div>
+        <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display]="myDj ? 'block' : 'none' ">
+          <ul>
+            <li>
+              <a routerLink='/person/order'>My Orders</a>
+            </li>
+            <li>
+              <a routerLink="/person/track-order">Track My Orders</a>
+            </li>
+          </ul>
+        </div>
       </span>
       <span class="pixel2"></span>
       <div *ngIf='!isLogin' class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=true" (mouseleave)="loginTouch=false;initForm()">
@@ -45,7 +49,7 @@
         </a>
         <div class="login-blank" [style.display]="loginTouch ? 'block' : 'none' "></div>
         <ul class="admin-login-box dn" [style.display]="loginTouch ? 'block' : 'none' ">
-          <form nz-form [formGroup]="loginForm" >
+          <form nz-form [formGroup]="loginForm">
             <li class="tanchukuang tal cbgfff pdt15 pdb5 pdr30 pdl30">
               <dl class="l">
                 <dt>
@@ -53,7 +57,7 @@
                 </dt>
                 <dt>
                   <div>
-                    <div nz-form-control nzHasFeedback  [nzValidateStatus]="loginForm.controls.email">
+                    <div nz-form-control nzHasFeedback [nzValidateStatus]="loginForm.controls.email">
                       <nz-input formControlName="email" [nzPlaceHolder]="'EmailAddress' | translate" [nzSize]="'large'">
                         <ng-template #prefix>
                           <i class="anticon anticon-mail"></i>
@@ -68,7 +72,7 @@
                 </dt>
                 <dt>
                   <div>
-                    <div nz-form-control    [nzValidateStatus]="loginForm.controls.password">
+                    <div nz-form-control [nzValidateStatus]="loginForm.controls.password">
                       <nz-input formControlName="password" [nzType]="'Password'|translate" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
                         <ng-template #prefix>
                           <i class="anticon anticon-lock"></i>
@@ -96,11 +100,10 @@
           </form>
         </ul>
       </div>
-      <div *ngIf='isLogin' class="prae l" id="admin-level" [class.level-active]="loginTouch" (mouseenter)="loginTouch=true"
-        (mouseleave)="loginTouch=flase">
+      <div *ngIf='isLogin' class="prae l" id="admin-level" [class.level-active]="loginTouch" (mouseenter)="loginTouch=true" (mouseleave)="loginTouch=false">
         <span class="font l text-auto-ellipsis" style="max-width:90px;">
-	                	<a >Hi ,{{userInfo.firstname }}{{userInfo.lastname}} </a>
-	                </span>
+          <a routerLink='/person/person'>Hi ,{{userInfo.firstname }}{{userInfo.lastname}} </a>
+        </span>
         <span class="level-num levelbg1"></span>
         <span class="l level-open-icon"></span>
         <span class="admin-blank" style="display: none;" [style.display]='loginTouch?"inline":"none"'></span>
@@ -110,7 +113,8 @@
               <i class="user-level-icon user-level1"></i>
               <div class="f16 ibm">
                 <p class="lh20 f14">Bing Member</p>
-                <div class="c-w lh20"><span>Green Horn</span>
+                <div class="c-w lh20">
+                  <span>Green Horn</span>
                   <a target="_blank" title="View our membership system">
                     <div id="product-more-info" class="product-m-i"></div>
                   </a>
@@ -124,29 +128,31 @@
               <label class="ibm pdr5">EXP.</label>
               <div class="exp-bar prae" title="5500">
                 <div title="0" class="exp-bar-current" style="width:0px"></div>
-                <div class="exp-number fwb"><span class="c-p">0</span><span class="pdl5 pdr5">/</span> 5500
+                <div class="exp-number fwb">
+                  <span class="c-p">0</span>
+                  <span class="pdl5 pdr5">/</span> 5500
                 </div>
 
               </div>
               <span>
-		                            <a (click)='logOut()'>Log out</a>
-		                        </span>
+                <a (click)='logOut()'>Log out</a>
+              </span>
             </div>
           </div>
         </div>
       </div>
       <span class="pixel2"></span>
       <span class="font l">
-            <a rel="nofollow" >{{"FAQ" | translate}}</a>
-        </span>
+        <a rel="nofollow">{{"FAQ" | translate}}</a>
+      </span>
       <span class="pixel2"></span>
       <span class="font l contact-panel prae">
-            <a rel="nofollow" >{{"ContactUs"| translate}}</a>
-        </span>
+        <a rel="nofollow">{{"ContactUs"| translate}}</a>
+      </span>
 
       <span class="pixel2"></span>
       <span class="font l">
-          <a rel="nofollow"  target="_blank">{{"Blog" | translate}}</a>
+        <a rel="nofollow" target="_blank">{{"Blog" | translate}}</a>
       </span>
     </li>
   </ul>

@@ -1,0 +1,26 @@
+@import '../../shared/common/color';
+.my-account{
+    font-size: 13px;
+}
+.otheraccountinfo-box{ border:1px solid #ccc;}
+.otheraccountinfo-bar li{ float: left; font-size: 14px; margin:15px 0; border-right:1px solid #ccc;width: 200px; text-align: center;cursor:pointer;}
+.otheraccountinfo-bar li.active{color: #336699; font-weight: bold;}
+.customer_tab_content{ border-top: 1px solid #ccc;padding:30px 0;}
+.reviewlist-info{ width: 270px; margin: 0px 0 5px;}
+.reviewlist-info li{ margin-left: 10px;}
+.product-review{ border: 1px solid #ccc;}
+.review-item-header{ border-bottom: 1px dashed #ccc; margin:10px 20px;}
+.review-item-header li{ display: table-cell; vertical-align: top;}
+.review-item-detail{ padding:10px;}
+.ratings-table td,.ratings-table th{ padding:5px 10px; vertical-align: top;}
+.my-account .buttons-set{clear:both; margin-left: 0;}
+.buttons-set.buttons-set2{clear:both; margin-top: 35px; margin-left: 0!important;}
+.pending-infobox{border:1px solid #ccc; padding:20px; margin-bottom: 20px;}
+.pro-info li{ float: left; height: 105px;}
+.pro-info li.fore1{ width: 105px;  padding:10px;}
+.pro-info li.fore2{width: 400px; padding:10px;}
+.pro-info li.fore3{width: 140px; line-height:105px;}
+.pro-info li.fore4{ width: 220px; line-height:105px; text-align: center;}
+.no-review-order-table{ border:1px solid #ccc; width: 100%;}
+.no-review-order-table th{ height: 40px; background: #fcfcfc;}
+.no-review-order-table .pro-info{ border-top: 1px solid #ccc;}

@@ -58,13 +58,15 @@
               <li *ngIf="paramSearch.keywords" class="fix attrsearch-wrap attr-category">
                 <div class="attrsearch-key">Category:</div>
                 <div class="attrsearch-value">
-                  <ul class="attrsearch-value-list fix">
-                    <li *ngFor='let item of objectKeys(categoryList)'>
-                      <span class="spanbg"></span>
+                  <ul class="attrsearch-value-list fix" [class.attrsearch-value-list-open]='moreCate'>
+                    <li *ngFor='let item of objectKeys(categoryList)' (click)='selectCate(categoryList[item].id)' [class.dn]='paramSearch.cate_id' [class.pud]="paramSearch.cate_id&&paramSearch.cate_id==categoryList[item].id">
+                        <span *ngIf='paramSearch.cate_id' class="spanbg">You've chosen </span>
                       <a > {{item}} </a>
-                     ( {{categoryList[item]}}   )
+                     ( {{categoryList[item]['num']}}   )
+                     <a *ngIf='paramSearch.cate_id' class="remove closechoose" title="Remove This Item">x</a>
                     </li>
                   </ul>
+                  <a class="list-more" (click)='moreCate= !moreCate'>{{"More" | translate}} →</a>
                 </div>
               </li>
               <!-- <li class="fix attrsearch-wrap attr-parts">
@@ -124,12 +126,12 @@
       </div>
       <div class="productlist">
         <nz-spin style="position:absolute; top:50%;left:50%;" [nzSpinning]="nzSpinning"></nz-spin>
-        <app-goods-box2 *ngFor='let item of finallyList' [goods]='item'></app-goods-box2>
+        <app-goods-box2 *ngFor='let item of showGoodsList' [goods]='item'></app-goods-box2>
 
         <div class="clear"></div>
 
       </div>
-      <div *ngIf='finallyList.length ==0' class="search_no">Search no results !</div>
+      <div *ngIf='showGoodsList.length ==0' class="search_no">Search no results !</div>
       <div class="toolbar-bottom">
         <div class="toolbar">
           <div class="option bottom">
@@ -139,12 +141,12 @@
               </li>
               <li>
                 <div class="limiter" style='width: 870px;'>
-                  <select [(ngModel)]='showNum' (ngModelChange)="changeShowList($event)">
+                  <select [(ngModel)]='paramSearch.page_size' (ngModelChange)="changeShowList($event)">
                     <option selected="selected" value="20">20</option>
                     <option value="40">40</option>
                     <option value="60">60</option>
                   </select>
-                  <nz-pagination style="float:right; " (ngModelChange)='changePage()' [nzPageSize]="showNum" [(nzPageIndex)]="_current" [nzTotal]="total"
+                  <nz-pagination style="float:right; " (ngModelChange)='changePage($event)' [nzPageSize]="paramSearch.page_size" [(nzPageIndex)]="paramSearch.current" [nzTotal]="total"
                     [nzSize]="'small'"></nz-pagination>
                 </div>
               </li>

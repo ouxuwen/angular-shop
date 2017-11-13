@@ -31,6 +31,7 @@
     "EmailAddressFor":"Email Address For Coupon Number",
     "Quantity":"Quantity",
     "E-mail":"E-mail",
+    "Email":"Email",
     "Send":"Send",
     "FliedNote":"This field is mandatory,Email to receive all coupon numbers",
     "OverlapCount":"Overlap Count",

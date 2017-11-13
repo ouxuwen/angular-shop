@@ -23,6 +23,7 @@ export class AppComponent {
   }
   title = 'app';
   emailValid:boolean = false;
+  isConfirmLoading:boolean =false;
   ngOnInit() {
     this.translateService.addLangs(["zh", "en"]);
     this.translateService.setDefaultLang('en')
@@ -54,6 +55,7 @@ export class AppComponent {
     if (this.loginForm.invalid) {
       return;
     }
+    
     this.homeService.login(this.loginForm.value);
     this.eventsService.subscribe('closeModel').subscribe(res => {
       this.showLogin = false;

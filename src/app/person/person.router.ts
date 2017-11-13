@@ -4,6 +4,7 @@ import { OrderComponent } from './order/order.component';
 import { AddressComponent } from './address/address.component';
 import { WishListComponent } from "./wish-list/wish-list.component";
 import { TrackOrderComponent } from './track-order/track-order.component';
+import { SettingComponent } from './setting/setting.component';
 export const PersonRouter = [
     {
         path: '',
@@ -14,7 +15,8 @@ export const PersonRouter = [
             { path: 'order', component: OrderComponent },
             { path: 'address', component: AddressComponent },
             { path: 'wish-list', component: WishListComponent },
-            { path: "track-order", component: TrackOrderComponent }
+            { path: "track-order", component: TrackOrderComponent },
+            { path: "setting", component: SettingComponent }
         ]
     },
 ];

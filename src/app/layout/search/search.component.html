@@ -1,7 +1,9 @@
 <div class="cbgfff mgtb8">
   <div class="head width1024 mgao">
     <div class="logo l pdt12 pdb10" style='width:450px' (click)='goHome()'>
-      <div style='line-height: 100px;font-size: 50px; font-weight: bold;text-align: center'>LOGO</div>
+      <div style='line-height: 100px;font-size: 50px; font-weight: bold;text-align: center'>
+        <img style="cursor:pointer" src="assets/image/logo-index.jpg" alt="">
+      </div>
     </div>
     <div class="searchbox l">
       <div>
@@ -9,7 +11,6 @@
         <button (click)='goSearch()' title="Search" class="search-button">
           <span class="iconfont icon-search"></span>
         </button>
-
       </div>
       <div class="hotword">
         <a (click)='goSearch("LCD")'>LCD </a> ,
@@ -21,7 +22,7 @@
       </div>
     </div>
 
-    <div class="add-cart l cor cart-show-btn" (mouseenter)="showCart=true" (mouseleave)="showCart=flase">
+    <div class="add-cart l cor cart-show-btn" (mouseenter)="showCart=true;" (mouseleave)="showCart=false">
       <div (click)='goMyCart()'>
         <span class="iconfont icon-cart"></span> {{"MyCart" | translate}}
       </div>
@@ -35,7 +36,7 @@
         <ul class="l  pabs zi3 cart-ajax-box cart-items-ajax" style="margin-left:-305px;" [style.display]="showCart ? 'block' : 'none' ">
           <nz-spin [nzSpinning]='isSpinning'>
             <li class="cart-header"></li>
-            <li class="cart-list fix" *ngIf='cartCount ==0 || !isLogin '>
+            <li class="cart-list fix" *ngIf='cartCount == 0 || !isLogin '>
               <dl class="pdl30 pdr30 pdt10">
                 <dt class="mgb10 lh18 z" style="list-style-position:outside;">
                   <p class="fwb">

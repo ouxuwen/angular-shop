@@ -41,7 +41,6 @@
                     </ng-template>
                   </nz-input>
                   <div nz-form-explain *ngIf="loginForm.controls.password.dirty&&loginForm.controls.password.hasError('required')">Please input your Password!</div>
-                 
                 </div>
               </div>
             </div>
@@ -95,7 +94,6 @@
                 </div>
               </div>
             </div>
-            
             <div>
               <label class="lable-title" >Password :</label>
               <div style="margin-bottom: 10px" nz-form-item>
@@ -116,10 +114,9 @@
                   <div nz-form-explain *ngIf="getFormControl('checkPassword').dirty&&getFormControl('checkPassword').hasError('minlength')">The minimum password length is 6!</div>
                 </div>
               </div>
-           
             </div>
             <div>
-              <button nz-button (click)="_submitRegisterForm()" class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">{{" CreateAnAccount	   " | translate}}</button>
+              <button nz-button (click)="_submitRegisterForm()" class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">{{"CreateAnAccount" | translate}}</button>
             </div>
           </form>
         </div>

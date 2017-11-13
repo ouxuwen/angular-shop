@@ -10,7 +10,10 @@ import { NzModalService } from 'ng-zorro-antd';
 })
 export class CheckOutComponent implements OnInit {
   data = {
-    "list":[]
+    "list":[],
+    "total_price":null,
+    "trans_price":null,
+    "order_total":null
   };
 
   address: any;

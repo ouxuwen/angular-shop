@@ -133,7 +133,7 @@ export class AddressBoxComponent implements OnInit {
    
   }
 
-  handleCancel = () => {
+  handleCancel = (e) => {
     this.isVisible = false;
     this.close.emit();
   }

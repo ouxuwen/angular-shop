@@ -1,3 +1,106 @@
-<p>
-  setting works!
-</p>
+<nz-spin [nzSpinning]='isLoading'>
+
+
+<div class="my-account">
+  <div class="customer_info_edit">
+    <p class="f20 pdb15">Other Account Settings</p>
+    <div class="otheraccountinfo-box">
+      <div class="otheraccountinfo-bar">
+        <ul class="fix">
+          <li [class.active]="userActive" (click)='userActive=true;'>Account Information</li>
+          <li class="brr0" [class.active]="!userActive" (click)='userActive=false;'>Change Password</li>
+        </ul>
+      </div>
+      <div class="accountinfo-box customer_tab_content" *ngIf='userActive'>
+        <form nz-form [formGroup]="userForm">
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="email" nz-form-item-required>E-mail</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getUserControl('email')">
+              <nz-input [nzSize]="'large'" formControlName="email" [nzId]="'email'"></nz-input>
+              <div nz-form-explain *ngIf="getUserControl('email').dirty&&getUserControl('email').hasError('email')">The input is not valid E-mail!</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="firstname" nz-form-item-required>{{"Firstname" | translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getUserControl('firstname')">
+              <nz-input [nzSize]="'large'" formControlName="firstname" [nzType]="'firstname'" [nzId]="'firstname'" (ngModelChange)="updateConfirmValidator()"></nz-input>
+              <div nz-form-explain *ngIf="getUserControl('firstname').dirty&&getUserControl('firstname').hasError('required')">Please input your firstname!</div>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="lastname" nz-form-item-required>
+                    <span>
+                        {{"Lastname" | translate}}
+                    </span>
+                  </label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getUserControl('lastname')">
+              <nz-input [nzSize]="'large'" formControlName="lastname" [nzId]="'lastname'"></nz-input>
+              <div nz-form-explain *ngIf="getUserControl('lastname').dirty&&getUserControl('lastname').hasError('required')">Please input your lastname!</div>
+            </div>
+          </div>
+
+
+
+
+          <div nz-form-item nz-row style="margin-bottom:8px;">
+            <div nz-form-control nz-col [nzSpan]="10" [nzOffset]="6">
+              <button (click)='saveUserForm()' nz-button [nzSize]="'large'" [nzType]="'primary'">{{"Save" | translate}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="changefirstname customer_tab_content" *ngIf='!userActive'>
+        <form nz-form [formGroup]="passForm">
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="old_password" nz-form-item-required>{{"Password" | translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getPassControl('old_password')">
+              <nz-input [nzSize]="'large'" formControlName="old_password" [nzType]="'password'" [nzId]="'old_password'" ></nz-input>
+              <div nz-form-explain *ngIf="getPassControl('old_password').dirty&&getPassControl('old_password').hasError('required')">Please input your old password!</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="new_password" nz-form-item-required>{{"NewPassword" | translate}}</label>
+              </div>
+              <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getPassControl('new_password')">
+                <nz-input [nzSize]="'large'" formControlName="new_password" [nzType]="'password'" [nzId]="'new_password'" (ngModelChange)="updateConfirmValidator()"></nz-input>
+                <div nz-form-explain *ngIf="getPassControl('new_password').dirty&&getPassControl('new_password').hasError('required')">Please input your new password!</div>
+              </div>
+            </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+              <label for="checkPassword" nz-form-item-required>{{"ConfirmPassword"|translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="10" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getPassControl('checkPassword')">
+              <nz-input [nzSize]="'large'" formControlName="checkPassword" [nzType]="'password'" [nzId]="'checkPassword'"></nz-input>
+              <div nz-form-explain *ngIf="getPassControl('checkPassword').dirty&&getPassControl('checkPassword').hasError('required')">Please confirm your password!</div>
+              <div nz-form-explain *ngIf="getPassControl('checkPassword').dirty&&getPassControl('checkPassword').hasError('confirm')">Two passwords that you enter is inconsistent!</div>
+            </div>
+          </div>
+          
+
+
+
+
+          <div nz-form-item nz-row style="margin-bottom:8px;">
+            <div nz-form-control nz-col [nzSpan]="10" [nzOffset]="6">
+              <button (click)="savePassForm()" nz-button [nzSize]="'large'" [nzType]="'primary'">{{"Save"| translate}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</nz-spin>

@@ -1,22 +1,51 @@
-<div class="std"><p></p><div style="padding:10px 30px;">
+<div class="std">
+  <p></p>
+  <div style="padding:10px 30px;">
     <h3 class="f18">Check My Order Status</h3>
     <p class="pdt5 pdb5">Please enter your order number and email address to check the order status.</p>
     <div class="pd20 cbr1 orderstatus-box">
-      <form name="" action="https://www.etradesupply.com/check-order-status/" method="get">
+      <nz-spin [nzSpinning]='isLoading'>
+
+   
+      <form nz-form [formGroup]="validateForm" class="login-form" >
         <table border="0" cellspacing="0" cellpadding="0" class="orderStatusTable">
-          <tbody><tr>
-            <td><i class="note-require">*</i><strong>Order Number:</strong></td>
-            <td><input class="input-middle" type="text" name="order_id" id="order_id" value=""></td>
-          </tr>
-          <tr>
-            <td><i class="note-require">*</i><strong>Email Address:</strong></td>
-            <td><input class="input-middle" name="email_address" type="text" id="email_address" value="" size="30"></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td><button  value="Submit" id="order-track-submit" ><span>Submit</span></button></td>
-          </tr>
-        </tbody></table>
+          <tbody>
+            <tr>
+              <td><i class="note-require">*</i><strong>Order Number:</strong></td>
+              <td>
+                <nz-input formControlName="order" [nzPlaceHolder]="'Order'" [nzSize]="'large'">
+
+                </nz-input>
+               
+              </td>
+            </tr>
+            <tr  *ngIf="validateForm.controls.order.dirty&&validateForm.controls.order.hasError('required')">
+              <td colspan=2>
+                  <div class="error">Please input your order number!</div>     
+              </td>
+            </tr>
+            <tr>
+              <td><i class="note-require">*</i><strong>Email Address:</strong></td>
+              <td>
+                <nz-input formControlName="email" [nzPlaceHolder]="'Email'" [nzSize]="'large'">
+                </nz-input>
+              </td>
+            </tr>
+            <tr  *ngIf="validateForm.controls.email.dirty&&(validateForm.controls.email.hasError('required')||validateForm.controls.email.hasError('email'))">
+              <td colspan=2>
+                  <div  class="error">Please input your valid email!</div>
+              </td>
+            </tr>
+           
+            <tr>
+              <td>&nbsp;</td>
+              <td><button (click)="_submitForm()" id="order-track-submit"><span>Submit</span></button></td>
+            </tr>
+          </tbody>
+        </table>
       </form>
+    </nz-spin>
     </div>
-  </div><p></p></div>
+  </div>
+  <p></p>
+</div>

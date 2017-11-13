@@ -26,7 +26,7 @@ export function createTranslateLoader(http: Http) {
 
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{useHash: true}),
     NgZorroAntdModule.forRoot(),
     SharedModule,
     BrowserModule,

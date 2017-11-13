@@ -25,15 +25,26 @@ export class SearchComponent implements OnInit {
   isSpinning: boolean = false;
   keywords:any;
   constructor(private confirmServ: NzModalService, public eventsService: EventsService, public homeService: HomeService, public router: Router, private activatedRoute: ActivatedRoute, ) {
-
-    this.eventsService.subscribe('cart').subscribe(res => {
-      this.getCart();
-    })
-    this.getAllCateList();
     if (localStorage.getItem('userInfo')) {
       this.getCart();
       this.isLogin = true;
+    }else{
+      this.isLogin = false;
     }
+    this.eventsService.subscribe('cart').subscribe(res => {
+      this.getCart();
+    })
+
+    this.eventsService.subscribe('login').subscribe(()=>{
+      if (localStorage.getItem('userInfo')) {
+        this.getCart();
+        this.isLogin = true;
+      }else{
+        this.isLogin = false;
+      }
+    })
+    this.getAllCateList();
+   
 
   }
 

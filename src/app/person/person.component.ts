@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonComponent implements OnInit {
 
-  constructor() { }
-
+  constructor() {
+    if (localStorage.getItem('userInfo')) {
+      this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    }
+  }
+  userInfo: any;
   ngOnInit() {
   }
 

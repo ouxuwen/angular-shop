@@ -6,15 +6,15 @@ import { environment } from '../../environments/environment';
 import { NzModalService } from 'ng-zorro-antd'
 import { TranslateService } from '@ngx-translate/core';
 
-const productApi = '';
+const productApi = 'http://www.tygdsupply.com/app';
 const debugApi = 'http://www.admin.com/app';
 @Injectable()
 export class HttpService {
-  token :any;
+  token: any;
   subscription: Subscription;
   constructor(public eventsService: EventsService, public translateService: TranslateService, public http: Http, private confirmServ: NzModalService) {
     this.initTranslate();
-    
+
   }
 
   public cancel() {
@@ -53,7 +53,8 @@ export class HttpService {
   public get(url: string, paramMap: any = null): Observable<Response> {
     return this.request(url, new RequestOptions({
       method: RequestMethod.Get,
-      search: HttpService.buildURLSearchParams(paramMap)
+      search: HttpService.buildURLSearchParams(paramMap),
+     
     }));
   }
 
@@ -63,7 +64,8 @@ export class HttpService {
       body: body,
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8'
-      })
+      }),
+    
     }));
   }
 
@@ -71,7 +73,7 @@ export class HttpService {
     return this.request(url, new RequestOptions({
       method: RequestMethod.Post,
       search: HttpService.buildURLSearchParams(paramMap),
-      
+  
     }));
   }
 
@@ -82,7 +84,7 @@ export class HttpService {
    */
   private static buildURLSearchParams(paramMap): URLSearchParams {
     let params = new URLSearchParams();
-    if(localStorage.getItem('userInfo')){
+    if (localStorage.getItem('userInfo')) {
       let token = JSON.parse(localStorage.getItem('userInfo')).token;
       params.set("token", token);
     }
@@ -94,8 +96,8 @@ export class HttpService {
       params.set(key, val);
     }
 
-    
-    
+
+
     return params;
   }
 
