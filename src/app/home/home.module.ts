@@ -6,7 +6,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { SharedModule} from '../shared/shared.module'
+import { SharedModule} from '../shared/shared.module';
 @NgModule({
     declarations: [
       // components

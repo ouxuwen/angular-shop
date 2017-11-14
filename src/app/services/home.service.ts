@@ -196,4 +196,8 @@ export class HomeService {
     update_username(data) {
         return this.httpService.postJson('/member/update_username', data);
     }
+
+    getLogistics(data){
+        return this.httpService.getLogistics(data);
+    }
 }   

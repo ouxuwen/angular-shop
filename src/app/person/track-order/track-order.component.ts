@@ -41,6 +41,11 @@ export class TrackOrderComponent implements OnInit {
     this.isLoading = true;
     setTimeout(()=> {
       this.isLoading = false;
-    }, 3000);
+      this.confirmServ.success({
+        title:"Success !",
+        content:"If there are any news for your order , we will send you a email~",
+        okText:"Confirm"
+      })
+    }, 2000);
   }
 }

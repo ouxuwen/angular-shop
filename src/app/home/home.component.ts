@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HomeService } from '../services/home.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,53 +14,12 @@ export class HomeComponent implements OnInit {
   currentIndex = 0;
   isFinish:boolean = false;
   isSpinning: boolean = false;
-  // goods = [{
-  //   "id": 46,
-  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-  //   "cate_id": 62,
-  //   "price": "11.00",
-  //   "costprice": "1.00",
-  //   "cover": 572,
-  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  // },
-  // {
-  //   "id": 46,
-  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-  //   "cate_id": 62,
-  //   "price": "1.00",
-  //   "costprice": "1.00",
-  //   "cover": 572,
-  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  // }, {
-  //   "id": 46,
-  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-  //   "cate_id": 62,
-  //   "price": "1.00",
-  //   "costprice": "1.00",
-  //   "cover": 572,
-  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  // }, {
-  //   "id": 46,
-  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-  //   "cate_id": 62,
-  //   "price": "1.00",
-  //   "costprice": "1.00",
-  //   "cover": 572,
-  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  // }, {
-  //   "id": 46,
-  //   "goods_name": "For Apple iPhone X Tempered Glass Screen Protector (5D) Replacement (Without Package) - Black - Grade R\t",
-  //   "cate_id": 62,
-  //   "price": "1.00",
-  //   "costprice": "21.00",
-  //   "cover": 572,
-  //   "url": "http://oyiph6mjm.bkt.clouddn.com/55e71d9fe966b03b95070293d33bcf93.png"
-  // }];
+  
   goods = [];
   productIndex = 0;
   @ViewChild('banner') banner: ElementRef;
 
-  constructor(public homeService: HomeService) {
+  constructor(public router: Router,public homeService: HomeService) {
     this.getGoodsByClass("is_exc");
   }
 
@@ -88,6 +48,12 @@ export class HomeComponent implements OnInit {
       this.isSpinning = false;
     }
     )
+  }
+
+  goGoodsList(id){
+    this.router.navigate(['/goods/goods-list'],{queryParams:{
+      type:id
+    }})
   }
 
 
@@ -132,7 +98,7 @@ export class HomeComponent implements OnInit {
         this.currentIndex = 0;
       }
       this.banner.nativeElement.style.marginLeft = this.left + 'px';
-      console.log(this.banner.nativeElement.style.left);
+      //console.log(this.banner.nativeElement.style.left);
     }, 4000)
   }
 
@@ -147,7 +113,7 @@ export class HomeComponent implements OnInit {
   }
 
   point(i) {
-    console.log(i)
+    //console.log(i)
     this.currentIndex = i;
     this.left = -1 * i * 950;
     this.banner.nativeElement.style.marginLeft = this.left + 'px';
@@ -161,7 +127,7 @@ export class HomeComponent implements OnInit {
     } else if (this.currentIndex < 0) {
       this.currentIndex = this.bannerImg.length - 1;
     }
-    console.log(this.currentIndex)
+    //console.log(this.currentIndex)
     this.point(this.currentIndex);
   }
 

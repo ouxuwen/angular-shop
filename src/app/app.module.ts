@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { routes } from './app.router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule, Http ,JsonpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventsModule } from 'angular4-events';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
@@ -37,6 +37,7 @@ export function createTranslateLoader(http: Http) {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    JsonpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

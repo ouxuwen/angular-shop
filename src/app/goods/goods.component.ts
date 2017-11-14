@@ -16,9 +16,7 @@ export class GoodsComponent implements OnInit {
   constructor(private homeService: HomeService, private events: EventsService, private confirmServ: NzModalService, public router: Router, public activeRouter: ActivatedRoute) {
     this.activeRouter.queryParams.subscribe(res => {
       this.goodsId = res['goodsId'];
-
       this.getGoodsInfo();
-
     })
 
   }
@@ -158,7 +156,8 @@ export class GoodsComponent implements OnInit {
       if (res.json().status = 1) {
         this.confirmServ.success({
           title: 'Success',
-          content: res.json().msg
+          content: "Added to wish List !",
+          okText:"Confirm"
         });
       }
     }, err => {

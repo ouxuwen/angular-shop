@@ -19,17 +19,17 @@ export class AppComponent {
   constructor(private confirmServ: NzModalService, private homeService: HomeService, private eventsService: EventsService, private fb: FormBuilder, public translateService: TranslateService) {
     this.eventsService.subscribe('needLogin').subscribe(res => {
       this.showLogin = true;
-    })
-  }
-  title = 'app';
-  emailValid:boolean = false;
-  isConfirmLoading:boolean =false;
-  ngOnInit() {
+    });
     this.translateService.addLangs(["zh", "en"]);
     this.translateService.setDefaultLang('en')
     const browserLang = localStorage.getItem('lang') || this.translateService.getBrowserLang();
-    console.log(browserLang);
     this.translateService.use(browserLang.match(/zh|en/) ? browserLang : "en");
+  }
+  title = 'app';
+  emailValid: boolean = false;
+  isConfirmLoading: boolean = false;
+  ngOnInit() {
+   
     this.initLoginForm();
     this.initRegisterForm();
   }
@@ -37,7 +37,7 @@ export class AppComponent {
   showLogin: boolean = false;
   loginError: boolean = false;
   handleOk = (e) => {
-    console.log('点击了确定');
+
     this.showLogin = false;
   }
 
@@ -55,7 +55,7 @@ export class AppComponent {
     if (this.loginForm.invalid) {
       return;
     }
-    
+
     this.homeService.login(this.loginForm.value);
     this.eventsService.subscribe('closeModel').subscribe(res => {
       this.showLogin = false;
@@ -113,12 +113,12 @@ export class AppComponent {
   }
 
   userNameAsyncValidator = (control: FormControl): any => {
-    return Observable.create((observer)=> {
-      this.homeService.checkEmail({email:this.getFormControl('email').value}).map(res => res.json()).subscribe(res=>{
-        if(res.status == 0){
+    return Observable.create((observer) => {
+      this.homeService.checkEmail({ email: this.getFormControl('email').value }).map(res => res.json()).subscribe(res => {
+        if (res.status == 0) {
           observer.next({ error: true, duplicated: true });
           this.emailValid = false;
-        }else{
+        } else {
           observer.next(null);
           this.emailValid = true;
         }

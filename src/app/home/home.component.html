@@ -21,16 +21,16 @@
       <div class="product-title">
         <ul>
           <li [class.active]="productIndex == 0" (mouseenter)='productIndex =0 ;getGoodsByClass("is_exc")'>
-            <a>{{"ExceptionalDeals" | translate}}</a>
+            <a (click)='goGoodsList("is_exc")'>{{"ExceptionalDeals" | translate}}</a>
           </li>
           <li [class.active]="productIndex == 1" (mouseenter)='productIndex =1 ;getGoodsByClass("is_new")'>
-            <a>{{"NewArrivals" | translate}}</a>
+            <a (click)='goGoodsList("is_new")'>{{"NewArrivals" | translate}}</a>
           </li>
           <li [class.active]="productIndex == 2" (mouseenter)='productIndex =2 ;getGoodsByClass("is_hot")'>
-            <a>{{"BestSellers" | translate}}</a>
+            <a (click)='goGoodsList("is_hot")'>{{"BestSellers" | translate}}</a>
           </li>
           <li [class.active]="productIndex == 3" (mouseenter)='productIndex =3 ;getGoodsByClass("is_rec")'>
-            <a>{{"Recommend" | translate}}</a>
+            <a (click)='goGoodsList("is_rec")'>{{"Recommend" | translate}}</a>
           </li>
         </ul>
       </div>
@@ -133,3 +133,4 @@
 
   </div>
 </div>
+

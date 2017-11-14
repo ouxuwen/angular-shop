@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.router);
+    //console.log(this.router);
 
     this.router.events
       .filter(event => event instanceof NavigationEnd)
@@ -63,7 +63,7 @@ export class SearchComponent implements OnInit {
           this.notHome = true;
           this.hidden = true;
         }
-        console.log(res['url'])
+       // console.log(res['url'])
       })
   }
 

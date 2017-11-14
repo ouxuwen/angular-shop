@@ -6,7 +6,7 @@
         <li>
           <i class="order-icon payment"></i>
           <a (click)='status=0;changeShow("0")'>
-            <span class="ibm">Pending payment
+            <span class="ibm">{{"Pendingpayment"|translate}}
               <span class="c-w  pdl10 pdr10">{{this.pendingPay.length}}</span>
             </span>
           </a>
@@ -14,7 +14,7 @@
         <li>
           <i class="order-icon shipment"></i>
           <a (click)='status=2;changeShow("2")'>
-            <span class="ibm">Shipped
+            <span class="ibm">{{"Shipped"|translate}}
               <span class="c-w pdl10 pdr10">{{this.shiped.length}}</span>
             </span>
           </a>
@@ -22,7 +22,7 @@
         <li style="border:0px;">
           <i class="order-icon review"></i>
           <a (click)='status=3;changeShow("3")'>
-            <span class="ibm">Pending review
+            <span class="ibm">{{"Pendingreview"|translate}}
               <span class="c-w pdl10 pdr10">{{this.doneList.length}}</span>
               <img src="assets/image/pendding-reivew.jpg">
             </span>
@@ -36,35 +36,35 @@
         <ul class="fix">
           <li>
             <select name="order_date_select" id="order_date_select">
-              <option selected="selected">Last three months</option>
-              <option>Last year</option>
+              <option selected="selected">{{"Lastthreemonths"|translate}}</option>
+              <option>{{"LastYear"|translate}}</option>
             </select>
           </li>
           <li class="mgl10">
             <select (ngModelChange)='changeShow($event)' [(ngModel)]='status' name="order_status_select" id="order_status_select">
-              <option value='5' selected='true'>All status</option>
-              <option value="0">Pending Payment</option>
-              <option value="1">Pending Shipment</option>
-              <option value="2">Shipped</option>
-              <option value="3">Partially Shipped</option>
+              <option value='5' selected='true'>{{"AllStatus"|translate}}</option>
+              <option value="0">{{"PendingPayment"|translate}}</option>
+              <option value="1">{{"PendingShipment"|translate}}</option>
+              <option value="2">{{"Shipped"|translate}}</option>
+              <option value="3">{{"PartiallyShipped"|translate}}</option>
             </select>
           </li>
           <li style="float:right">
             <form name="order_form" action="" method="get">
               <input type="text" style="width:200px;vertical-align:middle" placeholder="Order Number" name="order_id">
-              <button style="line-height:28px" type="submit">Search</button>
+              <button style="line-height:28px" type="submit">{{"Search"|translate}}</button>
             </form>
           </li>
         </ul>
       </div>
       <div class="myorders-list-bar ">
         <ul class="fix">
-          <li style="width:105px;">Image</li>
-          <li style="width:230px;">Product Name</li>
-          <li style="width:120px;">Unit Price</li>
-          <li style="width:90px;">Qty</li>
-          <li style="width:140px;">Grand Total</li>
-          <li style="width:260px;">Operate</li>
+          <li style="width:105px;">{{"Image"|translate}}</li>
+          <li style="width:230px;">{{"ProductName"|translate}}</li>
+          <li style="width:120px;">{{"UnitPrice"|translate}}</li>
+          <li style="width:90px;">{{"Qty"|translate}}</li>
+          <li style="width:140px;">{{"GrandTotal"|translate}}</li>
+          <li style="width:260px;">{{"Operate"|translate}}</li>
         </ul>
       </div>
       <div class="myorders-list-box">
@@ -75,7 +75,7 @@
                 <thead>
                   <tr>
                     <th colspan="7" class="order-title">
-                      <span class="pdr20">{{item.create_time | date}}</span>
+                      <span class="pdr20">{{item.create_time?item.create_time+'000':item.create_time | date:"medium"}}</span>
                       <span class="pdr20">Order: # {{item.order_sn}}</span>
                       <span class="pdr20">{{item.status == 0?"Pending Payment":item.status == 1?"Pending ship":item.status == 2?"Shiped":"Done"}}</span>
                       <a class="confirm_delete" (click)=' confirmDetele(i,item.id)' style="cursor:pointer;">
@@ -103,18 +103,18 @@
                       <span class="price">$ {{item.order_goods[0].goods_total}}</span>
                     </td>
                     <td width="160" class="tac rowspan_list" rowspan="1" valign="middle">
-                      <a (click)='showDetail(item)' class="db c-n">View Order</a>
+                      <a (click)='showDetail(item)' class="db c-n">{{"ViewOrder"|translate}}</a>
 
                       <span class="paymentBridge" style="position:relative;">
-                        <a style="color:#6699cc;" (click)='payNow(item.id)' *ngIf='item.status ==0'>Pay Now</a>
-                        <a style="color:#6699cc;" *ngIf='item.status ==1'>PendingShip</a>
-                        <a style="color:#6699cc;" *ngIf='item.status ==2'>Shiped</a>
-                        <a style="color:#6699cc;" *ngIf='item.status ==3'>Done</a>
+                        <a style="color:#6699cc;" (click)='payNow(item.id)' *ngIf='item.status ==0'>{{"PayNow"|translate}}</a>
+                        <a style="color:#6699cc;" *ngIf='item.status ==1'>{{"PendingShip"|translate}}</a>
+                        <a style="color:#6699cc;" (click)='showShip(item) ' *ngIf='item.status ==2'>{{"Shiped"|translate}}</a>
+                        <a style="color:#6699cc;" *ngIf='item.status ==3'>{{"Done"|translate}}</a>
                       </span>
-                      <a class="db c-n confirm_cancel" style="cursor:pointer;" (click)='confirmDetele(i,item.id)'>Delete Order</a>
+                      <a class="db c-n confirm_cancel" style="cursor:pointer;" (click)='confirmDetele(i,item.id)'>{{"Delete Order"|translate}}</a>
                     </td>
                     <td width="120" class="tac rowspan_list" rowspan="1" valign="middle">
-                      <a (click)='showDetail(item)'>Detail</a>
+                      <a (click)='showDetail(item)'>{{"Detail" | translate}}</a>
                     </td>
                   </tr>
 
@@ -132,11 +132,13 @@
 <nz-modal [nzWidth]="800" [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
   (nzOnCancel)="handleCancel($event)">
   <ng-template #modalTitle>
-    Order Detail #{{showItem.order_sn}} {{"CreateTime" | translate}}: {{showItem.create_time | date}}
+    Order Detail #{{showItem.order_sn}} &nbsp;&nbsp;&nbsp; {{"CreateTime" | translate}}: {{showItem.create_time?showItem.create_time+'000':showItem.create_time
+    | date:"medium"}} &nbsp;&nbsp;{{"Total"|translate}} : <span style="color:red">$ {{showItem.order_total}}</span> &nbsp;&nbsp;{{"Freight"|translate}}
+    : <span style="color:red">$ {{showItem.trans_price}}</span>
   </ng-template>
   <ng-template #modalContent>
     <div>
-      <table border="1" style="width:100%;">
+      <table border="1" style="width:100%;border-color:#ccc">
         <thead>
           <tr>
             <th class="order-title">
@@ -170,7 +172,7 @@
               </a>
             </td>
             <td width="305" class="pd5 desc product_discribe">
-              <a class="product_name" (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}} {{item.standard_value1}} {{item.standard_value2}} {{item.standard_value3}}</a>
+              <a class="product_name" (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}} <br> <strong>{{"Standard"|translate}} : </strong> <span style="color:red"> {{item.standard_value1}} {{item.standard_value2}} {{item.standard_value3}}</span></a>
             </td>
             <td width="120" class="tac price">
               <span class="price">$ {{item.goods_price}}</span>
@@ -191,6 +193,47 @@
       <button (click)='handleCancel(e)' nz-button [nzType]="'default'" [nzSize]="'large'">
         {{"Close" | translate}}
       </button>
+    </div>
+
+  </ng-template>
+</nz-modal>
+
+<nz-modal [nzWidth]="800" [nzVisible]="shipVisible" [nzTitle]="shipTitle" [nzContent]="shipContent" [nzFooter]="shipFooter"
+  (nzOnCancel)="handleShip($event)">
+  <ng-template #shipTitle>
+    Order Detail #{{showItem.order_sn}} &nbsp;&nbsp;&nbsp; {{"CreateTime" | translate}}: {{showItem.create_time?showItem.create_time+'000':showItem.create_time
+    | date:"medium"}} &nbsp;&nbsp;{{"Total"|translate}} : <span style="color:red">$ {{showItem.order_total}}</span> &nbsp;&nbsp;{{"Freight"|translate}}
+    : <span style="color:red">$ {{showItem.trans_price}}</span>
+  </ng-template>
+  <ng-template #shipContent>
+    <div style="font-size: 14px;">
+      <div>
+        <span style="width:150px;display: inline-block "> {{"LogisticsCompany"|translate}} </span> : {{showItem.logistics_company}}
+      </div>
+      <div>
+        <span style="width:150px;display: inline-block">{{"LogisticsNum"|translate}} </span> : {{showItem.logistics_num}}
+      </div>
+    </div>
+    <div class="line"></div>
+    <div style='margin-top:10px;'>
+      <nz-alert *ngIf='logistics?.state ==0' [nzType]="'warning'" [nzMessage]="'There is no logistics information for this order '"
+        [nzShowIcon]="'true'">
+      </nz-alert>
+      <nz-alert *ngIf='logistics?.status ==2' [nzType]="'error'" [nzMessage]="logistics.message" [nzShowIcon]="'true'">
+      </nz-alert>
+      <nz-alert *ngIf='logisticsError' [nzType]="'error'" [nzMessage]="'Server error'" [nzShowIcon]="'true'">
+      </nz-alert>
+      <nz-timeline *ngIf='logistics?.status ==1'>
+        <nz-timeline-item *ngFor='let item of logistics.data'><span style='color:#1590E9'>{{item.time}} :</span> {{item.context}}</nz-timeline-item>
+      </nz-timeline>
+    </div>
+  </ng-template>
+  <ng-template #shipFooter>
+    <div style="text-align:center">
+      <button (click)='handleShip(e)' nz-button [nzType]="'default'" [nzSize]="'large'">
+      {{"Close" | translate}}
+    </button>
+      <button (click)='signGoods(showItem.id)' nz-button [nzType]="'success'">{{"AlreadySigned"|translate}}</button>
     </div>
 
   </ng-template>

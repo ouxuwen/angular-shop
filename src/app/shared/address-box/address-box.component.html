@@ -9,7 +9,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="firstname" nz-form-item-required>Firstname</label>
+              <label for="firstname" nz-form-item-required>{{"Firstname"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('firstname')">
               <nz-input [nzSize]="'large'" [(ngModel)]='address.firstname' formControlName="firstname" [nzId]="'firstname'"></nz-input>
@@ -19,7 +19,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="lastname" nz-form-item-required>Lastname</label>
+              <label for="lastname" nz-form-item-required>{{"Lastname"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('lastname')">
               <nz-input [nzSize]="'large'"  [(ngModel)]='address.lastname' formControlName="lastname" [nzId]="'lastname'"></nz-input>
@@ -31,7 +31,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="mobile" nz-form-item-required>Telephone</label>
+              <label for="mobile" nz-form-item-required>{{"Telephone"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('mobile')">
               <nz-input [nzSize]="'large'" [(ngModel)]='address.mobile' formControlName="mobile" [nzId]="'mobile'"></nz-input>
@@ -41,7 +41,7 @@
         <div nz-col [nzSpan]='12'>
             <div nz-form-item nz-row>
                 <div nz-form-label nz-col [nzSpan]='8'>
-                  <label for="state" nz-form-item-required>State</label>
+                  <label for="state" nz-form-item-required>{{"State"|translate}}</label>
                 </div>
                 <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('state')">
                   
@@ -62,7 +62,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="city" nz-form-item-required>City</label>
+              <label for="city" nz-form-item-required>{{"City"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('city')">
               <nz-input [nzSize]="'large'"  [(ngModel)]='address.city' formControlName="city" [nzId]="'city'"></nz-input>
@@ -72,7 +72,7 @@
         <div nz-col [nzSpan]='12'>
             <div nz-form-item nz-row>
                 <div nz-form-label nz-col [nzSpan]='8'>
-                  <label for="streetaddress" nz-form-item-required>Streetaddress</label>
+                  <label for="streetaddress" nz-form-item-required>{{"Streetaddress"|translate}}</label>
                 </div>
                 <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('streetaddress')">
                   <nz-input [nzSize]="'streetaddress'"  [(ngModel)]='address.streetaddress'  formControlName="streetaddress" [nzId]="'streetaddress'"></nz-input>
@@ -84,7 +84,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="zipcode" nz-form-item-required>Zipcode</label>
+              <label for="zipcode" nz-form-item-required>{{"Zipcode"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16' nzHasFeedback [nzValidateStatus]="getFormControl('zipcode')">
               <nz-input [nzSize]="'large'"  [(ngModel)]='address.zipcode' formControlName="zipcode" [nzId]="'zipcode'"></nz-input>
@@ -94,7 +94,7 @@
         <div nz-col [nzSpan]='12'>
           <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]='8'>
-              <label for="country" nz-form-item-required>Country</label>
+              <label for="country" nz-form-item-required>{{"Country"|translate}}</label>
             </div>
             <div nz-form-control nz-col [nzSpan]='16'  >
               <nz-input [nzDisabled]='true'  [(ngModel)]='address.country' [nzSize]="'country'" formControlName="country" [nzId]="'country'"></nz-input>
@@ -110,10 +110,10 @@
   </ng-template>
   <ng-template #modalFooter>
     <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel($event)">
-        Back
+        {{"Back"|translate}}
       </button>
     <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="handleOk()" [nzLoading]="isConfirmLoading">
-        Subimit
+        {{"Subimit"|translate}}
       </button>
   </ng-template>
 </nz-modal>

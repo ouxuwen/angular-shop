@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs, RequestMethod } from '@angular/http';
+import { Http, Response,Jsonp, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import { EventsService } from 'angular4-events';
 import { Observable, TimeoutError, Subscription } from "rxjs";
 import { environment } from '../../environments/environment';
@@ -7,16 +7,20 @@ import { NzModalService } from 'ng-zorro-antd'
 import { TranslateService } from '@ngx-translate/core';
 
 const productApi = 'http://www.tygdsupply.com/app';
+//const productApi = 'http://www.admin.com/app';
 const debugApi = 'http://www.admin.com/app';
 @Injectable()
 export class HttpService {
   token: any;
   subscription: Subscription;
-  constructor(public eventsService: EventsService, public translateService: TranslateService, public http: Http, private confirmServ: NzModalService) {
-    this.initTranslate();
+  constructor(public jsonp:Jsonp,public eventsService: EventsService, public translateService: TranslateService, public http: Http, private confirmServ: NzModalService) {
+   setTimeout(()=>{
+    this.initTranslate();  
+   })
 
   }
-
+  
+  
   public cancel() {
     this.subscription && this.subscription.unsubscribe();
   }
@@ -54,8 +58,19 @@ export class HttpService {
     return this.request(url, new RequestOptions({
       method: RequestMethod.Get,
       search: HttpService.buildURLSearchParams(paramMap),
-     
+      withCredentials:true
     }));
+  }
+//?id=${paramMap.id}&com=${paramMap.com}&nu=${paramMap.nu}
+  public getLogistics(paramMap: any = null): Observable<Response> {
+    let params1 = new URLSearchParams();
+    for(let key in paramMap){
+      params1.set(key,paramMap[key]);
+    }
+    params1.set('callback', "JSONP_CALLBACK");
+    return this.jsonp.get(`http://q.kdpt.net/api`, {
+      search: params1,  
+    });
   }
 
   public post(url: string, body: any = null): Observable<Response> {
@@ -65,7 +80,7 @@ export class HttpService {
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8'
       }),
-    
+      withCredentials:true
     }));
   }
 
@@ -73,7 +88,7 @@ export class HttpService {
     return this.request(url, new RequestOptions({
       method: RequestMethod.Post,
       search: HttpService.buildURLSearchParams(paramMap),
-  
+      withCredentials:true
     }));
   }
 
@@ -110,7 +125,8 @@ export class HttpService {
   Confirm: string;
   initTranslate() {
     this.translateService.get("ErrorTimeOut").subscribe(res => { this.ErrorTimeOut = res });
-    this.translateService.get("Error0").subscribe(res => { this.Error0 = res });
+    this.translateService.get("Error0").subscribe(res => { this.Error0 = res
+    console.log(res) });
     this.translateService.get("Error404").subscribe(res => { this.Error404 = res });
     this.translateService.get("Error500").subscribe(res => { this.Error500 = res });
     this.translateService.get("ErrorNet").subscribe(res => { this.ErrorNet = res });

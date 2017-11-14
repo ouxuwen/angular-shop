@@ -19,7 +19,8 @@ export class GoodsListComponent implements OnInit {
   moreCate: boolean = false;
   partsId = null;
   cateId = null;
-
+  goodsType = null;
+  goodsCate = null;
   total: number = 0;
   paramSearch = {
     keywords: null,
@@ -38,7 +39,7 @@ export class GoodsListComponent implements OnInit {
       if (params['cate']) {
         let id = JSON.parse(params['cate']);
         this.paramSearch.cate_id = id;
-
+       this.goodsCate = id;
         this.allCateList = JSON.parse(localStorage.getItem('allCateList'));
         if (this.allCateList) {
           this.allCateList.forEach(element => {
@@ -55,14 +56,26 @@ export class GoodsListComponent implements OnInit {
         }
       } else {
         this.paramSearch.cate_id = null;
+        this.goodsCate = null;
       }
 
       if (params['keywords']) {
-        console.log(params['keywords'])
+
         this.paramSearch.keywords = params['keywords'];
 
       } else {
         this.paramSearch.keywords = null;
+      }
+
+      if (params['type']) {
+        this.paramSearch[params['type']] = 1;
+        this.goodsType = params['type'];
+      } else {
+        this.paramSearch.is_new = null;
+        this.paramSearch.is_rec = null;
+        this.paramSearch.is_hot = null;
+        this.paramSearch.is_exc = null;
+        this.goodsType = null;
       }
 
 
@@ -134,7 +147,7 @@ export class GoodsListComponent implements OnInit {
   }
 
   changeShowList(e) {
-    this.paramSearch.page_size= Number(e);
+    this.paramSearch.page_size = Number(e);
     this.getCateList();
   }
 
@@ -156,15 +169,15 @@ export class GoodsListComponent implements OnInit {
         if (this.categoryList[value.cate_name]) {
           this.categoryList[value.cate_name]['num'] += 1;
         } else {
-          this.categoryList[value.cate_name] = {num:1,id:value.cate_id};
+          this.categoryList[value.cate_name] = { num: 1, id: value.cate_id };
         }
       })
-      
+
     }, err => {
       this.nzSpinning = false;
     })
   }
 
-  
-  
+
+
 }

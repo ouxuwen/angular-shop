@@ -8,7 +8,7 @@
           <a class="pdr8 pdl8" routerLink='/home' title="Home">Home</a>
           <font>»</font>
         </li>
-        <div *ngIf='paramSearch.cate_id '>
+        <div *ngIf='goodsCate'>
           <li class="category170 prae">
             <a class="pdr8 pdl8" title="Apple" (click)='goAllModel(firstLvl.id)'>{{firstLvl?.cate_name}}</a>
             <font>»</font>
@@ -34,6 +34,18 @@
             </div>
           </li>
         </div>
+        <div *ngIf="goodsType">
+          <li class="current prae">
+            <div class="last-nav cor">
+              <strong class="pdr8 pdl8" *ngIf='goodsType=="is_new"'>Search results for " {{"NewArrivals"|translate}} "</strong>
+              <strong class="pdr8 pdl8" *ngIf='goodsType=="is_rec"'>Search results for " {{"Recommend"|translate}} "</strong>
+              <strong class="pdr8 pdl8" *ngIf='goodsType=="is_hot"'>Search results for " {{"BestSellers"|translate}} "</strong>
+              <strong class="pdr8 pdl8" *ngIf='goodsType=="is_exc"'>Search results for " {{"ExceptionalDeals"|translate}} "</strong>
+              <div>
+              </div>
+            </div>
+          </li>
+        </div>
       </ul>
     </div>
 
@@ -42,9 +54,13 @@
     </div>
     <div class="ets-right">
       <div *ngIf="paramSearch.keywords" class="lh25 page-title">
-
         <h2>Search results for '{{paramSearch.keywords}}'</h2>
-
+      </div>
+      <div *ngIf="goodsType" class="lh25 page-title">
+        <h2 *ngIf='goodsType=="is_new"'>Search results for " {{"NewArrivals"|translate}} "</h2>
+        <h2 *ngIf='goodsType=="is_rec"'>Search results for " {{"Recommend"|translate}} "</h2>
+        <h2 *ngIf='goodsType=="is_hot"'>Search results for " {{"BestSellers"|translate}} "</h2>
+        <h2 *ngIf='goodsType=="is_exc"'>Search results for " {{"ExceptionalDeals"|translate}} "</h2>
       </div>
       <div class="brand oh mod-line-bottom">
         <ul>
@@ -55,15 +71,15 @@
           </li>
           <li class="brand-img oh pd15">
             <ul>
-              <li *ngIf="paramSearch.keywords" class="fix attrsearch-wrap attr-category">
+              <li *ngIf="paramSearch.keywords || goodsType" class="fix attrsearch-wrap attr-category">
                 <div class="attrsearch-key">Category:</div>
                 <div class="attrsearch-value">
                   <ul class="attrsearch-value-list fix" [class.attrsearch-value-list-open]='moreCate'>
-                    <li *ngFor='let item of objectKeys(categoryList)' (click)='selectCate(categoryList[item].id)' [class.dn]='paramSearch.cate_id' [class.pud]="paramSearch.cate_id&&paramSearch.cate_id==categoryList[item].id">
-                        <span *ngIf='paramSearch.cate_id' class="spanbg">You've chosen </span>
-                      <a > {{item}} </a>
-                     ( {{categoryList[item]['num']}}   )
-                     <a *ngIf='paramSearch.cate_id' class="remove closechoose" title="Remove This Item">x</a>
+                    <li *ngFor='let item of objectKeys(categoryList)' (click)='selectCate(categoryList[item].id)' [class.dn]='paramSearch.cate_id'
+                      [class.pud]="paramSearch.cate_id&&paramSearch.cate_id==categoryList[item].id">
+                      <span *ngIf='paramSearch.cate_id' class="spanbg">You've chosen </span>
+                      <a> {{item}} </a> ( {{categoryList[item]['num']}} )
+                      <a *ngIf='paramSearch.cate_id' class="remove closechoose" title="Remove This Item">x</a>
                     </li>
                   </ul>
                   <a class="list-more" (click)='moreCate= !moreCate'>{{"More" | translate}} →</a>
@@ -146,8 +162,8 @@
                     <option value="40">40</option>
                     <option value="60">60</option>
                   </select>
-                  <nz-pagination style="float:right; " (ngModelChange)='changePage($event)' [nzPageSize]="paramSearch.page_size" [(nzPageIndex)]="paramSearch.current" [nzTotal]="total"
-                    [nzSize]="'small'"></nz-pagination>
+                  <nz-pagination style="float:right; " (ngModelChange)='changePage($event)' [nzPageSize]="paramSearch.page_size" [(nzPageIndex)]="paramSearch.current"
+                    [nzTotal]="total" [nzSize]="'small'"></nz-pagination>
                 </div>
               </li>
               <li class="pager">

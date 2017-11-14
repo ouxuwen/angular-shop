@@ -29,18 +29,18 @@
 
       <span class="font l myacount" (mouseenter)="myDj=true" (mouseleave)="myDj=false">
         <span class="iconfont icon-accountfilling" [style.color]="myDj ? '#50b5ff' : '#555' "></span>
-        <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
-        <div class="myacount-blank" [style.display]="myDj ? 'block' : 'none' "></div>
-        <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display]="myDj ? 'block' : 'none' ">
-          <ul>
-            <li>
-              <a routerLink='/person/order'>My Orders</a>
-            </li>
-            <li>
-              <a routerLink="/person/track-order">Track My Orders</a>
-            </li>
-          </ul>
-        </div>
+      <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
+      <div class="myacount-blank" [style.display]="myDj ? 'block' : 'none' "></div>
+      <div class="myacount-list pabs dn pd10 cbgfff zi4" [style.display]="myDj ? 'block' : 'none' ">
+        <ul>
+          <li>
+            <a routerLink='/person/order'>My Orders</a>
+          </li>
+          <li>
+            <a routerLink="/person/track-order">Track My Orders</a>
+          </li>
+        </ul>
+      </div>
       </span>
       <span class="pixel2"></span>
       <div *ngIf='!isLogin' class="admin login-box l" style="position:relative;" (mouseenter)="loginTouch=true" (mouseleave)="loginTouch=false;initForm()">
@@ -115,7 +115,7 @@
                 <p class="lh20 f14">Bing Member</p>
                 <div class="c-w lh20">
                   <span>Green Horn</span>
-                  <a target="_blank" title="View our membership system">
+                  <a routerLink='/person/person' title="View our membership system">
                     <div id="product-more-info" class="product-m-i"></div>
                   </a>
                 </div>

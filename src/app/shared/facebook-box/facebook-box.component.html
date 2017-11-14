@@ -10,22 +10,27 @@
     </div>
   </div>
   <div class="module">
-    <form  method="post" id="newsletter-validate-detail">
-    <div class="pdl20 pdt15">
-      <p class="lh30 f14 c-t fwb">
-        <input class="ibm" name="newsletter_type[]" value="1" id="new-product" type="checkbox"><label for="new-product" class="ibm pdr10 pdl10 cor">New Products</label>
-      </p>
-      <p class="lh30 f14 c-t fwb">
-        <input class="ibm" name="newsletter_type[]" value="2" id="arrival-notice" type="checkbox"><label style="max-width: 155px;" for="arrival-notice" class="ibm pdr10 pdl10 cor">Restock Notice</label>
-      </p>
-      <p class="lh30 f14 c-t fwb">
-        <input class="ibm" name="newsletter_type[]" value="3" id="cut-price" type="checkbox"><label for="cut-price" class="ibm pdr10 pdl10 cor">Discounts</label>
-      </p>
-      <p>
-        <input style="width:170px" inputauto="Enter your email" value="Enter your email" class="email" type="text" title="Sign up for our newsletter" name="email" id="newsletter">
-      </p>
-      <button class="button" title="Subscribe" type="reset"><span class="joinnow">Subscribe</span></button>
-    </div>
-    </form>
+    <nz-spin [nzSpinning]='isLoading'>
+      <form method="post" id="newsletter-validate-detail">
+        <div class="pdl20 pdt15">
+          <p class="lh30 f14 c-t fwb">
+            <input class="ibm" name="newsletter_type[]" value="1" id="new-product" type="checkbox"><label for="new-product"
+              class="ibm pdr10 pdl10 cor">New Products</label>
+          </p>
+          <p class="lh30 f14 c-t fwb">
+            <input class="ibm" name="newsletter_type[]" value="2" id="arrival-notice" type="checkbox"><label style="max-width: 155px;"
+              for="arrival-notice" class="ibm pdr10 pdl10 cor">Restock Notice</label>
+          </p>
+          <p class="lh30 f14 c-t fwb">
+            <input class="ibm" name="newsletter_type[]" value="3" id="cut-price" type="checkbox"><label for="cut-price" class="ibm pdr10 pdl10 cor">Discounts</label>
+          </p>
+          <p style='padding:5px 0;'>
+            <input style="width:170px" placeholder="Enter your email" class="email" type="email" title="Sign up for our newsletter" name="email"
+              id="newsletter">
+          </p>
+          <button (click)='_submitForm()' class="button" title="Subscribe" type="reset"><span class="joinnow">Subscribe</span></button>
+        </div>
+      </form>
+    </nz-spin>
   </div>
 </div>
