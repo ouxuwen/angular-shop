@@ -8,7 +8,7 @@
       <thead nz-thead>
         <tr>
           <th nz-th><span>Image</span></th>
-          <th nz-th><span>Product Name</span></th>
+          <th nz-th width='350'><span>Product Name</span></th>
           <th nz-th><span>SKU</span></th>
           <th nz-th><span>Unit Price</span></th>
           <th nz-th><span>Added On</span></th>
@@ -34,7 +34,7 @@
             $ {{data.price | number:'1.2-2' }}
           </td>
           <td nz-td>
-            <a>{{data.create_time | date }}</a>
+            <a>{{data.create_time | date:"medium" }}</a>
           </td>
           <td nz-td style="text-align: center">
             <p>

@@ -97,7 +97,7 @@ display: block;color: #fff;text-align: left;line-height: 47px;position: absolute
 .product-warpper-right .minus {background:url(/assets/image/licon.png) no-repeat -409px -211px; width:13px; height:13px; border:1px #CCCCCC solid; display:block; float:left; margin:18px 4px 0 3px;}
 .product-warpper-right .minus:hover {border:1px #666 solid;}
 .cart-btn-lists{ display: inline-block ;;margin: 8px 0 0 20px;}
-.buy-cart{height:33px;background-color: #6699cc;}
+.buy-cart{height:33px;background-color: $mainColor;}
 .buy-cart:hover {background-color: #005d8c;}
 .product-detail-box{border:1px solid #ccc;border-top:0px;}
 .content { padding:0 20px;margin-top: 2px;}
@@ -132,8 +132,8 @@ display: block;color: #fff;text-align: left;line-height: 47px;position: absolute
 .buy-options{ margin-left:0px;}
 .buy-options-box{overflow:hidden;}
 .buy-options a,.buy-city a{ padding:4px 15px 4px 10px; font-size:12px; color:#666; text-decoration:none;float:left;border:2px solid #ccc;margin:5px 10px 2px 0px;}
-.buy-options a.hover{ border:2px solid #3398cc; color:#3398cc;}
-a.selected{border:2px solid #3398cc;background: url("/assets/image/product-selected.png") no-repeat scroll bottom right;}
+.buy-options a.hover{ border:2px solid #58AFD9; color:#58AFD9;}
+a.selected{border:2px solid #58AFD9;background: url("/assets/image/product-selected.png") no-repeat scroll bottom right;}
 a.is_not_salable{color:#cdcdcd;border:1px dashed #d6d6d8;cursor:not-allowed; padding:5px;}
 .totalhidden .total_price { margin-left:20px; float:left; color:#000000; font-weight:normal;}
 .totalhidden span {  margin-left:5px; float:left; color:#000000;}
@@ -191,7 +191,7 @@ a.is_not_salable{color:#cdcdcd;border:1px dashed #d6d6d8;cursor:not-allowed; pad
 .add-to-wish{margin-left: 20px;border:1px solid #ddd;height: 23px;border-radius: 2px;line-height: 23px;padding: 0px 5px 0px 22px;background: url('/assets/image/licon.png') -577px -506px no-repeat;color:#000;background-color:#f7f7f7;}
 .add-to-wish-new{margin-left: 12px;border:1px solid #ddd; position: relative; top: 17px; height: 28px;border-radius: 2px;line-height: 28px;padding: 0px 5px 0px 22px;background: url('/assets/image/licon.png') -577px -503px no-repeat;color:#000;background-color:#f7f7f7;}
 .add-to-wish-new2{top: -3px; height: 26px; line-height: 26px; background: url('/assets/image/licon.png') -577px -504px no-repeat;color:#000;background-color:#f7f7f7;}
-.add-to-wish-new2:hover{ color: #0c9eef!important; text-decoration: underline!important;}
+.add-to-wish-new2:hover{ color: $blueColor!important; text-decoration: underline!important;}
 .add-to-wish-box:hover{background: #f0f0f0;}
 .double-check{display: inline-block;background: url('/assets/image/licon.png') no-repeat -780px -279px;height: 24px;padding-left: 24px;line-height: 24px;*display: inline;zoom:1;}
 .please-wait-new{width: 1022px;height: 45px;border: 1px solid #d8d8d8;text-align: center;line-height: 45px;font-size: 16px;margin-bottom: 10px;}
@@ -233,7 +233,7 @@ a.is_not_salable{color:#cdcdcd;border:1px dashed #d6d6d8;cursor:not-allowed; pad
 .product-nav-fixed{position: fixed;top: 0px;background:#fff;z-index:999999;}
 .product-addtocart{float: right;width: 130px;cursor: pointer;text-align: center;height: 25px;line-height: 25px;margin-top: 4px;border-right: 1px solid #d8d8d8;
 margin-left: -1px;color: #fff;margin-right: 10px;border-radius: 2px;font-size: 14px;display: none;background: url("/assets/image/licon.png") -766px -412px no-repeat;
-background-color: #6699cc;padding-left: 18px;}
+background-color: $mainColor;padding-left: 18px;}
 .product-addtocart:hover{background-color:#006699;}
 .product-models{border: 1px solid #d8d8d8;margin-bottom: 10px;}
 .product-tab-title:hover{color: #3399cc;}
@@ -246,8 +246,8 @@ input[type='text'].quantity{width: 45px;border-radius: 0;height: 20px;text-align
 .popbox-close{position: absolute;right: 13px;top: 6px;cursor:pointer;font-size: 17px;}
 select.qtychoice{width:50px;}
 .estimate-shipping-box select{width:200px;}
-.estimate-shipping-box button{background:#6699cc;}
-.estimate-shipping-box button:hover{background:#0c9eef;}
+.estimate-shipping-box button{background:$mainColor;}
+.estimate-shipping-box button:hover{background:$blueColor;}
 .shipping-us{background: url('/assets/image/licon.png') no-repeat;padding-left:33px;background-position: -773px -333px;}
 .shipping-hk{background: url('/assets/image/licon.png') no-repeat;padding-left:33px;background-position: -773px -509px;}
 .price-box{overflow: hidden;display: inline-block;vertical-align: middle;*display: inline;zoom:1;}
@@ -255,7 +255,7 @@ select.qtychoice{width:50px;}
 .no-tierprice .et-tips1,
 .no-tierprice .et-tips2{ line-height: 24px;}
 .no-tierprice .link-btn{ background-color: transparent; border: none; text-decoration: none; text-decoration: underline;}
-.no-tierprice a:hover{ color: #0c9eef;}
+.no-tierprice a:hover{ color: $blueColor;}
 
 /* S add20160129 */
 .ets-stockhk{ font-size: 14px; line-height: 20px; display: block;}
@@ -316,18 +316,18 @@ select.qtychoice{width:50px;}
 .product-earn-points{cursor: pointer;text-decoration: underline; }
 .product-earn-points:hover{text-decoration: underline; }
 .points-link{ color: #336699; text-decoration: underline;}
-a.points-link:hover{ color: #0c9eef;}
+a.points-link:hover{ color: $blueColor;}
 
 
 .buy-options{ margin-left:0px;}
 .buy-options-box{overflow:hidden;}
 .buy-options a,.buy-city a{ padding:4px 15px 4px 10px; font-size:12px; color:#666; text-decoration:none;float:left;border:2px solid #ccc;margin:5px 10px 2px 0px;}
-.buy-options a.hover{ border:2px solid #3398cc; color:#3398cc;}
-.buy-options a.selected{border:2px solid #3398cc;background: url("/assets/image/product-selected.png") no-repeat scroll bottom right;}
+.buy-options a.hover{ border:2px solid $blueColor; color:$blueColor;}
+.buy-options a.selected{border:2px solid #58AFD9;background: url("/assets/image/product-selected.png") no-repeat scroll bottom right;}
 .buy-options a.is_not_salable{color:#cdcdcd;border:1px dashed #d6d6d8;cursor:not-allowed; padding:5px;}
 .totalhidden .total_price { margin-left:20px; float:left; color:#000000; font-weight:normal;}
 .totalhidden span {  margin-left:5px; float:left; color:#000000;}
-.buy-city a.selected{border:2px solid #3398cc;}
+.buy-city a.selected{border:2px solid #58AFD9;}
 
 .little{
     position: absolute;
