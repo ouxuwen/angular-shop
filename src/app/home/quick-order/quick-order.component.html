@@ -1,0 +1,227 @@
+<div class="center">
+  <noscript>
+    &lt;div class="noscript"&gt; &lt;div class="noscript-inner"&gt; &lt;p&gt;&lt;strong&gt;JavaScript seem to be disabled in
+    your browser.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;You must have JavaScript enabled in your browser to utilize the functionality
+    of this website.&lt;/p&gt; &lt;/div&gt; &lt;/div&gt;
+  </noscript>
+  <div class="ets fix">
+
+    <div class="ets-left">
+      <!--[VIEWED_PRODUCTS container="Enterprise_PageCache_Model_Container_Viewedproducts" block="Mage_Reports_Block_Product_Viewed" template="reports/product_viewed.phtml" cache_id="72db756b3d8c86c3bfb24703e043ea89a09bf7c6" cache_lifetime="600"-->
+      <!--VIEWED_PRODUCTS]-->
+      <div class="block block-list block-viewed">
+        <div class="quick-order-guide">
+          <a class="db">
+    <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/quick-order-guide.jpg">
+</a>
+        </div>
+      </div>
+      <div class="block block-list block-viewed">
+        <div class="block-title">
+          <span class="block-title-icon"></span>
+          <strong><span style="font-size:16px;">Poll</span></strong>
+        </div>
+        <div class="block-content">
+          <p class="f16 pdt5 pdb5 pdr20 pdl20 poll-title">Is "Quick Order" helpful for you?</p>
+          <p class="f16 pdt5 pdb5 pdr20 pdl20" id="poll-box-info-id">
+            <span class="poll-box-btn dib tac cor prae mg0 mgr10 mgl10" vote="5">
+           Yes	                 <span class="dn f11 pabs">+1</span>
+            </span>
+            <input type="hidden" class="poll_id" name="poll_id" value="1">
+            <span class="poll-box-btn dib tac cor prae mg0 mgr10 mgl10" vote="6">
+           No	                 <span class="dn f11 pabs">+1</span>
+            </span>
+            <input type="hidden" class="poll_id" name="poll_id" value="1">
+          </p>
+        </div>
+      </div>
+      <div class="block block-list block-viewed">
+        <div class="block-title">
+          <span class="block-title-icon"></span>
+          <strong><a target="_blank"><span>Best Sellers</span></a></strong>
+        </div>
+        <div class="block-content">
+          <ol id="recently-viewed-items">
+            
+            <li class="item" *ngFor='let item of bestSell'>
+              <div class="l">
+                <img (click)='goGoodsDetail(item.info_id)' height="80" width="80" [src]="item.url">
+              </div>
+              <div class="product-name bestsellers l">
+                <a (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}}</a>
+
+
+
+                <div class="price-box" rel="nofollow">
+
+                  <p class="old-price">
+                    <span class="price" id="old-price-11670">
+            ${{item.costprice}}             </span>
+                  </p>
+
+                  <p class="special-price">
+                    <span class="price" id="product-price-11670">
+            ${{item.price}}               </span>
+                  </p>
+
+
+                </div>
+
+              </div>
+
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="block block-list block-viewed">
+        <div class="block-title">
+          <span class="block-title-icon"></span>
+          <strong><a target="_blank" ><span>New Arrivals</span></a></strong>
+        </div>
+        <div class="block-content">
+          <ol id="recently-viewed-items">
+            <li class="item" *ngFor='let item of newList '>
+              <div class="l"><img height="80" width="80" (click)='goGoodsDetail(item.info_id)' [src]='item.url'></div>
+              <div class="product-name newarrival l">
+                <a (click)='goGoodsDetail(item.info_id)'>{{item.goods_name}}</a>
+
+
+
+                <div class="price-box" rel="nofollow">
+                  <span class="regular-price" id="product-price-26897">
+            <span class="price">${{item.price}}</span> </span>
+
+                </div>
+
+              </div>
+            </li>
+           
+          </ol>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="ets-right">
+      <div class="c069 tac pdt10 pdb20 f36">Quick Order</div>
+      <div class="quick-order-box">
+        <div class="quick-order-nav">
+          <li class="tabs-nav" [class.active]='isImportFile' (click)='isImportFile = true'>Import From A CSV File</li>
+          <li class="tabs-nav" [class.active]='!isImportFile' (click)='isImportFile = false'>Import From Order History</li>
+        </div>
+        <div style="clear:both;"></div>
+        <form *ngIf = 'isImportFile' name="order_import_form" id="order_import_form" 
+          method="post" enctype="multipart/form-data">
+          <div class="tabs-box" style="display:block;">
+            <p class="tabs-esc tabs-title">Import From SKU</p>
+            <p class="quick-box">
+              <span>SKU: <input class="quick-sku" name="product[sku][]" type="text" value=""></span><span>Quantity: <input type="text" name="product[qty][]" class="quick-qty" value="1"></span>
+              <span class="quick-sku-del" style="display: none;"></span>
+            </p>
+            <p class="quick-box">
+              <span>SKU: <input class="quick-sku" name="product[sku][]" type="text" value=""></span><span>Quantity: <input type="text" name="product[qty][]" class="quick-qty" value="1"></span>
+              <span class="quick-sku-del" style="display: none;"></span>
+            </p>
+            <p class="quick-box">
+              <span>SKU: <input class="quick-sku" name="product[sku][]" type="text" value=""></span><span>Quantity: <input type="text" name="product[qty][]" class="quick-qty" value="1"></span>
+              <span class="quick-sku-del" style="display: none;"></span>
+            </p>
+            <p class="quick-box">
+              <span>SKU: <input class="quick-sku" name="product[sku][]" type="text" value=""></span><span>Quantity: <input type="text" name="product[qty][]" class="quick-qty" value="1"></span>
+              <span class="quick-sku-del" style="display: none;"></span>
+            </p>
+            <p class="quick-box">
+              <span>SKU: <input class="quick-sku" name="product[sku][]" type="text" value=""></span><span>Quantity: <input type="text" name="product[qty][]" class="quick-qty" value="1"></span>
+              <span class="quick-sku-del" style="display: none;"></span>
+            </p>
+            <p>
+              <span id="add-sku" class="ibm tac cor cfff h20 quick-add c-p">ADD MORE</span>
+            </p>
+            <div>
+              <div class="mgt30 mgb30 f14">
+                <div class="tabs-title">Add to Cart from CSV File</div>
+                <div class="tabs-download">You can download a sample CSV<a style="color:#ff942d;text-decoration:underline;" href="https://www.etradesupply.com/admin_orderimport/index/downloadcsv/">here</a>.
+                </div>
+                <div class="pdb10">
+                  <p class="tabs-title">CSV Example:</p>
+                  <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/quick-order-example.png">
+                </div>
+                <div>CSV file for upload <input type="file" name="order_import" id="order_import">
+                </div>
+              </div>
+              <div>
+                <button class="button" id="csv-btn">
+                <span>
+                  <span>ADD TO CART</span>
+                 </span>
+              </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form *ngIf = '!isImportFile' name="order_import_form" id="order_import_form" 
+          method="post">
+          <div class="tabs-box" style="display: block;">
+            <p class="tabs-title">Import From Order History</p>
+            <p class="tabs-desc">Choose From Recent 5 Orders</p>
+            <div class="order-panel">
+              <div class="order-panel-list-header">
+                <span># Order</span><span>Date</span><span>Ship To</span><span>Order Total</span>
+              </div>
+              <ul class="order-panel-list">
+                <li order="100222527" class="quickSelectHover" checked="checked">
+                  <span>100222527</span>
+                  <span>2017-10-26</span>
+                  <span>US&nbsp;asdf</span>
+                  <span><span class="price">HKD $164.24</span></span>
+                </li>
+                <li order="100222103" class="quickSelectHover" checked="checked">
+                  <span>100222103</span>
+                  <span>2017-10-18</span>
+                  <span>US&nbsp;asdf</span>
+                  <span><span class="price">HKD $580.62</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="quick-product-box" style="">
+              <p class="tabs-desc">Please tick the part(s) you need.</p>
+              <div class="order-detail-panel">
+                <div class="order-panel-list-header detail-panel-header">
+                  <span style="width:35px;"><input type="checkbox" checked="checked" id="qucik-all"></span><span style="width:500px;">Product Name</span>
+                  <span
+                    style="width:60px;">Qty</span>
+                </div>
+                <ul class="order-detail-list">
+                  <li sku="ESAPP1710110001-23"><input class="quick-product ibm" value="ESAPP1710110001-23" name="product[sku][]" type="checkbox" checked="checked">
+                    <span
+                      class="product-detail-name">For Apple iPhone 8 Tempered Glass Screen Protector without Package (5D) - Black - Grade R<span class="product-img"
+                        style="display: none; left: 387px; top: 29px;">
+                        <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/130x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Apple_iPhone_8_Tempered_Glass_Screen_Protector_without_Package_5D_-_Black_-_Grade_R_0_.jpg" height="130" width="130" border="0"></span></span>
+                      <span
+                        class="product-qty"><input type="text" name="product[qty][]" value="1"></span>
+                  </li>
+                  <li sku="ESMOT1409172131-23-218"><input class="quick-product ibm" value="ESMOT1409172131-23-218" name="product[sku][]" type="checkbox" checked="checked">
+                    <span
+                      class="product-detail-name">For Motorola Moto G2 LCD Screen and Digitizer Assembly with Front Housing Replacement - Black - Without
+                      Logo - Grade S+<span class="product-img" style="display: none; left: 290px; top: 4px;">
+                        <img src="https://s3-us-west-2.amazonaws.com/usetsfiles/catalog/product/cache/1/small_image/130x/9df78eab33525d08d6e5fb8d27136e95/F/o/For_Motorola_Moto_G2_LCD_Screen_and_Digitizer_Assembly_with_Front_Housing_Replacement_-_Black_-_Without_Any_Logo_-_Grade_S_1__1.jpg" height="130" width="130" border="0"></span></span>
+                      <span
+                        class="product-qty"><input type="text" name="product[qty][]" value="2"></span>
+                  </li>
+                </ul>
+              </div>
+              <button class="button history-btn" id="history-btn">
+                      <span>
+                         <span>ADD TO CART</span>
+                      </span>
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

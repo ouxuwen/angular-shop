@@ -1,0 +1,220 @@
+<div class="center-page">
+
+
+
+  <div class="stock-wrapper" id="warehouse">
+    <div class="stock-show-box">
+      <div class="stock-show prae">
+        <img class="mgao" alt="our us warehouse has loaded up and ready" title="our us warehouse has loaded up and ready" src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/stock-show.jpg">
+      </div>
+
+    </div>
+    <div class="stock-show stock-tips">
+      <div class="stock-tips-info" style="position:relative;">
+        <div class="stock-tips-info-right">
+          <p>Ship within 1 business Day to <span class="country">U.S.</span> &amp; <span class="country">Canada</span></p>
+          <p class="f13 pdt5">
+            (Orders for parts from our U.S. inventory received <span class="c-n fwb">by 3:00PM CST (Monday - Friday)</span>            will be shipped the same day,<br> otherwise orders will be shipped the following business day.)
+          </p>
+        </div>
+        <div class="stock-download-product">
+          <a href="https://www.etradesupply.com/warehouse/stock/downProduct/">
+            <img src="/assets/image/warehouse-download.jpg">
+              Click here to download our list of inventory available from Dallas. 
+          </a>
+        </div>
+
+      </div>
+      <div style="clear:both;"></div>
+      <div class="stock-show-tips-box">
+        <p class="l stock-tips-content"><span class="stock-tips-item item1"></span>972-850-3910</p>
+        <p class="l stock-tips-search"><span class="stock-tips-item item3"></span>Contact <a class="c-n f16" title="contact" href="mailto:sales@bingsupply.com"
+            style="text-decoration:underline;">sales@bingsupply.com</a> or your account manager</p>
+      </div>
+      <!--S couponpage-->
+      <div class="s-couponpage">
+        <a ><img src="/assets/image/couponpage.jpg"></a>
+      </div>
+      <!--E couponpage-->
+
+    </div>
+    <div style="clear:both;"></div>
+    <div class="stock-search stock-show" id="slide-tag-id">
+      <span>Search U.S. Inventory Products Here: </span>
+      <div class="stock-search-btns ibm prae h30 lh30">
+        <input type="text" id="search-content">
+        <input type="hidden" id="warehouse_categoryid" value="3">
+        <button id="product-search-id"><span class="search-glass dib cor"></span></button>
+      </div>
+    </div>
+
+    <div class="category-menu width1024 db mgao">
+      <div class="cateogry-filter-block pd0 pdt0 pdb0" level="1">
+        <ul>
+          <li><span class="category-filter-all category-filter-selected" level="1" itemid="3">All</span></li>
+          <li><span itemid="170" class="category-filter " level="2">Apple</span></li>
+          <li><span itemid="1204" class="category-filter " level="2">Samsung</span></li>
+          <li><span itemid="205" class="category-filter " level="2">HTC</span></li>
+          <li><span itemid="209" class="category-filter " level="2">LG</span></li>
+          <li><span itemid="807" class="category-filter " level="2">Motorola</span></li>
+          <li><span itemid="381" class="category-filter " level="2">Nokia</span></li>
+          <li><span itemid="1690" class="category-filter " level="2">Sony</span></li>
+          <li><span itemid="100" class="category-filter " level="2">BlackBerry</span></li>
+          <li><span itemid="200" class="category-filter " level="2">Asus</span></li>
+          <li><span itemid="2268" class="category-filter " level="2">Symbol</span></li>
+          <li><span itemid="2283" class="category-filter " level="2">Intermec</span></li>
+          <li><span itemid="1581" class="category-filter " level="2">Accessories</span></li>
+          <li><span itemid="1000150" class="category-filter " level="2">Others</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="instock-filter width1024">
+      <input id="instock-filter-input" name="instock" type="checkbox"> <label for="instock-filter-input">In Stock Only</label>
+    </div>
+
+    <div class="stock-show stock-table-item" id="item-panel-id">
+      <div align="center">
+        <div class="width1024 fix pdl5">
+          <div class="pager">
+
+            <p class="amount">
+              Items <span class="amount_current_num">1</span> to <span class="amount_current_num">40</span> of <span class="amount_total_num">295</span>              total </p>
+
+            <div class="limiter">
+              <label style="color:#666;">Show</label>
+              <select><option selected="selected">40</option>
+                <option>80</option>
+                <option>120</option>
+              </select>        
+                    per page </div>
+
+            <div class="column_select lh38 ibm l c666">
+              <label style="color:#666;">View</label>
+              <select>
+                <option >4</option>
+                <option>5</option>
+              </select> parts/row </div>
+
+            <div class="pages">
+              <ol>
+                <li class="current">1</li>
+                <li><a>2</a></li>
+                <li><a>3</a></li>
+                <li><a>4</a></li>
+                <li><a>5</a></li>
+                <li><a class="next_jump" title="">...</a></li>
+
+                <li><a class="last">8</a></li>
+
+                <li>
+                  <a class="next i-next" title="Next">
+                  </a>
+                </li>
+                <li><a class="nextAll" title="go to the last page" ></a></li>
+              </ol>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="stock-show pdt0" id="stock-list-item-id" style="position:relative;float:left;">
+        <div class="stock-shade-bg" id="stock-shade-bg-id" style="display:none;">
+          <div style="width: 137px;margin: 0px auto;margin-top: 89px;">
+            <img src="https://www.etradesupply.com/skin/frontend/default/ets2015/images/lazyload.gif">
+          </div>
+        </div>
+        <ul class="stock-list stock-list-fourCol" style='min-height: 400px;'>
+          <li *ngFor='let item of goodsList'>
+            <table class="stock-products-list stock-products-list-fourCol">
+              <tbody>
+                <tr>
+                  <td>
+                    <p class="stock-list-bg stock-list-bg-fourCol">
+                      <span class="warehouse-icon us-warehouse-icon product-list-car"></span>
+                      <a  title="Intermec CN70, CK70 Digitizer Touch Screen"
+                        class="product-image">
+                        <img (click)='goDetail(item.info_id)' [src]="item.url" width="230" height="230" alt="Intermec CN70, CK70 Digitizer Touch Screen">
+                       </a>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tal pd5 vt products-desc">
+                    <a (click)='goDetail(item.info_id)' title="Intermec CN70, CK70 Digitizer Touch Screen" >
+                      <p class="limit-desc">{{item.goods_name}}</p>
+                    </a><a></a></td>
+                </tr>
+                <tr>
+                  <td class="stock-price">
+                    <div class="price-box" rel="nofollow">
+                      <span class="regular-price" id="product-price-19256">
+                      <span class="price">${{item.price}}</span> </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="stock-cart-box h75 vt">
+                    <p>
+                      <span class="f14 cfff fwb pd0 pdr5 pdl5 dn">50</span>
+                      <span class="stock-qty-cart" (click)='goDetail(item.info_id)'>In stock</span>
+                    </p>
+                    <p><input type="text" class="stock-cart-count tac" max-val="50" value="1">
+                      <span pid="19256" class="stock-cart-btn" ></span>
+
+                      <input type="hidden" value="0" id="inventory">
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          
+        </ul>
+      </div>
+      <div align="center">
+        <div class="width1024 fix">
+          <div class="pager">
+
+            <p class="amount">
+              Items <span class="amount_current_num">1</span> to <span class="amount_current_num">40</span> of <span class="amount_total_num">295</span>              total </p>
+
+            <div class="limiter">
+              <label style="color:#666;">Show</label>
+              <select><option  selected="selected">40</option><option >120</option>
+              </select>per page </div>
+
+            <div class="column_select lh38 ibm l c666">
+              <label style="color:#666;">View</label>
+              <select>
+            <option >4</option>
+            <option >5</option>
+          </select> parts/row </div>
+
+            <div class="pages">
+              <ol>
+                <li class="current">1</li>
+                <li><a>2</a></li>
+                <li><a >3</a></li>
+                <li><a>4</a></li>
+                <li><a >5</a></li>
+                <li><a class="next_jump" title="">...</a></li>
+                <li><a class="last" >8</a></li>
+                <li>
+                  <a class="next i-next"  title="Next">
+                </a>
+                </li>
+                <li><a class="nextAll" title="go to the last page" ></a></li>
+              </ol>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+
+
+    </div>

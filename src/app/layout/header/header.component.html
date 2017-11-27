@@ -1,5 +1,14 @@
 <div class="cbgfc cbr1befebe0">
   <ul class="column mgao width1024 h34 lh34">
+      <li class="topfont l">
+          <a href="#"><span class="national_usd"></span><span class="l">USD</span><span class="alow"></span></a><span class="pixel2"></span>
+          <ul class="dn">
+
+                              <li><a rel="nofollow" class="topfont-link" ><span class="national_hkd"></span><span class="float_left">RMB</span></a></li>
+
+                              <li><a rel="nofollow" class="topfont-link"><span class="national_usd"></span><span class="float_left">USD</span></a></li>
+                      </ul>
+      </li>
     <li class="topfont l">
       <a href="#">
         <span class=""></span>
@@ -26,7 +35,9 @@
       </span>
     </li>
     <li class="r header-top-en_US" style="*width:630px;">
-
+      <span class="header-top-hide-de font l">
+        <a class="us-inventory" routerLink ='/home/inventory'>Check U.S. Inventory Page</a>
+    </span>
       <span class="font l myacount" (mouseenter)="myDj=true" (mouseleave)="myDj=false">
         <span class="iconfont icon-accountfilling" [style.color]="myDj ? '#373739' : '#777' "></span>
       <a class="us-inventory-link" routerLink='/person'>{{'MyDj' | translate}}</a>
@@ -101,6 +112,7 @@
         </ul>
       </div>
       <div *ngIf='isLogin' class="prae l" id="admin-level" [class.level-active]="loginTouch" (mouseenter)="loginTouch=true" (mouseleave)="loginTouch=false">
+       
         <span class="font l text-auto-ellipsis" style="max-width:90px;">
           <a routerLink='/person/person'>Hi ,{{userInfo.firstname }}{{userInfo.lastname}} </a>
         </span>
