@@ -1,5 +1,4 @@
-# demo
-demo Link [demo](http://www.bingsupply.com)
+
 
 # Install
 
