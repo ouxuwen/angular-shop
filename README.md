@@ -34,9 +34,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## ScreenShot
 
-    <img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen1.png" width="300"  alt="截图1"/>
-    <img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen2.png" width="300"  alt="截图2"/>
-    <img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen3.png" width="300"  alt="截图1"/>
-    <img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen4.png" width="300"  alt="截图2"/>
+
+<img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen1.png" width="300"  alt="截图1"/>
+<img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen2.png" width="300"  alt="截图2"/>
+<img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen3.png" width="300"  alt="截图1"/>
+<img src="https://github.com/ouxuwen/angular-shop/blob/master/screenshot/screen4.png" width="300"  alt="截图2"/>
 
 
